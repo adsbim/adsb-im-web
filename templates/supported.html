@@ -15,27 +15,32 @@
             <div class="mb-2" id="sbcs">Supported Single Board Computers (SBCs)<br />
                 <b>Most importantly</b>: you need a decent power supply. No, not a USB charger. An actual power supply
                 designed for a single board computer. For most RPi3 class boards you can get away with a 5V/2.5A
-                powersupply. For anything more powerful I recommend a 5V/4A power supply.
+                powersupply. For anything more powerful I recommend a 5V/4A power supply.<br />
+                Boards that are actively tested and should work:
                 <ul>
-                    <li>Raspberry Pi Zero 2, 3a/b, and 4 (actively tested on Zero 2, 3a and 4 - note that Pi Zero W will
-                        NOT work)</li>
-                    <li>Asus Tinkerboard</li>
-                    <li>Libre Computing Le Potato (actively tested) and Renegade (actively tested)</li>
-                    <li>Orange Pi 3LTS (tested - no wifi support), 4LTS, 5, and 5plus (actively tested)</li>
-                    <li>Banana Pi M5 / M2P</li>
-                    <li>Odriod C4</li>
-                    <li>Rockpi 4</li>
+                    <li>Raspberry Pi4 or Pi5 (the Pi5 certainly is overkill, a Pi4 with 2G RAM will do just fine)</li>
+                    <li>OrangePi Zero 3 (currently my favorite when it comes to price / performance)</li>
+                    <li>Raspberry Pi Zero 2, 3a/b (note that a Raspberry Pi Zero W will NOT work; also, we are
+                        investigating some MLAT instability with Pi3 models, so potentially not the best choice)</li>
+                    <li>Libre Computing Le Potato</li>
+                    <li>Orange Pi 3LTS (no wifi support), 4LTS, 5, and 5plus (these are all known to work, but not
+                        tested regularly)</li>
                 </ul>
+                Additionally, the software stack can be installed on any board that supports DietPi, and even on most
+                Debian or Ubuntu Linux systems. Please note that installing the adsb.im software in a VM is known to
+                cause MLAT issues when the USB SDR is passed through to the VM.
             </div>
             <div class="mb-2" id="sdrs">Supported Software Defined Radios (SDRs)
                 <ul>
                     <li>Airspy Mini (expensive, but by far the best supported SDR for ADS-B/1090MHz)</li>
-                    <li>Most RTL2838 based USB sticks should work</li>
                     <li>Rtl-Sdr.com v3 and v4 dongle</li>
                     <li>FlightAware pro stick (includes 1090MHz filter and a low noise amplifier)</li>
                     <li>RadarBox green stick (includes 1090MHz filter and a low noise amplifier)</li>
+                    <li>AdsbExchange blue stick (includes 1090MHz filter and a low noise amplifier)</li>
                     <li>RadarBox red stick (includes 978MHz filter and a low noise amplifier -- for UAT978)</li>
                     <li>Nooelec NESDR Smart</li>
+                    <li>Most other RTL2838 based USB sticks should work</li>
+                    <li>SDRplay RSP1a and RSP1b - other models might work as well</li>
                 </ul>
             </div>
             <div class="mb-2" id="antennas">Antennas
@@ -58,10 +63,16 @@
             </div>
             <div class="mb-2" id="sdcards">SD cards (well, technically µSD cards)
                 <ul>
+                    <li>While the software fits on an 8GB card, it's generally better to go for a larger card as that
+                        extends the useful life of the card. Flash cells have a limited amount of write cycles and a
+                        larger card will balance the writes across more cells. The software stack tries to reduce
+                        unnecessary writes, but we still see especially 8GB cards die fairly regularly.</li>
                     <li>Ideally you want a class 10 card from a name brand. ScanDisk Ultra have been known to be
                         reliable</li>
                     <li>Many other brands also have decent cards - but shy away from anything where the price is too
                         good to be true</li>
+                    <li>Personally, for most of my feeders I use 64GB SanDisk Extreme cards - others have been very
+                        happy with the SanDisk Industrial and Samsung Pro cards.</li>
                 </ul>
             </div>
         </div>
