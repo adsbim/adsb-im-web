@@ -21,21 +21,22 @@
         For a minimal configuration you need:
         <ul>
             <li>A small single board computer (“SBC”): see the list of <a href="supported">currently supported
-                    boards</a></li>
-            <li>A good power supply for your SBC. Some of the supported boards use micro-USB (Raspberry Pi3,
-                Libre Computer Le Potato), others use USB-C (Pi4, OrangePi boards) - either way, make sure
-                you use an actual power supply designed for at least 2.5A and not just a USB charger.
-                Bad power is one of the main reasons for random issues with the boards.</li>
-            <li>A (good quality) µSD card of at least 32 Gb. The SBC will write to it often, so high quality
-                is important. SanDisk Ultra or Samsung High Endurance appear to be good choices.</li>
-            <li>Internet access for your SBC. At this point WiFi is only supported on Raspberry Pi 3a and 4b,
-                all other SBCs need wired Ethernet.</li>
-            <li>An RTL2832 SDR USB stick ("dongle"). This can be a “cheap” one.</li>
+                    boards</a>; if price is a concern, the OrangePi Zero 3 is a good choice, otherwise the Raspberry Pi4
+                are likely the best option.</li>
+            <li>A good power supply for your SBC. Most of the recommended boards use use USB-C (Raspberry Pi4, OrangePi
+                boards), some other use micro-USB (Raspberry Pi3, Libre Computer Le Potato, etc) - either way, make
+                sure you use an actual power supply designed for at least 2.5A (or 4A for a Pi4) and not just a USB
+                charger. Bad power is one of the main reasons for random issues with the boards.</li>
+            <li>A (good quality) µSD card of at least 8GB with 32GB or more recommended. The SBC will write to it often,
+                so high quality is important. SanDisk Ultra or Samsung High Endurance appear to be good choices.</li>
+            <li>Internet access for your SBC. At this point WiFi is only supported on the Raspberry Pi family as well as
+                the Orange Pi Zero 3, all other SBCs need wired Ethernet.</li>
+            <li>An SDR USB stick ("dongle"). Check the list of <a href="supported">supported SDRs</a>.</li>
             <li>An antenna for the SDR dongle.</li>
         </ul>
     </div>
     <div class="ml-1 mb-3">
-        You also should have access to a computer (Windows, Mac, Linux) and an SD card writer. This will be
+        You also should have access to a computer (Windows, Mac, Linux) and an µSD card writer. This will be
         used for the initial setup; once everything is running, you can access the flight map from your phone
         or pretty much any other device.
     </div>
@@ -48,8 +49,8 @@
             <li>A better quality SDR dongle, preferably one with built-in LNA and filter. For example:
                 FlightAware Pro+ (blue), RadarBox SDR (red), ADSBExchange Blue.</li>
             <li>A better antenna that is mounted outside. For example, ADSBExchange vertical, FlightAware
-                vertical, Radarbox vertical.</li>
-            <li>A larger SD card: 64 Gb or 128 Gb. You won’t need the space, but because of the way SD cards
+                vertical, Radarbox vertical, or an antenna from Vinnant.</li>
+            <li>A larger SD card: 64 Gb or 128 Gb. You won't need the space, but because of the way SD cards
                 work and how Linux writes to them, larger SD cards will have a lot longer usable life than
                 small ones. One odd downside is that the first boot will take a lot longer on a larger card,
                 so be prepared for that extra wait time.</li>
