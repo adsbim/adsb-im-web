@@ -1,0 +1,340 @@
+{% extends "base.html" %} {% set active_page = "faq" %} {% block title
+%}ADSB.im{% endblock %} {% block head %} {{ super() }} {% endblock %} {% block
+page_content %}
+<div class="container">
+  <div class="row justify-content-left mt-2 mb-2">
+    <div class="container mt-3">
+      <h4 class="mb-1">FAQ</h4>
+      <div class="accordion" id="FAQ">
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePrivacy"
+                    aria-expanded="false" aria-controls="collapsePrivacy">
+              What's your privacy and data policy?
+            </button>
+          </h5>
+          <div id="collapsePrivacy" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              It's simple, no data of yours is stored for more than 60 seconds.
+              The full details are of course in our
+              <a href="/privacy">Privacy Policy</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSupported"
+                    aria-expanded="false" aria-controls="collapseSupported">
+              What hardware is supported?
+            </button>
+          </h5>
+          <div id="collapseSupported" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              Many Arm based Single Board Computers (SBCs) and USB Software
+              Define Radios (SDRs). A (hopefully) current list can be found on
+              our <a href="/supported">Supported Hardware</a>
+              page. Updates are always welcome.<br />
+              NOTE: <b>you need a decent power supply</b>. The vast majority of user issues can be traced back to using
+              a bad power supply.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsehalfgig"
+                    aria-expanded="false" aria-controls="collapsehalfgig">
+              What about boards with 512MB like the Raspberry Pi 3a or Pi Zero 2
+              W?
+            </button>
+          </h5>
+          <div id="collapsehalfgig" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              That's a bit painful. Yes, you can get this to work, ideally with
+              the DietPi based image - which of course makes setting up WiFi a
+              bit more challenging. Additionally, I'd suggest getting it work
+              reliably just with some (or all) of the 'semi anonymous'
+              aggregators (so the first dozen or so in the list that are all
+              served by the same container on the feeder). And only adding
+              FlightAware, FlightRadar, Radarbox, and the other aggregators
+              below them one by one once you are happy that this still isn't
+              overwhelming your little SBC. Generally SBCs with 1GB (or more) of
+              memory create better results with this setup.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTroubleshooting" aria-expanded="false"
+                    aria-controls="collapseTroubleshooting">
+              Troubleshooting
+            </button>
+          </h5>
+          <div id="collapseTroubleshooting" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              <div class="mb-2">
+                The first thing to check is your power supply.
+              </div>
+              <div class="mb-2">
+                No, this will not work reliably with just a USB charger.
+                Or a USB cable from a powered hub. Or whatever. Yes, that other guy on Discord said... The reality is
+                that the vast majority of issues when running this image on a single board computer can be traced back
+                to bad power. So before you ask for help, please ask yourself "am I using a decent power supply?".
+                At least a 5V/2.5A power supply for an RPi3-class SBC, 5V/4A or better for anything more powerful than
+                that.
+              </div>
+              <div class="mb-2">
+                Ideally this should work out of the box. But in practice
+                something often goes wrong. Make sure you followed the
+                instructions. <b>Especially focus on the part about having a good
+                  power supply and a good SD-card</b>. A lot of problems are caused by those.
+              </div>
+              <div class="mb-2">
+                If this doesn't work, I really recommend simply starting again.
+                Download the image, use the Pi Imager or a similar bit-accurate
+                program to write the image to the SD-card. Make
+                sure you don't skip the verify step. Then turn off the SBC,
+                insert the SD-card and turn it back on again. Be patient - wait
+                at least several minutes, longer, if it is an "install-on-boot"
+                image, marked as "iob" in the image name. Now check again at
+                <a href="http://adsb-feeder.local">adsb-feeder.local</a>. If
+                this doesn't work, try connecting to it via our redirector
+                service at <a href="https://my.adsb.im">my.adsb.im</a>.
+              </div>
+              <div>
+                If none of this solves the problem, ask on the SDR-Enthusiast
+                Discord in the
+                <tt>#adsb-feeder-image</tt> channel.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsex86vm"
+                    aria-expanded="false" aria-controls="collapsex86vm">
+              Running the Feeder Image in a VM
+            </button>
+          </h5>
+          <div id="collapsex86vm" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              We provide an OVA for each release, also simply a compressed
+              virtual disk image, as well as a version prepared for (relatively)
+              easy installation with ProxMox. Please note that when opening the
+              OVA in VMware (Fusion/Workstation/whatever) you will get an error
+              on the first attempt, but will be able to succesfully import it if
+              you click 'Retry'. Make sure you pass your SDR through to the VM -
+              this works differently in each hypervisor, so please look at your
+              specific hypervisor software for instructions. Look for an option
+              to make host USB devices available to the VM. There are some
+              noticeable issues with mlat when running the Feeder Image in a VM.
+              This is a known issue with USB passthrough into VMs. Some hints
+              from Matthias Wirt on the topic are in this
+              <a href="https://github.com/wiedehopf/adsb-wiki/wiki/mlat-in-VMs">ADS-B Wiki page</a>.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsewifisupport" aria-expanded="false" aria-controls="collapsewifisupport">
+              WiFi Support
+            </button>
+          </h5>
+          <div id="collapsewifisupport" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              <div class="mb-2">
+                WiFi is fully supported on Raspberry Pi boards, some other DietPi based images like the ones for
+                OrangePi boards also work. If you are using a Raspbian based feeder image (that's the images
+                named <code>adsb-feeder-raspberrypi64...</code>), you can setup your
+                WiFi credentials with the Pi Imager as described on the
+                <a href=" howto">Howto</a> page.
+              </div>
+              <div class="mb-2">
+                If you are using the DietPi based image
+                <code>adsb-feeder-raspberrypi-dietpi-64...</code>
+                (which is highly recommended if you happen to have a Raspberry
+                Pi Zero 2W or a Pi 3a, both with only 512MB of RAM), things are
+                unfortunatenly a little harder. Do
+                <em>NOT</em>
+                make any configuration settings in Pi Imager and instead write
+                an unmodified image to the µSD.
+                <div class="mb-2">
+                  Next mount the SD-card on your computer and edit two files
+                  (the exact location depends on your operating system - a drive
+                  letter on Windows,
+                  <code>/Volumes/ADSB-FEEDER</code> on macOS):
+                  <ul>
+                    <li>
+                      <b>dietpi.txt</b> set
+                      <b>AUTO_SETUP_NET_WIFI_ENABLED=1</b> and
+                      <b>AUTO_SETUP_NET_WIFI_COUNTRY_CODE=</b> to your correct
+                      two letter country code (e.g. US for the USA or DE for
+                      Germany).
+                    </li>
+                    <li>
+                      <b>dietpi-wifi.txt</b> set <b>aWIFI_SSID[0]=</b> to your
+                      SSID and <b>aWIFI_KEY[0]=</b> to the WPA key of your WiFi
+                      network.
+                    </li>
+                  </ul>
+                  Make sure both files are written back to the SD card, unmount it, plug it into your board and boot
+                  your SBC.
+                  <div class="mb-2">
+                    If should now automatically connect to your network.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesecurity"
+                    aria-expanded="false" aria-controls="collapsesecurity">
+              Can I run the ADS-B Feeder and expose it directly to the internet?
+            </button>
+          </h5>
+          <div id="collapsesecurity" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              The ADS-B Feeder is designed to be run in a local network, behind
+              a firewall. There are many parts of this image that would be
+              completely unsafe to have on the internet (like for example being
+              able to install an ssh key), but even with those enabled, having
+              this system directly exposed to potentially hostile traffic was
+              never a design goal. Please don't do it.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsev0-17-1"
+                    aria-expanded="false" aria-controls="collapsev0-17-1">
+              How to upgrade from versions v0.17.1, v0.17.2, and v0.17.3?
+            </button>
+          </h5>
+          <div id="collapsev0-17-1" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              There's a bug in v0.17.1 that stayed undetected until v0.17.4 - as
+              a result v0.17.1, v0.17.2, and v0.17.3 won't upgrade from the web
+              UI. The workaround is fairly simple (and a one-time thing):
+              <ul>
+                <li>on the expert page set an ssh key for the root account.</li>
+                <li>ssh as root into the feeder using that key</li>
+                <li>
+                  run
+                  <code>mkdir -p /opt/adsb-feeder-update && /opt/adsb/feeder-update
+                    stable</code>
+                </li>
+              </ul>
+
+              Once that completes, you are back to normal and future updates
+              once again will work from the web UI.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsezerotier"
+                    aria-expanded="false" aria-controls="collapsezerotier">
+              How to set up Zerotier?
+            </button>
+          </h5>
+          <div id="collapsezerotier" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              <div class="mb-2">
+                First, if you haven't already done so, set up a Zerotier account
+                and create a network. Lots of documentation how to do this can
+                be found on their
+                <a href="https://docs.zerotier.com/">documentation website</a>
+              </div>
+              <div class="mb-2">
+                When you create the network, it will be assigned a 16 character
+                hex string. Enter that string on the expert page of the adsb.im
+                ADS-B Feeder. After a few moments you should see the new network
+                member show up on the Network Settings panel on the Zerotier
+                website. There you accept the feeder into your network and give
+                it a name. Also note down the IP address that it is assigned in
+                the managed IP column.
+              </div>
+              <div class="mb-2">
+                Now set up Zerotier on the device from which you want to be able
+                to access you feeder. Go through that same process of adding it
+                to your network.
+              </div>
+              <div>
+                Once that is done, you can access your feeder from that other
+                device (cell phone, laptop, whatever) by using the IP address
+                you noted down earlier.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapserawiron"
+                    aria-expanded="false" aria-controls="collapserawiron">
+              How does this compare to running the ADS-B feeder scripts from an
+              aggregator directly on my system?
+            </button>
+          </h5>
+          <div id="collapserawiron" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              This is actually a surprisingly complex question. The ADS-B Feeder
+              Image provided here (or installed as an 'app' in DietPi or on a
+              different Linux OS) is Docker based. And it runs a Python/Flask
+              app to provide the web user interface. This by definition creates
+              overhead. It will use more memory than an optimized minimal
+              installation of the necessary software directly on the SBC OS.
+              Given that I have tried to be careful in how I set things up, the
+              difference isn't very big, but it's there, and especially on a low
+              memory device (e.g., a 512MB RPi Zero2W or RPi 3a) that difference
+              can be significant. On the flip side, the moment you consider
+              submitting your data to more than one aggregator, the equation
+              changes. This is where having a setup like this one really helps
+              to keep things simple. The other situation where the ADS-B Feeder
+              Image has a significant edge over installation directly on an SBC
+              is for anyone who isn't super comfortable with the command line,
+              who doesn't want to spend a lot of time in a text editor or
+              entering commands in a terminal window, and who is looking for an
+              easy to use user interface. The ADS-B Feeder Image is primarily
+              designed to be easy, to appeal to people who aren't super
+              comfortable running a Linux system. Interestingly enough, quite a
+              few very experienced folks still decide to use this image simply
+              because of the UI and the simplicity - but I understand if you
+              feel differently and don't need the helping hand. In summary: yes,
+              there is additional overhead, but in most situations it's academic
+              and doesn't really make an difference. If you have an SBC with a
+              gigabyte or more, it's likely not relevant. But if you aren't a
+              fan of the Linux command line, this may still be a very powerful
+              option to consider.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    console.log("executing ready function");
+    if (window.location.hash) {
+      var jQuerytarget = jQuery("body").find(window.location.hash);
+      if (jQuerytarget.hasClass("collapse")) {
+        var jQuerytargetAccordion = jQuerytarget.find(".collapse");
+        jQuerytarget.collapse("show");
+      }
+    }
+  });
+</script>
+{% endblock %} {% block scripts %} {{ super() }} {% endblock %}

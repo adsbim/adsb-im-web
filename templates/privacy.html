@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% set active_page = "privacy" %}
+
+{% block title %}ADSB.im{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row justify-content-center mt-2 mb-2">
+        <div class="col-md-auto">
+            <h4 class="mb-2">Data handling and privacy.</h4>
+            <p>This Privacy Notice is to inform EU and U.K. citizens who use ADSB.im how their personal information is
+                used.</p>
+            <p>The only information this site receives from you before you configure your system are the local IP
+                address of the network your ADS-B Feeder is connected to, and the public IP address of the system from
+                which you access this server. These two addresses are associated with each other in order to enable the
+                forwarding service to your board during installation. The data is automatically deleted after 60
+                seconds. When checking for available updates, the ADS-B Feeder tells the server which board it is
+                running on and which version it is currently running, in order to enable the server to give the correct
+                response regarding possible version updates. Beyond this the server retains no additional information,
+                logging of regular accesses is explicitly turned off.</p>
+            <p>The site is run on a server located in the US, managed by an individual located in the US. Contact for
+                questions about data handling and privacy is dirk@dh-consulting.io.</p>
+            <p>Post mail: ADSB.im Data Protection Lead, c/o DH Consulting, 12725 SW Millikan Way, #300 Beaverton, OR
+                97005 USA.</p>
+            <p>With the GDPR compliance out of the way, here is the summary that applies to everyone (since we don't
+                actually track where you are from): It’s simple. We do not use your data. We do not care who your
+                friends are. We do not intend to market to you or to do anything else that’s annoying. There is no
+                monetization and no other use or processing of your data - we only store it very briefly with the
+                purpose of simplifying the setup of your device.</p>
+            <p>Obviously, your ADS-B Feeder image will connect to other cloud services, including but not limited to
+                any aggregator that you enable, the Debian APT repositories for the underlying OS, Github.com, and
+                container registries. These services are unrelated to adsb.im and they are provided under their own
+                license or use terms, privacy policies, and data use policies.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}

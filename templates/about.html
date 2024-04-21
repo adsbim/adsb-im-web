@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% set active_page = "about" %}
+
+{% block title %}ADSB.im{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="container-sm">
+    <div class="row-xs justify-content-center mt-2 mb-1">
+        <div class="col-sm-auto">
+            <h3 class="mb-3">About the ADSB Feeder Image project.</h3>
+            <div class="mb-3">One of the things that always seemed really hard when it comes to setting up an ADSB
+                feeder is that very first step. How do you get started?</div>
+            <div class="mb-3">Most of the existing instructions are written for people who are familiar with computers,
+                happy to edit config files, and comfortable making it all work while logged in to a command line
+                interface. At the same time, that obviously is just a small fraction of the people who might be
+                interested in this hobby.</div>
+            <div class="mb-3">From this observation grew the idea to build a project that would make this process super
+                simple, without going down the path of proprietary hardware and software (like so many of the commercial
+                feeders do). All of this is open source, all the infrastructure is agnostic of the aggregators you want
+                to feed.
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}

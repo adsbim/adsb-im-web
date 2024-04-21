@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% set active_page = "supported" %}
+
+{% block title %}ADSB.im{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row justify-content-left mt-2 mb-1">
+        <div class="col-md-auto">
+            <h4 class="mb-2 mt-2">Supported Hardware</h4>
+            <div class="mb-2" id="sbcs">Supported Single Board Computers (SBCs)<br />
+                <b>Most importantly</b>: you need a decent power supply. No, not a USB charger. An actual power supply
+                designed for a single board computer. For most RPi3 class boards you can get away with a 5V/2.5A
+                powersupply. For anything more powerful I recommend a 5V/4A power supply.
+                <ul>
+                    <li>Raspberry Pi Zero 2, 3a/b, and 4 (actively tested on Zero 2, 3a and 4 - note that Pi Zero W will
+                        NOT work)</li>
+                    <li>Asus Tinkerboard</li>
+                    <li>Libre Computing Le Potato (actively tested) and Renegade (actively tested)</li>
+                    <li>Orange Pi 3LTS (tested - no wifi support), 4LTS, 5, and 5plus (actively tested)</li>
+                    <li>Banana Pi M5 / M2P</li>
+                    <li>Odriod C4</li>
+                    <li>Rockpi 4</li>
+                </ul>
+            </div>
+            <div class="mb-2" id="sdrs">Supported Software Defined Radios (SDRs)
+                <ul>
+                    <li>Airspy Mini (expensive, but by far the best supported SDR for ADS-B/1090MHz)</li>
+                    <li>Most RTL2838 based USB sticks should work</li>
+                    <li>Rtl-Sdr.com v3 and v4 dongle</li>
+                    <li>FlightAware pro stick (includes 1090MHz filter and a low noise amplifier)</li>
+                    <li>RadarBox green stick (includes 1090MHz filter and a low noise amplifier)</li>
+                    <li>RadarBox red stick (includes 978MHz filter and a low noise amplifier -- for UAT978)</li>
+                    <li>Nooelec NESDR Smart</li>
+                </ul>
+            </div>
+            <div class="mb-2" id="antennas">Antennas
+                <ul>
+                    <li>You'll get by far the best results with an outdoor antenna mounted as high as possible (for good
+                        visibility to the horizon)</li>
+                    <li><a
+                           href="https://github.com/wiedehopf/adsb-scripts/wiki/Useful-items-for-purchase#good-cheap-starting-antenna-much-better-than-the-whip-antennas">Matthias
+                            Wirth's wiki</a> has a great summary of some of the antenna options</li>
+                </ul>
+            </div>
+            <div class="mb-2">Filters and LNAs (low noise amplifiers)
+                <ul>
+                    <li>some of the recommended SDRs above already include filter and LNA</li>
+                    <li>especially when investing in the Airspy Mini and a good outdoor antenna, a filtered LNA is a
+                        very useful addition. Again, great info on <a
+                           href="https://github.com/wiedehopf/adsb-scripts/wiki/Useful-items-for-purchase#filtered-low-noise-amplifiers-lnas">Matthias'
+                            wiki</a></li>
+                </ul>
+            </div>
+            <div class="mb-2" id="sdcards">SD cards (well, technically µSD cards)
+                <ul>
+                    <li>Ideally you want a class 10 card from a name brand. ScanDisk Ultra have been known to be
+                        reliable</li>
+                    <li>Many other brands also have decent cards - but shy away from anything where the price is too
+                        good to be true</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr color="white" />
+
+<div class="container mt-5">
+    <div class="row justify-content-center mt-2 mb-5">
+        <div class="col-md-auto">
+            {{ data.feeder_status | safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}

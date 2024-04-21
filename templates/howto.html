@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+{% set active_page = "howto" %}
+
+{% block title %}ADSB.im{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h3 class="mb-4">A Quick Start Guide to Setting Up an ADSB Feeder</h3>
+    <h4>Introduction</h4>
+    <div class="ml-3 mb-3">
+        This quick-start guide allows you to build a receiver and start seeing what aircraft fly above your
+        location in no time, and at minimum expense. Each step has “minimum configuration”, and discusses
+        some ideas on how to make it better at an additional cost or effort.
+    </div>
+    <h4>Hardware</h4>
+    <div class="ml-1 mb-3">
+        For a minimal configuration you need:
+        <ul>
+            <li>A small single board computer (“SBC”): see the list of <a href="supported">currently supported
+                    boards</a></li>
+            <li>A good power supply for your SBC. Some of the supported boards use micro-USB (Raspberry Pi3,
+                Libre Computer Le Potato), others use USB-C (Pi4, OrangePi boards) - either way, make sure
+                you use an actual power supply designed for at least 2.5A and not just a USB charger.
+                Bad power is one of the main reasons for random issues with the boards.</li>
+            <li>A (good quality) µSD card of at least 32 Gb. The SBC will write to it often, so high quality
+                is important. SanDisk Ultra or Samsung High Endurance appear to be good choices.</li>
+            <li>Internet access for your SBC. At this point WiFi is only supported on Raspberry Pi 3a and 4b,
+                all other SBCs need wired Ethernet.</li>
+            <li>An RTL2832 SDR USB stick ("dongle"). This can be a “cheap” one.</li>
+            <li>An antenna for the SDR dongle.</li>
+        </ul>
+    </div>
+    <div class="ml-1 mb-3">
+        You also should have access to a computer (Windows, Mac, Linux) and an SD card writer. This will be
+        used for the initial setup; once everything is running, you can access the flight map from your phone
+        or pretty much any other device.
+    </div>
+    <div class="ml-1 mb-3">
+        If you want to upgrade your hardware parts to something better, then consider this:
+        <ul>
+            <li>A better/faster SBC. This will help with faster processing and it will enable running more
+                things in parallel. For example, a Raspberry Pi 4 (with 2Gb or more memory).</li>
+            <li>An enclosure (case) with cooling for your SBC. Cooling is important - things will get hot!</li>
+            <li>A better quality SDR dongle, preferably one with built-in LNA and filter. For example:
+                FlightAware Pro+ (blue), RadarBox SDR (red), ADSBExchange Blue.</li>
+            <li>A better antenna that is mounted outside. For example, ADSBExchange vertical, FlightAware
+                vertical, Radarbox vertical.</li>
+            <li>A larger SD card: 64 Gb or 128 Gb. You won’t need the space, but because of the way SD cards
+                work and how Linux writes to them, larger SD cards will have a lot longer usable life than
+                small ones. One odd downside is that the first boot will take a lot longer on a larger card,
+                so be prepared for that extra wait time.</li>
+        </ul>
+    </div>
+    <div class="row ml-1 mb-3">
+        <img class="col-4" alt="minimal hardware setup" src="/static/images/minimalHW.png">
+        <div class="col-8">
+            For the rest of this guide we'll show an example based on a fairly cheap and basic setup using
+            <ul>
+                <li>Libre Computer Le Potato SBC</li>
+                <li>CanaKit micro-USB power supply</li>
+                <li>SanDisk Ultra 32 Gb SD card</li>
+                <li>No-name SDR</li>
+                <li>No-name 1090 MHz “rubber duck” antenna</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Setup</h4>
+    <h5>Step 1: Download and write the ADSB Feeder Image to the SD card</h5>
+    <div class="ml-1 mb-3">
+        The following steps are all performed using your PC or Mac machine. The images will show how that looks
+        on a Mac; it’s very similar in Windows:
+        <ol>
+            <li>
+                <div class="media mt-2">
+                    <div class="media-body">Download the latest release for the correct board from the
+                        <a href="https://github.com/dirkhh/adsb-feeder-image/releases/latest" target="_blank">ADSB
+                            Feeder Image Release Page</a>.
+                        In our example we will pick the <code class="gray">adsb-feeder-lepotato-...img.xz</code> file.
+                    </div>
+                    <img class="media-object" alt="Screenshot 2023-06-17 at 12 18 45"
+                         src="https://github.com/dirkhh/adsb-feeder-image/assets/237471/2f3bd758-c130-47bc-8ee3-d45cfec28593">
+                </div>
+                If you're using a Raspberry Pi 3 or 4, use one of these two images:
+                <code class="gray">adsb-im-raspberrypi64-[....].img.xz</code> or <code
+                      class="gray">adsb-im-iob-raspberrypi-dietpi-64-[....].img.xz</code>.
+                The former is Raspbian based, the latter is DietPi based - each with their pros and cons.
+            </li>
+            <li>
+                <div class="media mt-2">
+                    <div class="media-body">Place the micro-SD into the SD card writer and connect it to the computer.
+                        Verify that your computer can “see” the SD card
+                    </div>
+                    <img class="media-object col-2" alt="SD card in card reader"
+                         src="https://github.com/dirkhh/adsb-feeder-image/assets/237471/79d70462-1b86-458b-b1f6-9b07b5ce817c">
+                    <img class="media-object col-2" alt="Screenshot showing an unnamed card"
+                         src="https://github.com/dirkhh/adsb-feeder-image/assets/237471/7e0dd1f6-abf0-4b59-b6de-a14ecb86b541">
+                </div>
+            </li>
+            <li class="mt-2">Use the <a href="https://www.raspberrypi.com/software">Raspberry Pi Imager</a> to write the
+                image you downloaded earlier to the SD card.
+                <div class="media mt-2">
+                    <ol class="media-body">
+                        <li>Click <b>Choose OS</b>, scroll to the bottom and click <b>Use custom</b>.
+                            Then select the <code class="gray">adsb-feeder….img.xz</code> file you downloaded in step 1
+                            above.
+                        </li>
+                        <li>Back on the initial screen, click <b>Choose Storage</b> and select the SD card you inserted.
+                            <b>DOUBLE CHECK THAT YOU SELECTED THE CORRECT VOLUME AS IT WILL BE ERASED/OVERWRITTEN IN THE
+                                NEXT STEPS.</b>
+                        </li>
+                    </ol>
+                    <img class="media-object col-5" alt="select image"
+                         src="https://github.com/dirkhh/adsb-feeder-image/assets/237471/c08cc7c8-2509-4d81-8c8b-b22a4a235d75">
+                </div>
+                <div class="media mt-2">
+                    <ol start="3" class="media-body mt-1">
+                        <li>Click the <b>cogwheel icon</b> and set the following options. (<b>Don’t set the
+                                hostname</b>).
+                            Use Username “pi” for consistency and pick your own password. If needed (<b>only supported
+                                on Raspberry Pi Raspbian images</b>), enable “Configure Wireless LAN”, and preset your
+                            SSID and Wifi password.<br />
+                            The <a href="/faq#collapsewifisupport">FAQ</a> explains how to set up WiFi with DietPi based
+                            images.
+                        </li>
+                        <li>Now click <b>Write</b> and read/follow the subsequent dialog. The image will be written
+                            to the µSD card, and it will verify that it was written error-free.
+                        </li>
+                        <li>If all was written correctly, a dialog box will show that you can remove the SD card. Please
+                            do so.
+                        </li>
+                    </ol>
+                    <img class="media-object mt-1 col-4" alt="image write options"
+                         src="https://github.com/dirkhh/adsb-feeder-image/assets/237471/a9de4a42-5d7f-44d4-887e-bf187d7a9f4f">
+                </div>
+            </li>
+        </ol>
+    </div>
+    <h5>Step 2: Hardware Setup of your SBC</h5>
+    <div class="media mt-2">
+        <ol class="media-body">
+            <li>First place the SD card into the slot of the SBC. Note - for most SBCs, insert the SD card upside down.
+            </li>
+            <li>Connect the antenna to the SDR and insert the SDR into any of the open USB slots.</li>
+            <li>Finally, connect the power supply to the micro-USB slot and power up your SBC. The LED lights should be
+                on now.</li>
+            <li>Wait a few minutes for the SBC to complete it’s initial boot cycle. The larger your µSD, the longer
+                that initial boot cycle will take. Please be patient.</li>
+        </ol>
+        <img class="media-object" alt="SD card inserted with the label facing down"
+             src="https://github.com/dirkhh/adsb-feeder-image/assets/237471/b274b5a0-fcc6-49d8-ac92-ee89dbd331ea">
+    </div>
+    <h5>Step 3: software setup of your SBC</h5>
+    <ol>
+        <li>A few minutes after initially powering up your SBC, you should be able to browse to <a
+               href="http://adsb-feeder.local">http://adsb-feeder.local</a> (from a different computer - the ADS-B
+            Feeder Image doesn't include a desktop in order to keep the image small).
+            If this doesn’t work, try the external redirector at <a href="http://my.adsb.im/">http://my.adsb.im/</a>.
+            If that fails as well, you will need to determine the local IP address from your home router or whatever
+            device manages your network.
+        </li>
+        <li>Use this web-UI to configure your ADSB Feeder.</li>
+        <li>Give it a name (used for MLAT graphs).</li>
+        <li>Enter the physical location of the antenna (there is a link to a useful tool if you need help finding
+            the correct latitude, longitude, and elevation).</li>
+        <li>Enter the time zone (again, there's a button to make this straight forward).</li>
+        <li>Select the initial set of aggregators your want to send data to.</li>
+        <li>Click on <b>Setup</b> - if you have a simple setup as depicted above, you should now get forwarded to
+            the main home page of your ADSB Feeder.</li>
+    </ol>
+    We even have a <a href="https://youtu.be/N5yHvInpDBM">short video</a> that shows the steps described above.
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}

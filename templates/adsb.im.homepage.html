@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% set active_page = "home" %}
+
+{% block title %}ADSB.im{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row justify-content-center mt-2 mb-1">
+        <h5>The easiest way to track nearby aircraft with your own hardware and share with others</h5>
+        <div class="mb-3 col-12">
+            Plot aircraft on your own map, and share to aggregators like
+            <a href="https://adsb.lol/">adsb.lol</a>,
+            <a href="https://flyitalyadsb.com/">Fly Italy Adsb</a>,
+            <a href="http://theairtraffic.com/">TheAirTraffic</a>,
+            <a href="https://adsb.fi/">adsb.fi</a>,
+            <a href="https://adsbexchange.com/">ADS-B Exchange</a>,
+            <a href="https://adsbhub.org/">ADSBHub</a>,
+            <a href="https://adsb.one/">ADS-B One</a>,
+            <a href="https://airplanes.live">airplanes.live</a>,
+            <a href="https://www.avdelphi.com/">AVDelphi</a>,
+            <a href="https://flightaware.com/">FlightAware</a>,
+            <a href="https://www.flightradar24.com/">FlightRadar24</a>,
+            <a href="https://www.flyovr.io/">FLYOVR.io</a>,
+            <a href="https://opensky-network.org/">OpenSky Network</a>,
+            <a href="https://plane.watch/">Plane.watch</a>,
+            <a href="https://planefinder.net/">Plane Finder</a>,
+            <a href="http://planespotters.net/">Planespotters.net</a>,
+            <a href="https://www.radarbox.com/">RadarBox</a>,
+            <a href="https://radarplane.com/">RadarPlane</a>,
+            <a href="https://www.radarvirtuel.com/">Radar Virtuel</a>, and more!
+        </div>
+        <div class="mb-3 col-12">
+            There are several ways to use the ADS-B Feeder Image, depending on where and how you want to run things.
+        </div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="image-tab" data-bs-toggle="tab" data-bs-target="#image-tab-pane"
+                    type="button" role="tab" aria-controls="image-tab-pane" aria-selected="true">Single Board Computer
+                    (easiest)</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="dietpi-tab" data-bs-toggle="tab" data-bs-target="#dietpi-tab-pane"
+                    type="button" role="tab" aria-controls="dietpi-tab-pane" aria-selected="false">DietPi
+                    (easy)</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="app-tab" data-bs-toggle="tab" data-bs-target="#app-tab-pane" type="button"
+                    role="tab" aria-controls="app-tab-pane" aria-selected="false">Linux (more advanced)</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active mt-3 mb-1" id="image-tab-pane" role="tabpanel"
+                aria-labelledby="image-tab" tabindex="0">
+                <ul>
+                    <li> Start with one of the <a href="/supported#sbcs">supported single board computers</a>.
+                    <li> Add an <a href="/supported#sdrs">SDR radio dongle</a> and an <a
+                            href="/supported#antennas">antenna</a>
+                    <li> Download the matching <a href="https://github.com/dirkhh/adsb-feeder-image/releases">SD-card
+                            image</a> and write it to an <a href="/supported#sdcards">SD-card</a>
+                    <li> Boot your SBC and wait a little while (depending on the model and the specific image this
+                        usually takes a few minutes, but in some cases this can take 15 to 20 minutes)
+                    <li> Then simply go to <a href="http://adsb-feeder.local">http://adsb-feeder.local</a> or (if you
+                        don't have working mDNS on your home network) to <a href="http://my.adsb.im">my.adsb.im</a>
+                        which should redirect you to your
+                        new ADS-B feeder.
+                </ul>
+                Detailed instructions are on the <a href="/howto">HowTo Page</a>.
+            </div>
+            <div class="tab-pane fade mt-3 mb-4" id="dietpi-tab-pane" role="tabpanel" aria-labelledby="dietpi-tab"
+                tabindex="1">
+                <ul>
+                    <li> On current versions of DietPi, this is as simple as using <code>dietpi-software</code> and
+                        searching for app number 141 (or for ADS-B Feeder).
+                    <li> Once you install that application, you can connect to the web UI via
+                        <code>http://{local name or IP}:1099</code>
+                    <li> Of course, you still need a <a href="/supported#sdrs">supported SDR</a> and an <a
+                            href="/supported#antennas">antenna</a> connected to the DietPi system.
+            </div>
+            <div class="tab-pane fade mt-3 mb-5" id="app-tab-pane" role="tabpanel" aria-labelledby="app-tab"
+                tabindex="2">
+                <ul>
+                    <li> On most recent Linux systems running on ARM64 or x86 systems, you can install the ADS-B Feeder
+                        Image as an app
+                    <li><code class="small">
+                            curl https://raw.githubusercontent.com/dirkhh/adsb-feeder-image/main/src/tools/app-install.sh | sudo bash
+                        </code>
+                    <li> Or, more reasonably, download the shell script, read and review what it does, and then run it
+                        as
+                        root
+                    <li>Of course, you still need a <a href="/supported#sdrs">supported SDR</a> and an <a
+                            href="/supported#antennas">antenna</a> connected to the Linux system
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="col-12">
+            <h5 class="mt-1 mb-2">Some screenshots</h5>
+            <div class="col-12">
+                <ul class="nav nav-tabs" id="screenShotTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="homepage-tab" data-bs-toggle="tab"
+                            data-bs-target="#homepage-tab-pane" type="button" role="tab"
+                            aria-controls="homepage-tab-pane" aria-selected="true">Dashboard</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="setup-tab" data-bs-toggle="tab" data-bs-target="#setup-tab-pane"
+                            type="button" role="tab" aria-controls="setup-tab-pane" aria-selected="false">Basic
+                            Setup</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="map-tab" data-bs-toggle="tab" data-bs-target="#map-tab-pane"
+                            type="button" role="tab" aria-controls="map-tab-pane" aria-selected="false">Local
+                            Map</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats-tab-pane"
+                            type="button" role="tab" aria-controls="stats-tab-pane" aria-selected="false">Stats</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="screenShotTabContent">
+                    <div class="tab-pane fade show active mt-3 mb-1" id="homepage-tab-pane" role="tabpanel"
+                        aria-labelledby="image-tab" tabindex="0">
+                        <figure class="figure"> <img class="img-fluid media-object" alt="ADS-B Feeder Homepage"
+                                src="/static/images/ADSB-im-v0.16.0.png">
+                        </figure>
+                    </div>
+                    <div class="tab-pane fade show mt-3 mb-1" id="setup-tab-pane" role="tabpanel"
+                        aria-labelledby="image-tab" tabindex="0">
+                        <figure class="figure"> <img class="img-fluid media-object"
+                                alt="ADS-B Feeder Basic Setup screen" src="/static/images/BasicSetup.png">
+                    </div>
+                    <div class="tab-pane fade show mt-3 mb-1" id="map-tab-pane" role="tabpanel"
+                        aria-labelledby="image-tab" tabindex="0">
+                        <figure class="figure"> <img class="img-fluid media-object" alt="ADS-B Feeder Map"
+                                src="/static/images/map.png">
+                    </div>
+                    <div class="tab-pane fade show mt-3 mb-1" id="stats-tab-pane" role="tabpanel"
+                        aria-labelledby="image-tab" tabindex="0">
+                        <figure class="figure"> <img class="img-fluid media-object"
+                                alt="ADS-B Feeder Graphs and Statistics" src="/static/images/graphs.png">
+                    </div>
+                </div>
+            </div>
+            <h5 class="mt-3">Once you are up and running with the web UI</h5>
+            The first page the Feeder will show you is the basic setup page. Here you can:
+            <ul>
+                <li>Give your feeder station a name (used for the map website and aggregator MLAT graphs).</li>
+                <li>Enter the physical location of the antenna (there is a link to a useful tool if you need help
+                    finding
+                    the correct latitude, longitude, and elevation).</li>
+                <li>Enter the time zone (again, there's a button to make this straight forward).</li>
+                <li>Select the initial set of aggregators your want to send data to.</li>
+                <li>Click on <b>Setup</b> - unless you decided to manually select aggregators or have multiple SDRs
+                    or
+                    some other unusual circumstances, this is all it takes to get started. Next the web UI will
+                    redirect you to the ADS-B Feeder home page from where you can manage your feeder station.</li>
+            </ul>
+            For those who prefer that format, we even have a <a href="https://youtu.be/N5yHvInpDBM">short video</a> that
+            shows the steps described above.
+            <h5 class="mt-5 mb-2">For help, questions, or to see the source code</h5>
+            <ul>
+                <li><a href="https://adsblol.zulipchat.com/#narrow/stream/391168-adsb-feeder-image">Feeder Image
+                        Zulip
+                        channel</a> on adsb.lol's Zulip server
+                </li>
+                <li><code>#adsb-feeder-image</code> channel on the <a
+                        href="https://discord.gg/vqvJXRAkJ4">SDR-Enthusiast
+                        Discord server</a>
+                </li>
+                <li><a href="https://github.com/dirkhh/adsb-feeder-image">Feeder Image GitHub project</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<hr color="white" />
+
+<div class="container mt-5">
+    <div class="row justify-content-center mt-2 mb-5">
+        <div class="col-md-auto">
+            {{ data.feeder_status | safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}

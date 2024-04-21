@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% set active_page = "using" %}
+
+{% block title %}ADSB.im{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h3 class="mb-4">Additional Options for the ADSB Feeder</h3>
+    <h4>Introduction</h4>
+    <div class="ml-1 mb-3">
+        In general, the basic setup should be sufficient for most use cases. The bare minimum
+        of information is entered on the <em>Basic Setup</em> page, aggregators can be selected on the
+        <em>Aggregators</em> page. The other options are described below in more detail.
+    </div>
+    <h4>Backup / Restore</h4>
+    <div class="ml-1 mb-3">
+        You can backup the settings as well as the history of statistics on the <em>Backup</em> page.
+        Click the Backup button and store the zip file on your computer. If needed, you can later go
+        to the <em>Restore</em> page (for example after installing a newer Feeder Image on your system)
+        and restore the data. Once you upload the zip file you will be shown all files and folders that
+        differ from the running system and can choose which ones to restore.
+    </div>
+    <h4>Advanced</h4>
+    <div class="ml-1 mb-3">
+        On the <em>Advanced</em> page you are offered some additional options, some of which depend on
+        your hardware.
+        <ul>
+            <li>By default, <em>MLAT privacy</em> is enabled, which prevents your site from being shown on
+                typical <a href="https://mlat.adsb.lol/syncmap">MLAT coverage maps</a>. Turning this off
+                will show a rough estimate of your location, together with the MLAT stations you are connected
+                to on the MLAT coverage maps of your aggregator.</li>
+            <li>By default, the ADSB Feeder Image shows the best open data guess for the route information
+                of the planes shown in the tar1090 user interface. If you don't want this information, you
+                can turn it off here.</li>
+            <li>If you want the theoretical range of an ideal antenna at your location shown in the tar1090
+                user interfacem, you can use <a href="https://www.heywhatsthat.com/">HeyWhatsThat</a> to create
+                an ID that will be used to provide that visualization.</li>
+            <li>If you are using an LNA or some other device that requires power via bias-T (assuming your SDR
+                supports this setting), you can turn this on here.</li>
+            <li>If you have more than one SDR connected to your feeder SBC, there will be a selection below this
+                to assign each SDR its role. This is commonly needed when supporting both standard ADS-B at 1090MHz
+                as well as the US-only UAT at 978MHZ.</li>
+        </ul>
+    </div>
+    <h4>Expert</h4>
+    <div class="ml-1 mb-3">
+        On the <em>Expert</em> page you will find some more advanced settings
+        <ul>
+            <li>By default, <em>automatic gain</em> is enabled for your SDR. You most likely don't want to
+                change this if you are using an airspy SDR, but with traditional RTL SDRs this can be useful
+                if the manual auto gain proces s is getting stuck or is taking too long to find an acceptable
+                value</li>
+            <li>In some very unusual circumstances you may want to be able to add extra arguments for the
+                Ultrafeeder, e.g., if you are feeding a "standard aggregator" that accelpts beast input but
+                for whatever reason isn't supported by the web UI.</li>
+            <li>While in most circumstances you shouldn't need to to access the adsb feeder SBC
+                directly, if this is something you want to be able to do, here is where you enter the public
+                key of an ssh key-pair which will allow you to log in as root.</li>
+            <li>Conversly, if you want to slightly reduce the attack surface of your SBC (for example if it is
+                installed on someone else's premises), you can remove some obvious attack vectors that would
+                allow someone else to take over your feeder. This is not the same as truly hardening the image;
+                you should assume that someone with access to the hardware will be able to remove the µSD
+                card which will allow them to get access to the system.</li>
+            <li>The next two options allow you to shutdown or reboot your SBC. Please note that there are several
+                scenarios where an SBC will not successfully reboot (or not turn of power on shutdown). Please
+                test this capability before relying on it.</li>
+            <li>The feeder can be set up to update its base OS, the containers that implement the feeder functionality
+                as well as the feeder application (i.e. the web UI that controls the device) automatically.</li>
+            <li>You can also trigger the container and feeder app updates manually from this page.</li>
+            <li>Finally, you can add your feeder system to a ZeroTier global area network in order to be able
+                to access it remotely. Enter the network ID here (you have to set this up at the
+                <a href="zerotier.com">ZeroTier website</a>, first).
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}

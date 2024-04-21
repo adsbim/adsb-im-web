@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% set active_page = "hosting" %}
+
+{% block title %}Hosting an ADSB.im Feeder{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+  <div class="row">
+    <h3 class="mb-4">A Quick Guide to Hosting an ADSB Feeder</h3>
+    <h4 class="mt-2">What is ADS-B?</h4>
+    <div class="col-12">Automatic Dependent Surveillance-Broadcast (ADS-B) is an advanced radio technology that combines
+      an aircraft's
+      positioning source, aircraft avionics, and a ground infrastructure to create a accurate data on aircraft movement
+      all over the globe. ADS-B Out works by broadcasting information about an aircraft's GPS location, altitude, ground
+      speed and other data to ground stations and other aircraft, once per second.
+    </div>
+    <h4 class="mt-2">Why would I care?</h4>
+    <div class="col-12">The ADS-B signal is unencrypted and easy to receive and decode - and over the last few years a
+      thriving community
+      of aircraft enthusiasts has developed that together track air traffic around the world. There are a number of
+      commercial services in this space (like FlightAware, FlightRadar, RadarBox, and several others) that collect this
+      free data and then sell it to companies and consumers as a services. And there are a number of community supported
+      sites that collect the data and make it freely available to others for research or simply to enjoy knowing who's
+      up
+      in the air above us.</div>
+    <h4 class="mt-2">What happens to the data?</h4>
+    <div class="col-12">If you participate collecting data and send it to one or more of the aggregators, they generally
+      integrate it
+      into their live maps and make it available for others to see. Some of them (like https://adsb.lol) make it
+      available
+      under an open data license for everyone to work on, analyze and use. This is done in a privacy respecting manner;
+      no
+      one has specific access to your location or any identifiable data about your site.
+    </div>
+    <h4 class="mt-2">What hardware is involved?</h4>
+    <div class="col-md-12">Typically you would use a single board computer (SBC) like a Raspberry Pi 3/4/5 or an
+      OrangePi Zero3 or simlar.
+      You connect a Software Defined Radio (SDR) USB dongle to that board and an antenna to that SDR. Ideally this would
+      be in a weather proof box outdoors, with the antenna mounted as high as possible with a clear view of the sky -
+      but
+      surprising amount of data can be collected indoors with a small system with an equally small antenna sitting by a
+      window.
+    </div>
+    <div class="col-6">
+      <img src="/static/images/indoor-setup.jpeg" class="img-fluid">
+    </div>
+    <div class="col-6">
+      <img src="/static/images/outdoor-setup.jpeg" class="img-fluid">
+    </div>
+    <div class="col-6">
+      This is a fairly nice indoor setup - about 5.5 x 3 in in footprint and about 9in tall. It tends to fit nicely on a
+      window sill - but also works well in an attic.
+    </div>
+    <div class="col-6">
+      This is a typical outdoor setup - a weatherproof box that's about 7 x 7 x 4 in and a 24 in outdoor antenna that
+      would ideally be mounted on a pole as high up as possible.
+    </div>
+    <h4 class="mt-2">What else is needed?</h4>
+    <div class="col-12">Other than this, all you need is a software stack (you get that from adsb.im) that goes on a
+      small µSD card, a
+      power supply, and an internet connection.
+    </div>
+    <div class="col-12">If you got to this page because Dirk is trying to talk you into hosting such a feeder, you can
+      assume that he
+      will provide you with all of the hardware needed and will happily remotely manage the feeder as well. All you
+      provide is a place to put the feeder, power (think ~2W, or something like 50Wh a day or 10-15kWh a year, depending
+      on electricity cost were you are this will likely create a fairly small ongoing cost - something like a couple of
+      dollars a year), and internet access (depending on how much airtraffic can be found above you this typically adds
+      up
+      to a few GB a month - not noticeable in a typical home internet connection).</div>
+    <div class="col-12">A lot more information can be found on the other pages of this site - but only worry about this
+      if you would like
+      to get more involved, build your own feeder and manage things yourself.
+    </div>
+  </div>
+  {% endblock %}
+
+  {% block scripts %}
+  {{ super() }}
+
+
+  {% endblock %}
