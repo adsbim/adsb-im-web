@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% set active_page = "howto" %}
+
+{% block title %}ADSB.im{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+  <h3 class="mb-4">Two Stage Setup</h3>
+  <h5 class="mt-3">Introduction</h5>
+  <div class="mb-3">
+    In many (most?) instances, a simple integrated feeder is a very good solution to tracking the planes around your
+    house (or wherever you have installed your feeder). There are a few situations, however, where some people prefer a
+    different setup. The most common ones are
+    <ul>
+      <li>a very low end SBC, maybe mounted close to an antenna, that gets bogged down feeding multiple aggregators
+        (especially feeding multiple commercial aggregators that each tend to need their own container and therefore
+        consume more memory)</li>
+      <li>concerns about the amount of data written to the SD card in the feeder SBC, or the desire for more robust
+        backups of the data created by the feeder SBC</li>
+      <li>the desire to have multiple feeders running in different locations and manage the data sharing from a single
+        system (including having a local combined map of the coverage of all the feeders)</li>
+    </ul>
+  </div>
+  <div class="mb-3">
+    For the third use case above, it is important to feed the data from each feeder individually to each aggregator.
+    Trying to combine data locally (which some people want to do in order to "game the metrics" that some of the
+    aggregators provide) actually messes with the MLAT calculations and overall weakens the quality of the data
+    collected. For example, aggregators can use MLAT information to detect planes that have transponders that are
+    failing or affected by some of the GPS spoofing happening around the world, especially near conflict zones. This
+    becomes much harder if people send combined data from multiple feeders that confuse these MLAT calculations. So
+    please don't do this. The adsb.im feeder image is intentionally not offering any options to do this.
+  </div>
+  <h5>Defining some terms used</h5>
+  <div class="mb-3">
+    Since it can be rather confusing to talk about scenarios like this, here are some terms that are used in the rest of
+    this document (and in the UI):
+    <dl>
+      <dt>SBC</dt>
+      <dd>A single board computer like a Raspberry Pi or an OrangePi</dd>
+      <dt>SDR</dt>
+      <dd>A software-defined radio, usually a USB stick or a small device connected to USB via cable -- your antenna
+        connects to the SDR</dd>
+      <dt>Integrated Feeder</dt>
+      <dd>A single system (usually an SBC) that has an SDR connected to an antenna attached and that feeds one or more
+        aggregators.</dd>
+      <dt>Micro Feeder</dt>
+      <dd>A system (usually an SBC) that has an SDR connected to an antenna attached and does <strong>not</strong> by
+        itself feed aggregators.
+      </dd>
+      <dt>Stage 2 Instance</dt>
+      <dd>A separate instance of the adsb.im Feeder Image (sometimes running on an SBC, but often running in a VM or as
+        application on some other system) that has <strong>no</strong> SDR attached, but instead receives data from one
+        or more <em>Micro Feeders</em> and feeds the data (individually, see above) to one or more aggregators.</dd>
+    </dl>
+  </div>
+  <h5 class="mt-3">Creating a Stage 2 Instance</h5>
+  <div class="mb-3">
+    The recommended approach would be to create a new adsb.im Feeder Image installation from scratch; converting an
+    existing feeder image could cause unintended effects. Most of the testing is done running a Stage 2 Instance in a
+    VM, additionally some testing is done with a Raspberry Pi 5 and an OrangePi 5plus using NVMe storage. The rest of
+    this chapter assumes that you already have an Integrated Feeder running and are interested in converting this to a
+    two stage system.
+  </div>
+  <div class="mb-3">
+    <ol class="row">
+      <li>Boot the new instance and enter the name for your Stage 2 (something like <em>DND_Stage2</em> is what I tend
+        to end up with) as well as your location (that will be the initial center of the combined map).
+      </li>
+      <li>Select "Stage 2" at the bottom of the Setup page and click on Submit.</li>
+      <figure class="figure">
+        <img src="/static/images/stage2-step1.png" class="figure-img img-fluid rounded border shadow-3 mb-3"
+             alt="Initial Stage 2 setup" />
+        <figcaption class="figure-caption">Initial Stage 2 setup</figcaption>
+      </figure>
+      <li>At this point you will be forwarded to the Stage 2 Setup page. Here you
+        add the <em>Micro Feeder(s)</em> that you want to consume data from.</li>
+      <li>Enter the IP address of the existing <em>Integrated Feeder</em> that you want to use as the data source and
+        click on "Check Micro Feeder". Yes, you are pointing this at an <em>Integrated Feeder</em> right now -- we'll
+        convert that system to a <em>Micro Feeder</em> later.</li>
+      <figure class="figure">
+        <img src="/static/images/stage2-step2.png" class="figure-img img-fluid rounded border shadow-3 mb-3"
+             alt="Pick a Micro Feeder to connect to" />
+        <figcaption class="figure-caption">Pick a Micro Feeder to connect to</figcaption>
+      </figure>
+      <li>Assuming that this is a v2 adsb.im Feeder Image, you will now be presented with the name of that feeder in red
+        plus three options for the integration:
+        <ul>
+          <li>Import Settings: name, location, and data sharing settings are imported - the Stage 2 Instance will
+            continue
+            to feed the same aggregators with the same data which should allow for a seamless transition</li>
+          <li>Full Import: just like in the previous scenario, all settings are imported, but additionally the
+            historical
+            data, graphs and statistics are imported as well. This can take quite a while, especially from a feeder that
+            has been up and running for a long time. Please be patient.</li>
+          <li>Manual: no settings are imported, you have to enter all data again from scratch</li>
+        </ul>
+      </li>
+      <figure class="figure">
+        <img src="/static/images/stage2-step3.png" class="figure-img img-fluid rounded border shadow-3 mb-3"
+             alt="Import Micro Feeder settings" />
+        <figcaption class="figure-caption">A caption for the above image.</figcaption>
+      </figure>
+      <li>If the feeder you are connecting to isn't an adsb.im Feeder Image, you'll still be able to connect to it, but
+        you'll have to set things up manually.</li>
+      <li>Once you have all Micro Feeders added (you can of course come back here at any time later to make changes),
+        pick the settings for the semi-anonymous aggregators that you prefer and click on "I'm Done Here".</li>
+      <figure class="figure">
+        <img src="/static/images/stage2-step4.png" class="figure-img img-fluid rounded border shadow-3 mb-3"
+             alt="Complete Stage 2 setup" />
+        <figcaption class="figure-caption">Complete Stage 2 setup</figcaption>
+      </figure>
+
+    </ol>
+  </div>
+  <div>The stage 2 system will now add all the necessary containers and set things up accordingly. Depending on how many
+    Micro Feeders you added and how many commercial aggregator those are feeding, this once again can take a while. When
+    that process has completed, you will be presented with a slightly modified UI.</div>
+  <div>On the Stage 2 Instance home page you'll see the (potentially expanded) grid of aggregators. If you have more
+    than one Micro Feeder, this will present you with information on all of them in one chart.</div>
+  <div>The main menu bar will have converted the "Map Options" and "Data Sharing" entries to drop down menues that give
+    you access to the settings for each of the micro feeders. And the "Addtl Maps" menu entry will give you access to
+    individual maps and graphs for each of the Micro Feeders. The Main Map will now show the combined data from all of
+    the configured feeders.</div>
+  <div>Once this is all working and looking good, you can connect to the feeder images for the Micro Feeders (an easy
+    way to do this is to return to the Stage 2 Setup page and click on the name of the Micro Feeder in the table) and go
+    to the Basic Setup page for each of them and convert it to a Micro Feeder at the bottom of that page. Click Submit
+    and you should be done.</div>
+
+  <h5 class="mt-3">Ongoing Use</h5>
+  <div class="mb-3">
+    Once things are set up, you usually don't need to go back to the Micro Feeder address - except for occasional system
+    updates (assuming you didn't automate that already). Maps, statistics, aggregator status, etc., are all accessible
+    from the Stage 2 Instance web interface.
+  </div>
+  <figure class="figure">
+    <img src="/static/images/stage2-running.png" class="figure-img img-fluid rounded border shadow-3 mb-3"
+         alt="Running Stage 2 Instance" />
+    <figcaption class="figure-caption">Running Stage 2 Instance</figcaption>
+  </figure>
+  {% endblock %}
+
+  {% block scripts %}
+  {{ super() }}
+
+
+  {% endblock %}
