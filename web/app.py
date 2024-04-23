@@ -1,3 +1,4 @@
+import os
 from flask import Flask, redirect, render_template, send_from_directory
 app = Flask(__name__)
 
@@ -9,10 +10,12 @@ data = {
 def index():
     return redirect('/home', code=301)
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static/images'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
 @app.route('/<path:page>')
 def page(page):
-    if page == 'facicon.ico':
-        return send_from_directory(os.path.join(app.root_path, 'static/images'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
     return render_template(f'{page}.html', data=data)
 
 if __name__ == '__main__':
