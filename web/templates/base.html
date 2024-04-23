@@ -34,16 +34,16 @@
 </head>
 
 <body>
-    <div class="wrapper mt-5">
+    <div class="wrapper">
         <!-- Page Content  -->
         <div id="content">
             {% include 'include/topnav.html' %}
             <div class="container">
                 <div class="row justify-content-center mt-2 mb-5">
-                    <div class="col-auto" "mr-2">
-                        <img src="/static/images/adsb.im.logo.png" width="128" height="128" />
+                    <div class="col-auto">
+                        <img src="/static/images/adsb.im.logo.png" width="128" height="128" alt="ADSB.im logo" />
                     </div>
-                    <div class="col-auto" "ml-2">
+                    <div class="col-auto">
                         <h1 class="red">ADSB.im</h1>
                         <h5>Simple to use <span class="red">ADSB</span> Feeder <span class="red">Im</span>ages<br />(not
                             just) for common Single Board Computers</h5>
@@ -52,6 +52,13 @@
             </div>
             {% block page_content %}
             {% endblock %}
+
+            <div class="container">
+                <footer class="row">
+                    <small class="d-block text-end">Found a typo or something to improve?
+                        <a href="https://github.com/dirkhh/adsb-im-web/blob/main/web/templates/{{active_page}}.html" target="_blank">This page on GitHub</a>.</small>
+                </footer>
+            </div>
         </div>
     </div>
     <div class="overlay"></div>
