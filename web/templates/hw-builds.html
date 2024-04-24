@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% set active_page = "hw-builds" %}
+
+{% block title %}ADSB.im{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+  <div class="row">
+    <h3 class="mb-4">Hardware Builds</h3>
+    The goal of this page is to collect some "known good" configurations for people looking for ideas how to set up
+    their
+    feeders. Obviously these aren't the only ones that work - they are just examples that work for me (and hopefully
+    we'll
+    get some contributions to add more).
+    <h5 class="mt-3">RPi4 Passive Indoor Setup</h5>
+    <div class="mb-3 col-12 col-md-6">
+      This one is really neat to give to people who wouldn't want to have something that looks too "hacky" (and doesn't
+      require any outdoor access, drilling, mounting, etc.).
+      Parts (with possible sources - none of these are affiliate links):
+      <ul>
+        <li>Raspberry Pi 4 (<a href="https://www.adafruit.com/product/4295">Adafruit</a>, <a
+             href="https://www.pishop.us/product/raspberry-pi-4-model-b-1gb">PiShop.us</a>)</li>
+        <li>Raspberry Pi 4 compatible power supply (<a href="https://www.adafruit.com/product/42983">Adafruit</a>, <a
+             href="https://www.pishop.us/product/usb-c-power-supply-5-1v-3-0a-black-ul-listed/">PiShop.us</a>)</li>
+        <li>Geekworm for Raspberry Pi 4 Aluminum Case (<a
+             href="https://geekworm.com/products/raspberry-pi-4-heavy-duty-aluminum-passive-cooling-metal-case">Geekworm</a>,
+          <a href="https://www.amazon.com/gp/product/B07ZVJDRF3">Amazon</a>)
+        </li>
+        <li>Icarus/adsbX SDR / antenna / SDcard bundle (<a
+             href="https://www.amazon.com/ADSBexchange-com-RTL2832U-Antenna-Software-Industrial">Amazon</a> -- yes, it's
+          ironic to recommend this one and to tell you to overwrite the SDcard with the adsb.im image... but actually, I
+          don't recommend using just an 8GB SDcard - even thought it does work...)</li>
+        <li>USB-A U-Shaped 'Down' Adapter (<a href="https://www.amazon.com/gp/product/B0C2CQGMLG">Amazon</a>)</li>
+      </ul>
+      <div class="row">
+        <div class="col-9">
+          The somewhat hard to find USB U-Shaped 'Down' adapter makes this one so nice... it places the metal housing of
+          the SDR stick right above the metal case, making the whole setup more compact and less fragile. Please note
+          that these come in two orientations - make sure you get the one that looks like this.
+        </div>
+        <div class="col-3">
+          <figure class="figure center">
+            <img src="/static/images/USB-U-down.png" class="figure-img img-fluid rounded border shadow-3 mb-3"
+                 alt="USB-U-down" style="max-height: 5em;" />
+            <figcaption class="figure-caption">USB-U-down</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3 col-12 col-md-6 justify-content-center">
+      <figure class="figure center">
+        <img src="/static/images/indoor-setup.jpeg" class="figure-img img-fluid rounded border shadow-3 mb-3"
+             alt="Passively Cooled Indoor Setup" style="max-height: 30em;" />
+        <figcaption class="figure-caption">Passively Cooled Indoor Setup</figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}
