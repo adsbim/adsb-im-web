@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% set active_page = "oss" %}
+
+{% block title %}ADSB.im{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <div class="row justify-content-center mt-2 mb-5">
+        <div class="col">
+            <h4 class="mb-2">Open Source Notice</h4>
+
+            <p>This page uses open source components:</p>
+
+            <ul>
+                <li><a href="https://getbootstrap.com/">Bootstrap</a>
+                    (<a href="https://github.com/twbs/bootstrap/blob/main/LICENSE"><abbr title="MIT License">MIT</abbr></a>)
+                </li>
+                <li>The <a href="https://github.com/itfoundry/Poppins">Poppins font</a>,
+                    Copyright 2020 The Poppins Project Authors  (<a href="https://github.com/itfoundry/Poppins?tab=License-1-ov-file#OFL-1.1-1-ov-file"><abbr title="SIL OPEN FONT LICENSE">OFL</abbr></a>)
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}

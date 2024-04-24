@@ -23,7 +23,8 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <!-- Custom CSS -->
-    <link href="/static/styles/style.css" rel="stylesheet" />
+    <link href="/static/styles/style.css?h=8ed524cc" rel="stylesheet" />
+
     {% endblock %}
 </head>
 
@@ -49,8 +50,10 @@
 
             <div class="container">
                 <footer class="row">
-                    <small class="d-block text-end">Found a typo or something to improve?
-                        <a href="https://github.com/dirkhh/adsb-im-web/blob/main/web/templates/{{active_page}}.html" target="_blank">This page on GitHub</a>.</small>
+                    <small class="d-block text-end">
+                        <a href="/oss-notice">Open Source Notice</a> /
+                        Found a typo or something to improve?
+                        <a href="https://github.com/dirkhh/adsb-im-web/blob/main/web/templates/{{active_page}}.html" target="_blank">This page on GitHub</a></small>
                 </footer>
             </div>
         </div>
