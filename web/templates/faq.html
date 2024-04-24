@@ -326,15 +326,9 @@ page_content %}
 </div>
 
 <script>
-  $(document).ready(function () {
-    console.log("executing ready function");
-    if (window.location.hash) {
-      var jQuerytarget = jQuery("body").find(window.location.hash);
-      if (jQuerytarget.hasClass("collapse")) {
-        var jQuerytargetAccordion = jQuerytarget.find(".collapse");
-        jQuerytarget.collapse("show");
-      }
-    }
-  });
+!function(candidate){
+    candidate && new bootstrap.Collapse(candidate, {show:true});
+}(document.querySelector(window.location.hash + ".collapse"));
 </script>
+
 {% endblock %} {% block scripts %} {{ super() }} {% endblock %}
