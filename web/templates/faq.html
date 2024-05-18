@@ -60,7 +60,40 @@ page_content %}
               FlightAware, FlightRadar, Radarbox, and the other aggregators
               below them one by one once you are happy that this still isn't
               overwhelming your little SBC. Generally SBCs with 1GB (or more) of
-              memory create better results with this setup.
+              memory create better results with this setup. <br />
+              But really, the better solution here is a <a href="/stage2">two stage setup</a>.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSweetspot"
+                    aria-expanded="false" aria-controls="collapseSweetspot">
+              How do I run this image?
+            </button>
+          </h5>
+          <div id="collapseSweetspot" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              There are many ways to interpret this question. I'll assume you want to know what's a good setup to run.
+              And surprisingly, that's a complicated questions. It depends on a lot of factors. <br />
+              Do you just want to run a simple feeder that feeds some / many / most / all of the aggregators?<br />
+              The best bet right now might be a Raspberry Pi 4 with 1G or 2G of memory. Those are once again reasonably
+              easy to get, not too expensive, and more than capable enough to run all this.<br />
+              I have a smaller / cheaper SBC - will that also work?<br />
+              The Raspberry Pi 3 is known to have a bunch of problems that cause occasional MLAT hiccups. Similarly, the
+              Pi Zero 2 does work, but it's not great. The Libre Computing Le Potato and the Orange Pi Zero 3 seem to be
+              good slightly cheaper choices. For all of the boards that are have less than 1G of RAM or significantly
+              slower CPUs than the Raspberry Pi 4, a <a href="/stage2">two stage setup</a> might be the best
+              option. A (hopefully) current list of supported hardware can be found on our <a
+                 href="/supported">Supported
+                Hardware</a> page.<br />
+              What about x86?<br />
+              64bit Thin Clients (often available for very little money on eBay) are a great choice. Anything more
+              powerful will work as well, but might be a bit of a waste (just like running this on a Raspberry Pi 5 or
+              an Orange Pi 5 is definitely overkill). Stage 2 instances work great in x86_64 VMs (that's kind of the
+              sweet spot for them, really), but running the feeder itself (i.e. the system with the SDR attached) in a
+              VM creates problems with MLAT because of USB passthrough challenges.
             </div>
           </div>
         </div>
@@ -326,9 +359,9 @@ page_content %}
 </div>
 
 <script>
-!function(candidate){
-    candidate && new bootstrap.Collapse(candidate, {show:true});
-}(document.querySelector(window.location.hash + ".collapse"));
+  !function (candidate) {
+    candidate && new bootstrap.Collapse(candidate, { show: true });
+  }(document.querySelector(window.location.hash + ".collapse"));
 </script>
 
 {% endblock %} {% block scripts %} {{ super() }} {% endblock %}
