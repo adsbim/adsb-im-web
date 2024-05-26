@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% set active_page = "hotspot" %}
+
+{% block title %}Setting up WiFi for an ADSB.im Feeder{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+  <div class="row">
+    <h3 class="mb-4">Setting up WiFi for an ADSB.im Feeder</h3>
+    <h4 class="mt-2">Configuring the image prior to install</h4>
+    <div class="col-12">As discussed elsewhere on this site, you can relatively easily set up WiFi on for most ADSB.im
+      Feeder Images. At this point, the Armbian based images do not have full WiFi support, the Raspbian based images
+      can be configured when writing them to SD card with the Pi Imager, and the DietPi based images can be configured
+      by editing two files on the DOS partition that they include.
+    </div>
+    <div class="col-12">This setup does NOT work for the ISO installer of DietPi based x86-64 images (as the ISO
+      prevents editing the two files). And in general, this is a setup that makes it harder to send out working systems
+      and accomodate users who are uncomfortable editing files / writing their own SD cards.</div>
+    <h4 class="mt-2">Using Hotspot-Mode to configure WiFi</h4>
+    <div class="col-12">Starting in v2.1 of the ADSB.im Feeder Image, for any Raspbian or DietPi based image, if after
+      boot the system detects no working network (for example because no Ethernet cable is connected and WiFi isn't
+      configured), the system will switch to hotspot mode. This will allow you to connect to the ADSB.im Feeder and
+      configure a WiFi connection through a web interface.
+    </div>
+    <div class="col-12">Boot the system and wait for the boot to finish (if your device is headless, just be patient
+      until you see the WiFi network appear - it can take a little while). Once you see the <code>adsb.im-feeder</code>
+      SSID, connect to the hotspot (no password necessary). Depending on your specific operating system and browser, you
+      will either automatically be shown the setup page, or you may have to go to <code>http://adsb.im</code> which will
+      open the setup page as well.</div>
+    <div class="col-12">
+      <img src="/static/images/hotspot.png" class="img-fluid border rounded mt-3">
+    </div>
+    <div class="col-12 center mb-3">
+      The WiFi configuration page presented in Hotspot-Mode.
+    </div>
+    <div class="col-12">Choose the network you want the feeder to connect to from the drop down (or enter the SSID
+      directly in case it's not listed) and enter the corresponding password and click connect.
+    </div>
+    <div class="col-12">
+      You'll get a <em>restarting</em> screen after which the hotspot will disconnect. If all goes well the ADSB.im
+      feeder will now connect to the WiFi that you entered and will be available on <em>that</em> network in about a
+      minute. Simply join that network and you should be able to access the feeder as
+      <code>http://adsb-feeder.local</code>. If for some reason the feeder cannot connect to that network (for example
+      an error when typing in the password), the hotspot will be restarted and the web browser should re-connect.
+    </div>
+    <div class="mb-4"></div>
+    {% endblock %}
+
+    {% block scripts %}
+    {{ super() }}
+
+
+    {% endblock %}
