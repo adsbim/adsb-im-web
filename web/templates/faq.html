@@ -183,16 +183,18 @@ page_content %}
             <div class="accordion-body">
               <div class="mb-2">
                 WiFi is fully supported on Raspberry Pi boards, some other DietPi based images like the ones for
-                OrangePi boards also work. If you are using a Raspbian based feeder image (that's the images
-                named <code>adsb-feeder-raspberrypi64...</code>), you can setup your
+                OrangePi boards also work. You can set up WiFi using the <a href="/hotspot">Hotspot</a> feature,
+                or you can set things up before inserting the SD card into your board. This process is described below.
+              </div>
+              <div class="mb-2">
+                If you are using a Raspbian based feeder image (that's the images
+                named <code>adsb-im-raspberrypi64-pi-2-3-4-5-v2.1.0.img.xz</code>), you can setup your
                 WiFi credentials with the Pi Imager as described on the
                 <a href=" howto">Howto</a> page.
               </div>
               <div class="mb-2">
-                If you are using the DietPi based image
-                <code>adsb-feeder-raspberrypi-dietpi-64...</code>
-                (which is highly recommended if you happen to have a Raspberry
-                Pi Zero 2 W or a Pi 3 Model A+, both with only 512MB of RAM), things are
+                If you are using a DietPi based image
+                <code>adsb-im-<board>-dietpi-...</code>, things are
                 unfortunatenly a little harder. Do
                 <em>NOT</em>
                 make any configuration settings in Pi Imager and instead write
@@ -245,35 +247,40 @@ page_content %}
             </div>
           </div>
         </div>
-
         <div class="accordion-item">
           <h5 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsev0-17-1"
-                    aria-expanded="false" aria-controls="collapsev0-17-1">
-              How to upgrade from versions v0.17.1, v0.17.2, and v0.17.3?
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#migrate"
+                    aria-expanded="false" aria-controls="migrate">
+              How can I migrate to adsb.im from a different setup?
             </button>
           </h5>
-          <div id="collapsev0-17-1" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+          <div id="migrate" class="accordion-collapse collapse" data-bs-parent="#FAQ">
             <div class="accordion-body">
-              There's a bug in v0.17.1 that stayed undetected until v0.17.4 - as
-              a result v0.17.1, v0.17.2, and v0.17.3 won't upgrade from the web
-              UI. The workaround is fairly simple (and a one-time thing):
+              You can transfer the Sharing/API/Feeder Key/ID to ADSB.im during the setup. Just note them down prior to
+              switching your current feeder off. Currently suported (with hints how to get existing keys - these
+              commands need to be run on your existing feeder):
               <ul>
-                <li>on the expert page set an ssh key for the root account.</li>
-                <li>ssh as root into the feeder using that key</li>
-                <li>
-                  run
-                  <code>mkdir -p /opt/adsb-feeder-update && /opt/adsb/feeder-update
-                    stable</code>
+                <li> FlightAware: <code>piaware-config -show feeder-id</code> </li>
+                <li> FlightRadar24: <code>cat /etc/fr24feed.ini | grep fr24key</code> </li>
+                <li> RadarBox: <code>rbfeeder --showkey --no-start</code> or alternatively
+                  <code>grep key= /etc/rbfeeder.ini</code>
                 </li>
+                <li> Plane.Watch: log into your <a href="api.plane.watch">Plane.Watch</a> account, go to "Feeders", and
+                  click on the little search icon next to the feeder name. The resulting page will list your API key.
+                </li>
+                <li> PlaneFinder: log into your <a hred="https://planefinder.net/">PlaneFinder</a> account and go to
+                  "Your Receivers". Your share code will be listed next to your existing receiver. </li>
+                <li> ADSBHub: log into your <a href="https://www.adsbhub.org/howtofeed.php">ADSBHub</a> account and go
+                  to "Settings", click on the name of the station and then copy the "Station dynamic IP update ckey".
+                </li>
+                <li> OpenSky Network: log into your <a href="https://opensky-network.org/my-opensky">OpenSky Network</a>
+                  account. The serial number for your receiver will be shown.</li>
+                <li> RadarVirtuel: your feeder key was emailed to you when you signed up.</li>
+                <li> 1090MHz UK: your sharing key was emailed to you when you signed up.</li>
               </ul>
-
-              Once that completes, you are back to normal and future updates
-              once again will work from the web UI.
             </div>
           </div>
         </div>
-
         <div class="accordion-item">
           <h5 class="accordion-header">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsezerotier"
