@@ -18,10 +18,17 @@
                 address of the network your ADS-B Feeder is connected to, and the public IP address of the system from
                 which you access this server. These two addresses are associated with each other in order to enable the
                 forwarding service to your board during installation. The data is automatically deleted after 60
-                seconds. When checking for available updates, the ADS-B Feeder tells the server which board it is
-                running on and which version it is currently running, in order to enable the server to give the correct
-                response regarding possible version updates. Beyond this the server retains no additional information,
-                logging of regular accesses is explicitly turned off.</p>
+                seconds.</p>
+            <p>Once the adsb.im feeder image is up and running, it will connect to the adsb.im server when displaying
+                the feeder homepage. It sends the current version of the adsb.im feeder image, the board name, and a
+                random identifier to the backend server in order to enable the <em>update</em> notifications and very
+                coarse statistics. Again, the server retains no user or system identifiable data based on this
+                information, no actual logs of the access, neither the IP address used, nor any other user / system
+                specific data.
+                Instead, it simply hashes the data in order to provide the developers a rough idea of the number of
+                users per board / platform / version.</p>
+            <p>Since the update feature is one of the core values of the feeder image, the user cannot opt out of this
+                data being sent (other than simply not using the image.</p>
             <p>The site is run on a server located in the US, managed by an individual located in the US. Contact for
                 questions about data handling and privacy is dirk@dh-consulting.io.</p>
             <p>Post mail: ADSB.im Data Protection Lead, c/o DH Consulting, 12725 SW Millikan Way, #300 Beaverton, OR
@@ -30,7 +37,8 @@
                 actually track where you are from): It’s simple. We do not use your data. We do not care who your
                 friends are. We do not intend to market to you or to do anything else that’s annoying. There is no
                 monetization and no other use or processing of your data - we only store it very briefly with the
-                purpose of simplifying the setup of your device.</p>
+                purpose of simplifying the setup of your device. All user specific data outside the above mentioned
+                anonymous statistics is deleted after at most 60 seconds.</p>
             <p>Obviously, your ADS-B Feeder image will connect to other cloud services, including but not limited to
                 any aggregator that you enable, the Debian APT repositories for the underlying OS, Github.com, and
                 container registries. These services are unrelated to adsb.im and they are provided under their own
