@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% set active_page = "tailscale" %}
+
+{% block title %}Setting up Tailscale for an ADSB.im Feeder{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+  <div class="row">
+    <h3 class="mb-4">Setting up Tailscale for an ADSB.im Feeder</h3>
+    <h4 class="mt-2">What is Tailscale?</h4>
+    <div class="col-12">Tailscale is one of several "free for personal use" site-to-site networking services (also known
+      as VPN, Virtual Local Network and other confusing terms). Essentially, it allows you to connect multiple computers
+      that can talk to each other as if they were on the same LAN, even if they are not and are in fact thousands of
+      kilometers apart. This works through typical home network setups without any configuration changes and on most
+      public networks. Corporate networks may have controls in place that prevent services like this from working.
+    </div>
+    <h4 class="mt-2">How do I set this up?</h4>
+    <div class="col-12">First, this is not sponsored content. I get nothing for linking to them, none of the links here
+      are affiliate links (I don't even know if they have that). This is simply a service that is based on open source
+      technology, run by people I trust reasonably well, and it's super easy for non-techies to get going. </div>
+    <div class="col-12">With that out of the way, go to the <a href="https://tailscale.com">Tailscale website</a> and
+      create an account (that's the "Get Started" button). This is easiest if you simply link to your existing Gmail,
+      GitHub, or Apple ID.</div>
+    <div class="col-12">Once that is done, you'll be at a page where it asks you to set up your first system. BEFORE you
+      do that, very important, go to their <a href="https://login.tailscale.com/admin/settings/billing/plans">Billing
+        Plans</a> page, ignore all the nice big options to give them money, and at the bottom center click on "Choose
+      our personal plan". This will get you a popup to acknowledge the limitation. Be warned, if you want to deploy more
+      than 99 feeders, this may be too restrictive 🤣.</div>
+    <div class="col-12">Now go back to <a href="https://login.tailscale.com/admin/machines">Machines</a> and click on
+      "Add Device". This will allow you to set up Tailscale on the computer that you are using to connect to the
+      website. I recommend NOT doing this on your phone - that is possible, but a bit... painful to manage things
+      with... a Windows / Mac / Linux system is the much better choice.</div>
+    <h4 class="mt-2">How do I connect my adsb.im feeder?</h4>
+    <div class="col-12">On the feeder homepage, select "Management" und der "System" menu item. There at the bottom
+      you'll find the option to add this feeder to a tailnet (the network you created in the previous step). Click on
+      the "Submit" button in the Add Tailscale section. This will reload the page and (once you scroll down again)
+      present you with a link to log in. Click the link, sign in with the same account, and click on "Connect".
+    </div>
+    <div class="col-12">That's it, you should be done.
+    </div>
+    {% endblock %}
+
+    {% block scripts %}
+    {{ super() }}
+
+
+    {% endblock %}
