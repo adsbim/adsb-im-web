@@ -18,13 +18,13 @@
                 powersupply. For anything more powerful I recommend a 5V/4A power supply.<br />
                 Boards that are actively tested and should work:
                 <ul>
-                    <li>Raspberry Pi 4 or Pi 5 (the Pi 5 certainly is overkill, a Pi&nbsp;4 with 2G RAM will do just
-                        fine)</li>
+                    <li>Raspberry Pi 4 or Pi 5 (the Pi 5 certainly is overkill and frankly has frequently been perceived
+                        as not 100% stable for this task; a Pi&nbsp;4 with 2G RAM will do just fine)</li>
                     <li>Orange Pi Zero3 (currently my favorite when it comes to price / performance) -- but for just a
                         little more money you can get a 1GB Pi4 which is still preferable</li>
                     <li>Raspberry Pi Zero 2 W, Pi Model 3 A+/B(+) (note that a Raspberry Pi Zero W will NOT work; also,
-                        we are investigating some MLAT instability with Pi 3 models, so potentially not the best choice)
-                    </li>
+                        these models are more likely to exhibit some MLAT instability, so if possible go withe one of
+                        the other options)</li>
                     <li>Libre Computer Le Potato</li>
                     <li>Orange Pi 3 LTS (no wifi support), 4 LTS, 5, and 5 Plus (these are all known to work, but not
                         tested regularly)</li>
@@ -40,10 +40,15 @@
             <div class="mb-2" id="sdrs">Supported Software Defined Radios (SDRs)
                 <ul>
                     <li>Airspy Mini (expensive, but by far the best supported SDR for ADS-B/1090MHz)</li>
-                    <li>Rtl-Sdr.com v3 and v4 dongle</li>
-                    <li>FlightAware pro stick (includes 1090MHz filter and a low noise amplifier)</li>
-                    <li>RadarBox green stick (includes 1090MHz filter and a low noise amplifier)</li>
-                    <li>AdsbExchange blue stick (includes 1090MHz filter and a low noise amplifier)</li>
+                    <li>Rtl-Sdr.com v3 and v4 dongle (it appears that the v3 is slightly better for ADS-B use cases)
+                    </li>
+                    <li>AdsbExchange (airplanes.live, airframes.io... this comes in several branded versions) blue stick
+                        (includes 1090MHz filter and a low noise amplifier - and it's in a metal housing which really
+                        helps with heat dissipation and longevity)</li>
+                    <li>FlightAware pro stick (includes 1090MHz filter and a low noise amplifier - because of the
+                        plastic housing I prefer the one above)</li>
+                    <li>RadarBox green stick (includes 1090MHz filter and a low noise amplifier - this appears to be
+                        slightly lower quality than the ones above)</li>
                     <li>RadarBox red stick (includes 978MHz filter and a low noise amplifier -- for UAT978)</li>
                     <li>Nooelec NESDR SMArt and SMArTee</li>
                     <li>Most other RTL2838 based USB sticks should work</li>
@@ -66,6 +71,9 @@
                         very useful addition. Again, great info on <a
                            href="https://github.com/wiedehopf/adsb-scripts/wiki/Useful-items-for-purchase#filtered-low-noise-amplifiers-lnas">Matthias'
                             wiki</a></li>
+                    <li>A cavity filter is the gold standard for filtering and makes a significant difference in very
+                        noisy environments. None of the integrated SDRs have a cavity filter - those things are BIG.
+                    </li>
                 </ul>
             </div>
             <div class="mb-2" id="sdcards">SD cards (well, technically µSD cards)

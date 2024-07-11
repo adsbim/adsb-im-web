@@ -35,12 +35,14 @@
         </div>
         <div class="mb-3 col-12">
             There are several ways to use the ADS-B Feeder Image, depending on where and how you want to run things.
+            When in doubt, the SBC Image should always be your first choice. That's what gets tested the most, what
+            typically is the easiest to use and has the fewest pitfalls.
         </div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="image-tab" data-bs-toggle="tab" data-bs-target="#image-tab-pane"
                         type="button" role="tab" aria-controls="image-tab-pane" aria-selected="true">Single Board
-                    Computer
+                    Computer Image
                     (easiest)</button>
             </li>
             <li class="nav-item" role="presentation">
@@ -57,19 +59,26 @@
             <div class="tab-pane fade show active mt-3 mb-1" id="image-tab-pane" role="tabpanel"
                  aria-labelledby="image-tab" tabindex="0">
                 <ul>
-                    <li> Start with one of the <a href="/supported#sbcs">supported single board computers</a>.
+                    <li> Start with one of the <a href="/supported#sbcs">supported single board computers</a>.</li>
                     <li> Add an <a href="/supported#sdrs">SDR radio dongle</a> and an <a
-                           href="/supported#antennas">antenna</a>
+                           href="/supported#antennas">antenna</a></li>
                     <li> <a href="/download">Download</a> the matching SD-card image and write it to an <a
-                           href="/supported#sdcards">SD-card</a>
+                           href="/supported#sdcards">SD-card</a></li>
                     <li> Boot your SBC and wait a little while (depending on the model and the specific image this
-                        usually takes a few minutes, but in some cases this can take 15 to 20 minutes)
-                    <li> Then simply go to <a href="http://adsb-feeder.local">http://adsb-feeder.local</a> or (if you
+                        usually takes a few minutes, but in some cases this can take 15 to 20 minutes)</li>
+                    <li> If you have wired Ethernet, or were able to configure WiFi using your Image writing software
+                        (pretty much only available for the Raspberry Pi image that isn't DietPi based - and even there
+                        this capability is rumored to go away) simply go to <a
+                           href="http://adsb-feeder.local">http://adsb-feeder.local</a> or (if you
                         don't have working mDNS on your home network) to <a href="http://my.adsb.im">my.adsb.im</a>
-                        which should redirect you to your
-                        new ADS-B feeder.
+                        which should redirect you to your new ADS-B feeder.</li>
+                    <li> If you are planning to use WiFi and weren't able to configure that while writing the SD card,
+                        the image will create a WiFi hotspot <code>adsb.im-feeder</code> that you can connect to in
+                        order to enter the credentials for it to connect to your WiFi network. More details for this on
+                        our <a href="/hotspot">Hotspot Page</a></li>
                 </ul>
-                Detailed instructions are on the <a href="/howto">HowTo Page</a>.
+                A full walk through of the process with much more detailed instructions is on the <a href="/howto">HowTo
+                    Page</a>.
             </div>
             <div class="tab-pane fade mt-3 mb-4" id="dietpi-tab-pane" role="tabpanel" aria-labelledby="dietpi-tab"
                  tabindex="1">
@@ -84,14 +93,13 @@
             <div class="tab-pane fade mt-3 mb-5" id="app-tab-pane" role="tabpanel" aria-labelledby="app-tab"
                  tabindex="2">
                 <ul>
-                    <li> On most recent Linux systems running on ARM64 or x86 systems, you can install the ADS-B Feeder
-                        Image as an app
+                    <li> On most recent Debian / Ubuntu based Linux systems running on ARM64 or x86 systems, you can
+                        install the ADS-B Feeder Image as an app
                     <li><code class="small">
                             curl https://raw.githubusercontent.com/dirkhh/adsb-feeder-image/main/src/tools/app-install.sh | sudo bash
                         </code>
                     <li> Or, more reasonably, download the shell script, read and review what it does, and then run it
-                        as
-                        root
+                        as root
                     <li>Of course, you still need a <a href="/supported#sdrs">supported SDR</a> and an <a
                            href="/supported#antennas">antenna</a> connected to the Linux system
                 </ul>
