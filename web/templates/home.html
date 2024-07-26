@@ -84,24 +84,28 @@
                  tabindex="1">
                 <ul>
                     <li> On current versions of DietPi, this is as simple as using <code>dietpi-software</code> and
-                        searching for app number 141 (or for ADS-B Feeder).
+                        searching for app number 141 (or for ADS-B Feeder).</li>
                     <li> Once you install that application, you can connect to the web UI via
                         <code>http://{local name or IP}:1099</code>
+                    </li>
                     <li> Of course, you still need a <a href="/supported#sdrs">supported SDR</a> and an <a
-                           href="/supported#antennas">antenna</a> connected to the DietPi system.
+                           href="/supported#antennas">antenna</a> connected to the DietPi system.</li>
             </div>
             <div class="tab-pane fade mt-3 mb-5" id="app-tab-pane" role="tabpanel" aria-labelledby="app-tab"
                  tabindex="2">
                 <ul>
                     <li> On most recent Debian / Ubuntu based Linux systems running on ARM64 or x86 systems, you can
-                        install the ADS-B Feeder Image as an app
+                        install the ADS-B Feeder Image as an app</li>
                     <li><code class="small">
                             curl https://raw.githubusercontent.com/dirkhh/adsb-feeder-image/main/src/tools/app-install.sh | sudo bash
-                        </code>
+                        </code></li>
                     <li> Or, more reasonably, download the shell script, read and review what it does, and then run it
-                        as root
+                        as root</li>
+                    <li> Once you install that application, you can connect to the web UI via
+                        <code>http://{local name or IP}:1099</code>
+                    </li>
                     <li>Of course, you still need a <a href="/supported#sdrs">supported SDR</a> and an <a
-                           href="/supported#antennas">antenna</a> connected to the Linux system
+                           href="/supported#antennas">antenna</a> connected to the Linux system</li>
                 </ul>
             </div>
         </div>
