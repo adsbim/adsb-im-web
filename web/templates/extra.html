@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% set active_page = "howto" %}
+
+{% block title %}ADSB.im{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+<h3 class="mb-4">An advanced guide on connecting other community projects to adsb.im by setting up your own tar1090/readsb instance.</h3>
+<h4>Introduction</h4>
+<div class="ml-3 mb-3">
+<p>This guide is outside of adsb.im's intended use and is of more advanced scope. This is for someone that is already using adsb.im and wants to get data off their adsb.im instance into other docker containers and community projects. This also allows you to push data into tar1090/readsb that you wouldn't want to feed for example the great acars2pos project. This will require another pc (running linux) or SBC (small single board computer) as although possible this guide won't be going through modifying adsb.im to add additional docker containers too the existing raspberry pi. &nbsp;Keeping them separated avoids resource constraints on your main adsb instance, port conflicts, messing up your feeder etc. &nbsp;<br />Tar1090/readsb setup.&nbsp; Here's a few brief descriptions of some of the projects you might want to setup.</p>
+<ul>
+<li><a href="https://github.com/rpatel3001/docker-acars2pos">Acars2pos</a> - Parses location data from various types of acars messages and feeds them to a readsb instance.&nbsp; (Do not feed these to feeders, the data is usually out of date, and while its cool for personal purposes feeders don't want the data!).</li>
+<li><a href="https://github.com/sdr-enthusiasts/docker-planefence" target="_blank" rel="noopener">PlaneFence</a> - Allows you to see what planes fly over your house (planefence) and see interesting planes that your antenna receives (planealert)</li>
+<li><a href="https://sdr-enthusiasts.gitbook.io/ads-b/useful-extras/alternative-graphing-with-prometheus-grafana" target="_blank" rel="noopener">Prometheus/Grafana/Influx</a> - stores all your data from readsb into a database for alterative dashboards to the ones provided by tar1090.</li>
+</ul>
+<p>Step 1: Create docker compose file for tar1090/readsb</p>
+<p>We will be using wiedehopf's readsb port containerized inside of docker. More info <a href="https://github.com/sdr-enthusiasts/docker-tar1090">here</a>. &nbsp; All steps below will be on your second pc/SBC not adsb.im.</p>
+<p>Install docker compose if you don't have it already installed. &nbsp;Lots of guides online, &nbsp;we won't go through the steps here.</p>
+<p>Create an adsbprojects.yml file using nano in terminal or your favorite gui text editor to copy and paste the example below as a starting point.&nbsp; Make sure to set your Timezone, latitude and longitude, and antenna height (readsb_alt) in the docker compose yml.&nbsp; Place the file in /home/username_here/Documents or wherever you would like to store it.</p>
+<p><br /><code>services:</code><br /><code>&nbsp; tar1090:</code><br /><code>&nbsp; &nbsp; image: ghcr.io/sdr-enthusiasts/docker-tar1090:latest</code><br /><code>&nbsp; &nbsp; tty: true</code><br /><code>&nbsp; &nbsp; container_name: tar1090</code><br /><code>&nbsp; &nbsp; restart: unless-stopped</code><br /><code>&nbsp; &nbsp; environment:</code><br /><code>&nbsp; &nbsp; &nbsp; - TZ=America/New_York</code><br /><code>&nbsp; &nbsp; &nbsp; - LAT=-33.33333</code><br /><code>&nbsp; &nbsp; &nbsp; - LONG=111.11111</code><br /><code>&nbsp; &nbsp; &nbsp; - READSB_ALT=305m</code><br /><code>&nbsp; &nbsp; &nbsp; - READSB_NET_ENABLE=true</code><br /><code>&nbsp; &nbsp; &nbsp; - READSB_NET_ONLY=true</code><br /><code>&nbsp; &nbsp; &nbsp; - READSB_NET_CONNECTOR=192.168.4.x,30005,beast_in;192.168.4.x,31005,beast_in</code><br /><code>&nbsp; &nbsp; &nbsp; - READSB_NET_SBS_OUTPUT_PORT=30003</code><br /><code>&nbsp; &nbsp; &nbsp; - READSB_EXTRA_ARGS=--net-beast-reduce-interval 2 --net-sbs-reduce</code><br /><code>&nbsp; &nbsp; &nbsp; - READSB_MAX_RANGE=500</code><br /><code>&nbsp; &nbsp; &nbsp; - READSB_FORWARD_MLAT_SBS=true</code><br /><code>&nbsp; &nbsp; &nbsp; - READSB_RX_LOCATION_ACCURACY=2</code><br /><code>&nbsp; &nbsp; &nbsp; - READSB_NET_SBS_INPUT_PORT=32006</code><br /><code>&nbsp; &nbsp; &nbsp; - READSB_STATS_RANGE=true</code><br /><code>&nbsp; &nbsp; &nbsp; - TAR1090_ENABLE_AC_DB=true</code><br /><code>&nbsp; &nbsp; &nbsp; - TAR1090_ENABLE_ACTUALRANGE=true</code><br /><code>&nbsp; &nbsp; volumes:</code><br /><code>&nbsp; &nbsp; &nbsp; - /opt/adsb/tar1090/globe_history:/var/globe_history</code><br /><code>&nbsp; &nbsp; &nbsp; - /opt/adsb/tar1090/timelapse1090:/var/timelapse1090</code><br /><code>&nbsp; &nbsp; &nbsp; - /opt/adsb/tar1090/graphs1090:/var/lib/collectd</code><br /><code>&nbsp; &nbsp; &nbsp; - /proc/diskstats:/proc/diskstats:ro</code><br /><code>&nbsp; &nbsp; # - /run/airspy_adsb:/run/airspy_adsb</code><br /><code>&nbsp; &nbsp; ports:</code><br /><code>&nbsp; &nbsp; &nbsp; - 8078:80</code><br /><code>&nbsp; &nbsp; &nbsp; - 30003:30003</code><br /><code>&nbsp; &nbsp; tmpfs:</code><br /><code>&nbsp; &nbsp; &nbsp; - /run:exec,size=64M</code><br /><code>&nbsp; &nbsp; &nbsp; - /var/log &nbsp; &nbsp; &nbsp; &nbsp;</code><br /><code>volumes:</code><br /><code>&nbsp; readsbpb_rrd:</code><br /><code>&nbsp; readsbpb_autogain:</code></p>
+<p>We'll briefly go through the options we have configured beyond normal tar1090 setup and why.&nbsp; Feel free to remove the ones for the projects you don't use.</p>
+<ol style="list-style-type: lower-alpha;">
+<li>READSB_NET_CONNECTOR - This configures your connection to adsb.im into tar1090. &nbsp;In this example we are using beast in ports to connect to both adsb and mlat feeds.&nbsp; This also includes the aggregated feed by default from mlathub running on adsb.im.</li>
+<li>READSB_NET_ENABLE - Turns on networking for tar1090.</li>
+<li>READSB_EXTRA_ARGS - Reduces amount of traffic retrieved from each plane from adsb.im for beast to every 2 seconds.&nbsp; Also reduces sbs traffic output which I am using for planefence. &nbsp;You can adjust as needed.</li>
+<li>READSB_NET_ONLY - Turns off looking for sdr's.&nbsp; Since adsb.im has our sdr's we don't want tar1090 searching for them or grabbing other sdr's that might be in use on the system.</li>
+<li>READSB_MAX_RANGE - I set this for acars2pos.&nbsp; You might use a different value depending on how far away planes you are receiving are via ads-b or acars2pos.</li>
+<li>READSB_FORWARD_MLAT_SBS - I use this switch to forward MLAT data to planefence.&nbsp; You can turn this off if you don't need it.</li>
+<li>READSB_NET_SBS_OUTPUT_PORT - This sets the port we expose to planefence.&nbsp; Notice that we also have port 30003 exposed in the ports section of our config.&nbsp; You can remove this if you aren't using planefence.</li>
+<li>READSB_NET_SBS_INPUT_PORT - This pulls locations from acars2pos into tar1090.</li>
+</ol>
+Step 2: Run cd /home/username_here/Documents (or wherever you placed the yml) to move your terminal to the folder. Then run docker-compose -f adsbprojects.yml up from the folder where the adsbprojects.yml is located.</div>
+<div class="ml-3 mb-3">&nbsp;</div>
+<div class="ml-3 mb-3">Step 3: Profit! - if all went well it should start up successfully. If not read through the errors and check your yml file for typos.&nbsp; Then go to the ip address with port 8078 of your tar1090 machine for example like this 192.168.1.25:8078 to bring up tar1090 and you should see your map just like on adsb.im.</div>
+<div class="ml-3 mb-3">&nbsp;</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}
