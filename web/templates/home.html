@@ -11,7 +11,13 @@
 <div class="container">
     <div class="row justify-content-center mt-2 mb-1">
         <h5>The easiest way to track nearby aircraft with your own hardware and share with others</h5>
-        <div class="mb-3 col-12">
+        <img class="img-fluid col-xl-6 col-lg-8 col-12 mb-2" src="/static/images/tar1090.png"
+             alt="visualizing local air traffic">
+        <div class="mb-3 col-xl-6 col-lg-4 col-12">
+            The image <span class="d-xs-none d-sm-none d-md-none d-lg-inline">on the left</span><span
+                  class="d-lg-none">above</span>
+            shows the planes above me right now, their recent tracks, more information about altitude, speed, and for
+            many commercial flights even the flight route.<br>
             Plot aircraft on your own map, and share to aggregators like
             <a href="https://adsb.lol/">adsb.lol</a>,
             <a href="https://flyitalyadsb.com/">Fly Italy Adsb</a>,
@@ -33,7 +39,7 @@
             <a href="https://radarplane.com/">RadarPlane</a>,
             <a href="https://www.radarvirtuel.com/">Radar Virtuel</a>, and more!
         </div>
-        <div class="mb-3 col-12">
+        <div class="my-3 col-12">
             There are several ways to use the ADS-B Feeder Image, depending on where and how you want to run things.
             When in doubt, the SBC Image should always be your first choice. That's what gets tested the most, what
             typically is the easiest to use and has the fewest pitfalls.
@@ -125,11 +131,6 @@
                             Setup</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="map-tab" data-bs-toggle="tab" data-bs-target="#map-tab-pane"
-                                type="button" role="tab" aria-controls="map-tab-pane" aria-selected="false">Local
-                            Map</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
                         <button class="nav-link" id="stats-tab" data-bs-toggle="tab" data-bs-target="#stats-tab-pane"
                                 type="button" role="tab" aria-controls="stats-tab-pane"
                                 aria-selected="false">Stats</button>
@@ -146,11 +147,6 @@
                          aria-labelledby="image-tab" tabindex="0">
                         <figure class="figure border"> <img class="img-fluid media-object"
                                  alt="ADS-B Feeder Basic Setup screen" src="/static/images/BasicSetup.png">
-                    </div>
-                    <div class="tab-pane fade show mt-3 mb-1" id="map-tab-pane" role="tabpanel"
-                         aria-labelledby="image-tab" tabindex="0">
-                        <figure class="figure border"> <img class="img-fluid media-object" alt="ADS-B Feeder Map"
-                                 src="/static/images/map.png">
                     </div>
                     <div class="tab-pane fade show mt-3 mb-1" id="stats-tab-pane" role="tabpanel"
                          aria-labelledby="image-tab" tabindex="0">
