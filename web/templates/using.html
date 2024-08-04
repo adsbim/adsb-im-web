@@ -14,31 +14,52 @@
     <div class="ml-1 mb-3">
         In general, the basic setup should be sufficient for most use cases. The bare minimum
         of information is entered on the <em>Basic Setup</em> page, aggregators can be selected on the
-        <em>Aggregators</em> page. The other options are described below in more detail.
+        <em>Data Sharing</em> page.
     </div>
-    <h4>Backup / Restore</h4>
+    <h4>System: Backup / Restore</h4>
     <div class="ml-1 mb-3">
         You can backup the settings as well as the history of statistics on the <em>Backup</em> page.
-        Click the Backup button and store the zip file on your computer. If needed, you can later go
-        to the <em>Restore</em> page (for example after installing a newer Feeder Image on your system)
-        and restore the data. Once you upload the zip file you will be shown all files and folders that
+        Click one of the three Backup buttons and store the zip file on your computer. You can backup just the
+        configuration, include the graphs, or include the full history of data.
+        If needed, you can later go to the <em>Restore</em> page (for example after installing a newer Feeder Image on
+        your system) and restore the data. Once you upload the zip file you will be shown all files and folders that
         differ from the running system and can choose which ones to restore.
     </div>
-    <h4>Advanced</h4>
+    <h4>Maps: Options</h4>
     <div class="ml-1 mb-3">
-        On the <em>Advanced</em> page you are offered some additional options, some of which depend on
-        your hardware.
+        On the <em>Map Options</em> page you are offered a few ways to adjust what you see when showing the live map
         <ul>
-            <li>By default, <em>MLAT privacy</em> is enabled, which prevents your site from being shown on
-                typical <a href="https://mlat.adsb.lol/syncmap">MLAT coverage maps</a>. Turning this off
-                will show a rough estimate of your location, together with the MLAT stations you are connected
-                to on the MLAT coverage maps of your aggregator.</li>
             <li>By default, the ADSB Feeder Image shows the best open data guess for the route information
                 of the planes shown in the tar1090 user interface. If you don't want this information, you
                 can turn it off here.</li>
             <li>If you want the theoretical range of an ideal antenna at your location shown in the tar1090
                 user interfacem, you can use <a href="https://www.heywhatsthat.com/">HeyWhatsThat</a> to create
                 an ID that will be used to provide that visualization.</li>
+            <li>If you want to reset the actual range outline of the planes that you have received data from, there's
+                also an option to do that here. Note that the range outline by default always tracks the last 24 hours
+                of data, so things will reset on their own after a day.</li>
+        </ul>
+    </div>
+    <h4>Data Sharing</h4>
+    <div class="ml-1 mb-3">
+        On the <em>Data Sharing</em> page you are adjusting how your data is shared with aggregators.<br />
+        By default, <em>MLAT privacy</em> is not enabled, which allows (a rough estimate of the location of)your site to
+        be shown on typical <a href="https://mlat.adsb.lol/syncmap">MLAT coverage maps</a>. Turning this on
+        informs the aggregators that you would like to opt out of having your data shown on such maps.<br />
+        The rest of this page is used to select the aggregators you want to feed. The first group are the semi-anonymous
+        aggregators that don't require any authentication. Below them are the various commercial and non-commercial
+        aggregators for which you need some kind of sharing key or similar. For many of them, getting those key is
+        automated, others require some extra steps -- see the help texts in the UI.
+    </div>
+    <h4>Setup: SDR</h4>
+    <div class="ml-1 mb-3">
+        On the <em>SDR</em> setup page you are offered some additional options, some of which depend on
+        your hardware.
+        <ul>
+            <li>By default, <em>automatic gain</em> is enabled for your SDR. You most likely don't want to
+                change this if you are using an airspy SDR, but with traditional RTL SDRs this can be useful
+                if the manual auto gain process is getting stuck or is taking too long to find an acceptable
+                value</li>
             <li>If you are using an LNA or some other device that requires power via bias-T (assuming your SDR
                 supports this setting), you can turn this on here.</li>
             <li>If you have more than one SDR connected to your feeder SBC, there will be a selection below this
@@ -46,14 +67,10 @@
                 as well as the US-only UAT at 978MHZ.</li>
         </ul>
     </div>
-    <h4>Expert</h4>
+    <h4>Setup: Expert</h4>
     <div class="ml-1 mb-3">
         On the <em>Expert</em> page you will find some more advanced settings
         <ul>
-            <li>By default, <em>automatic gain</em> is enabled for your SDR. You most likely don't want to
-                change this if you are using an airspy SDR, but with traditional RTL SDRs this can be useful
-                if the manual auto gain proces s is getting stuck or is taking too long to find an acceptable
-                value</li>
             <li>In some very unusual circumstances you may want to be able to add extra arguments for the
                 Ultrafeeder, e.g., if you are feeding a "standard aggregator" that accelpts beast input but
                 for whatever reason isn't supported by the web UI.</li>
@@ -65,17 +82,19 @@
                 allow someone else to take over your feeder. This is not the same as truly hardening the image;
                 you should assume that someone with access to the hardware will be able to remove the µSD
                 card which will allow them to get access to the system.</li>
-            <li>The next two options allow you to shutdown or reboot your SBC. Please note that there are several
+            <li>There are also options that allow you to shutdown or reboot your SBC. Please note that there are several
                 scenarios where an SBC will not successfully reboot (or not turn of power on shutdown). Please
                 test this capability before relying on it.</li>
             <li>The feeder can be set up to update its base OS, the containers that implement the feeder functionality
                 as well as the feeder application (i.e. the web UI that controls the device) automatically.</li>
-            <li>You can also trigger the container and feeder app updates manually from this page.</li>
-            <li>Finally, you can add your feeder system to a ZeroTier global area network in order to be able
-                to access it remotely. Enter the network ID here (you have to set this up at the
-                <a href="zerotier.com">ZeroTier website</a>, first).
+            <li>You can also trigger the feeder app updates manually from this page.</li>
+            <li>Finally, you can add your feeder system to a ZeroTier or Tailscale global area network in order to be
+                able to access it remotely. Enter the network ID here (you have to set this up at the
+                <a href="zerotier.com">ZeroTier website</a>, first), or connect to your pre-existing Tailscale network.
             </li>
         </ul>
+        As the title indicates, the options here are generally for people who are somewhat more familiar with the setup
+        of a feeder system, so they are not fully explained in this guide.
     </div>
 </div>
 {% endblock %}
