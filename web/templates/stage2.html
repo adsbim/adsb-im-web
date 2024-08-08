@@ -12,8 +12,8 @@
   <h3 class="mb-4">Two Stage Setup</h3>
   <h5 class="mt-3">Introduction</h5>
   <div class="mb-3">
-    In many (most?) instances, a simple integrated feeder is a very good solution to tracking the planes around your
-    house (or wherever you have installed your feeder). There are a few situations, however, where some people prefer a
+    In many (most?) instances, a simple integrated feeder is a very good solution for tracking the planes around your
+    home (or wherever you have installed your feeder). There are a few situations, however, where some people prefer a
     different setup. The most common ones are
     <ul>
       <li>a very low end SBC, maybe mounted close to an antenna, that gets bogged down feeding multiple aggregators
@@ -47,23 +47,36 @@
       <dt>Integrated Feeder</dt>
       <dd>A single system (usually an SBC) that has an SDR connected to an antenna attached and that feeds one or more
         aggregators.</dd>
-      <dt>Micro Feeder</dt>
+      <dt>Micro Feeder / Nano Feeder</dt>
       <dd>A system (usually an SBC) that has an SDR connected to an antenna attached and does <strong>not</strong> by
-        itself feed aggregators.
+        itself feed aggregators. The distinction between the two types in the <strong>adsb.im</strong> feeder image is
+        that a nano feeder tries to reduce data usage and write access to the local SD card even more. It's designed to
+        happily run on a 512MB SBC. To achieve that, it doesn't maintain local graphs or heatmap data and doesn't keep
+        a persistant log (i.e. all logs are lost on reboot).
       </dd>
       <dt>Stage 2 Instance</dt>
       <dd>A separate instance of the adsb.im Feeder Image (sometimes running on an SBC, but often running in a VM or as
-        application on some other system) that has <strong>no</strong> SDR attached, but instead receives data from one
-        or more <em>Micro Feeders</em> and feeds the data (individually, see above) to one or more aggregators.</dd>
+        application on some other system) that usually has <strong>no</strong> SDR attached, but instead receives data
+        from one or more <em>Micro Feeders</em> and feeds the data (individually, see above) to one or more
+        aggregators.<br />
+        It is possible to have a stage 2 instance do double duty both as nano feeder and as stage 2 instance, i.e. to
+        have a local SDR connected to a stage 2 instance, but that's a bit of a corner case and not the recommended
+        setup. It was mostly implemented for scenarios like someone needing two SDRs / antennas to cover their local
+        traffic (e.g. when an antenna on the roof isn't possible and two SBCs are used, sitting in windows looking in
+        different directions). Here it might be easiest to have one of the SBCs do double duty both as feeder with an
+        SDR and as stage 2 instance. I highly recommend that this should be an RPi 4 with at least 2GB of RAM or some
+        other somewhat more powerful SBC (e.g. an OrangePi 5 or 5 Plus).
+      </dd>
     </dl>
   </div>
   <h5 class="mt-3">Creating a Stage 2 Instance</h5>
   <div class="mb-3">
     The recommended approach would be to create a new adsb.im Feeder Image installation from scratch; converting an
-    existing feeder image could cause unintended effects. Most of the testing is done running a Stage 2 Instance in a
-    VM, additionally some testing is done with a Raspberry Pi 5 and an Orange Pi 5 Plus using NVMe storage. The rest of
-    this chapter assumes that you already have an Integrated Feeder running and are interested in converting this to a
-    two stage system.
+    existing feeder image could cause unintended effects and is mostly untested. Most of the testing is done running a
+    Stage 2 Instance in a VM, additionally some testing is done with a Raspberry Pi 5 and an Orange Pi 5 Plus using NVMe
+    storage (note that by its nature a stage 2 instance will store more data to its storage device, so if you run this
+    on an SD card based SBC, lifetime of your SD card could become an issue). The rest of this chapter assumes that you
+    already have an Integrated Feeder running and are interested in converting this to a two stage system.
   </div>
   <div class="mb-3">
     <ol class="row">
@@ -102,7 +115,7 @@
       <figure class="figure">
         <img src="/static/images/stage2-step3.png" class="figure-img img-fluid rounded border shadow-3 mb-3"
              alt="Import Micro Feeder settings" />
-        <figcaption class="figure-caption">A caption for the above image.</figcaption>
+        <figcaption class="figure-caption">Add the selected feeder</figcaption>
       </figure>
       <li>If the feeder you are connecting to isn't an adsb.im Feeder Image, you'll still be able to connect to it, but
         you'll have to set things up manually.</li>
