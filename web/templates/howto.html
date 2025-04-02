@@ -16,26 +16,43 @@
         location in no time, and at minimum expense. Each step has “minimum configuration”, and discusses
         some ideas on how to make it better at an additional cost or effort.
     </div>
+    <div class="ml-3 mb-3">
+        There are a number of videos on our the <a href="https://youtube.com/@adsb">adsb.im YouTube channel</a> that
+        should also help you get started.
+    </div>
     <h4>Hardware</h4>
     <div class="ml-1 mb-3">
         For a minimal configuration you need:
         <ul>
             <li>A small single board computer (“SBC”): see the list of <a href="supported">currently supported
                     boards</a>; if price is a concern, the OrangePi Zero 3 is a good choice, otherwise one of the
-                Raspberry Pi 4 boards is likely the best option.</li>
+                Raspberry Pi 4 boards (1 GB RAM works just fine) is likely the best option.</li>
             <li>A good power supply for your SBC. Most of the recommended boards use use USB-C (Raspberry Pi 4, Orange
                 Pi
                 boards), some others use micro-USB (older Raspberry Pi models, Libre Computer Le Potato, etc) - either
                 way, make sure you use an actual power supply designed for at least 2.5A (or 4A for a Pi 4) and not just
                 a USB charger. Bad power is one of the main reasons for random issues with the boards.</li>
-            <li>A (good quality) µSD card of at least 8GB with 32GB or more recommended. The SBC will write to it often,
-                so high quality is important. SanDisk Ultra or Samsung High Endurance appear to be good choices.</li>
-            <li>Internet access for your SBC. At this point WiFi is only supported on the Raspberry Pi family as well as
-                the Orange Pi Zero 3, all other SBCs need wired Ethernet.</li>
+            <li>A (good quality) µSD card of at least 8GB with 32GB or more recommended. The SBC will write to it enough that
+                a high quality card makes a difference. SanDisk Ultra or Samsung High Endurance appear to be good choices.</li>
+            <li>Internet access for your SBC. WiFi is supported on most boards, including all of the Raspberry Pi family;
+                some other, cheaper SBCs need wired Ethernet.</li>
             <li>An SDR USB stick ("dongle"). Check the list of <a href="supported">supported SDRs</a>.</li>
             <li>An antenna for the SDR dongle.</li>
         </ul>
-    </div>
+        At current prices (and using US source / shipping), an ok indoor configuration could look like this for about $120:
+        <ul>
+            <li>SBC: <a href="https://www.pishop.us/product/raspberry-pi-4-model-b-1gb/">Raspberry Pi 4, 1GB RAM with USB-C power supply</a> from PiShop.us (~$55 with shipping)</li>
+            <li>Case: <a href="https://amzn.to/4hGnUeT">Geekworm, passively cooled</a> (~$10 plus Amazon shipping)</li>
+            <li>SDR, indoor antenna, SD card: <a href="https://amzn.to/4kQVfGL">Chinese OEM SDR with 1090 MHz “rubber duck” antenna</a> (~$50 plus Amazon shipping)</li>
+        </ul>
+        To drive down cost even more (somewhere around $80), you can choose a lower end SBC, no case, get the SDR and antenna directly from China and add a power supply and SD card:
+        <ul>
+            <li>SBC: <a href="https://amzn.to/4bWRRWI">Orange Pi Zero 3 1GB</a> (~$25 plus Amazon shipping)</li>
+            <li>Power supply: <a href="https://amzn.to/4iT5SqO">CanaKit USB C power supply</a> (~$10 plus Amazon shipping)</li>
+            <li>SDR: <a href="https://www.aliexpress.us/item/3256806807779978.html">Chinese OEM SDR direct import</a> (~$25 including shipping)</li>
+            <li>Antenna: <a href="https://www.aliexpress.us/item/3256801237629737.html">Chinese basic 1090 MHz antenna</a> (~$6 if shipping with the SDR)</li>
+            <li>SD card: <a href="https://amzn.to/4hERFwH">SanDisk Ultra 16 GB</a> (~$10 plus Amazon shipping)</li>
+        </ul>
     <div class="ml-1 mb-3">
         You also should have access to a computer (Windows, Mac, Linux) and an µSD card writer. This will be
         used for the initial setup; once everything is running, you can access the flight map from your phone
@@ -47,10 +64,9 @@
             <li>A better/faster SBC. This will help with faster processing and it will enable running more
                 things in parallel. For example, a Raspberry Pi 4 (with 2Gb or more memory).</li>
             <li>An enclosure (case) with cooling for your SBC. Cooling is important - things will get hot!</li>
-            <li>A better quality SDR dongle, preferably one with built-in LNA and filter. For example:
-                FlightAware Pro+ (blue), RadarBox SDR (red), ADSBExchange Blue.</li>
+            <li>A better quality SDR dongle, look at the list of <a href="supported">supported SDRs</a> (as well as filters / LNAs).</li>
             <li>A better antenna that is mounted outside. For example, ADSBExchange vertical, FlightAware
-                vertical, Radarbox vertical, or an antenna from Vinnant.</li>
+                vertical, Radarbox vertical, or an antenna from DPD or Vinnant.</li>
             <li>A larger SD card: 64 Gb or 128 Gb. You won't need the space, but because of the way SD cards
                 work and how Linux writes to them, larger SD cards will have a lot longer usable life than
                 small ones. One odd downside is that the first boot will take a lot longer on a larger card,
