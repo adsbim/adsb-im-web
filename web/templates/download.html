@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% set active_page = "download" %}
+
+{% block title %}ADSB.im{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="container-sm">
+    <div class="row-xs justify-content-center mt-2 mb-1">
+        <div class="col-sm-auto">
+            <h3 class="mb-3">Downloads</h3>
+            <div class="mb-3">There are three principal ways to use this software.
+                <ol>
+                    <li>Using one of the fully integrated images.</li>
+                    <li>Using it as an integrated app on any DietPi system.</li>
+                    <li>Using it as a standalone application that can be installed on most Debian based systems.</li>
+                </ol>
+                This page is trying to point you at the right image to install if you want to take the first approach.
+                Initially this project supported a large number of SBCs, but it turned out that almost everyone was
+                running the software on a Raspberry Pi, with some using x86 virtualization (which does cause issues with
+                MLAT for most users). Due to this, the number of images offered has gone down accordingly.
+                <strong>Note:</strong> only use the configuration options from various <em>imaging</em> programs on the
+                images that support this (which usually is only the Raspbian images).
+                <br>At this point we offer the following images:
+                <ul>
+                    {# names are changing #}
+                    {% set rasp = "adsb-im-raspberrypi64-pi-2-3-4-5" %}
+                    {% set dietp234 = "adsb-im-raspberrypi64-dietpi-pi-2-3-4" %}
+                    {% set dietp5 = "adsb-im-raspberrypi64-dietpi-pi-5" %}
+                    <li>Raspbian based image for all 64bit capable <a
+                           href="https://github.com/dirkhh/adsb-feeder-image/releases/download/{{tag}}/{{rasp}}-{{tag}}.img.xz">Raspberry
+                            Pi</a> (so all Pi 3/4/5 models as well as Pi 2 v1.2 and Pi Zero 2 - but not Pi Zero)</li>
+                    <div class="ms-3 text-muted small">
+                        Also available (for people who know why they would want to run those):
+                        <li>DietPi based image for 64bit capable <a class="link-secondary small"
+                               href="https://github.com/dirkhh/adsb-feeder-image/releases/download/{{tag}}/{{dietp234}}-{{tag}}.img.xz">Raspberry
+                                Pi 2/3/4</a></li>
+                        <li>DietPi based image for <a class="link-secondary small"
+                               href="https://github.com/dirkhh/adsb-feeder-image/releases/download/{{tag}}/{{dietp5}}-{{tag}}.img.xz">Raspberry
+                                Pi 5</a></li>
+                    </div>
+                    <li>Raspbian image for <a
+                           href="https://github.com/dirkhh/adsb-feeder-image/releases/download/{{tag}}/adsb-im-lepotato-{{tag}}.img.xz">Libre
+                            Computing LePotato</a></li>
+                    <li>Armbian based images for <a
+                           href="https://github.com/dirkhh/adsb-feeder-image/releases/download/{{tag}}/adsb-im-lepotato-raspbian-{{tag}}.img.xz">Libre
+                            Computing LePotato</a> (no WiFi support)</li>
+                    <li>Armbian based images for <a
+                           href="https://github.com/dirkhh/adsb-feeder-image/releases/download/{{tag}}/adsb-im-odroidc4-{{tag}}.img.xz">Odroid
+                            C4</a> and <a
+                           href="https://github.com/dirkhh/adsb-feeder-image/releases/download/{{tag}}/adsb-im-odroidxu4-{{tag}}.img.xz">Odroid
+                            xu4</a> (no WiFi support)</li>
+                    <li>DietPi based images for <a
+                           href="https://github.com/dirkhh/adsb-feeder-image/releases/download/{{tag}}/adsb-im-nanopi-neo3-dietpi-{{tag}}.img.xz">NanoPi
+                            NEO3</a></li>
+                    <li>DietPi based images for <a
+                           href="https://github.com/dirkhh/adsb-feeder-image/releases/download/{{tag}}/adsb-im-orangepi-3lts-dietpi-{{tag}}.img.xz">Orange
+                            Pi 3 LTS</a>, <a
+                           href="https://github.com/dirkhh/adsb-feeder-image/releases/download/{{tag}}/adsb-im-orangepi-zero3-dietpi-{{tag}}.img.xz">Orange
+                            Pi Zero 3</a>, and <a
+                           href="https://github.com/dirkhh/adsb-feeder-image/releases/download/{{tag}}/adsb-im-orangepi-5plus-dietpi-{{tag}}.img.xz">Orange
+                            Pi 5 Plus</a></li>
+                    <li>DietPi based images for installation <a
+                           href="https://github.com/dirkhh/adsb-feeder-image/releases/{{tag}}">directly on
+                            x86-64 systems ("native")</a></li>
+                    <li>DietPi based images for various flavors of <a
+                           href="https://github.com/dirkhh/adsb-feeder-image/releases/{{tag}}">x86-64 VMs</a>:</li>
+                    <div class="ms-3 text-muted small">
+                        <li><a
+                                href="https://github.com/dirkhh/adsb-feeder-image/releases/download/{{tag}}/adsb-im-x86-64-vm-{{tag}}-VirtualBox-x86_64.ova.xz">Virtualbox (also works with VMware)</a>
+                        </li>
+                        <li><a
+                                href="https://github.com/dirkhh/adsb-feeder-image/releases/download/{{tag}}/adsb-im-x86-64-vm-{{tag}}-proxmox.tar.xz">Proxmox</a> &mdash;  please see the instructions in the <a href="https://github.com/dirkhh/adsb-feeder-image/tree/{{tag}}#for-advanced-users-wanting-to-run-this-image-on-x86-under-proxmox">Proxmox section</a> of the README for how to install this
+                        </li>
+                        <li><a
+                                href="https://github.com/dirkhh/adsb-feeder-image/releases/download/{{tag}}/adsb-im-x86-64-vm-{{tag}}-Hyper-V-x86_64.vhdx.xz">Hyper-V</a>
+                        </li>
+                    </div>
+                </ul>
+                Please note that the x86-64 images generally assume BIOS systems and have not been tested / are unlikely
+                to work in UEFI environments. The VM images also assume SATA disks.
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}

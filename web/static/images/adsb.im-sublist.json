@@ -1,0 +1,22 @@
+{
+  "os_list": [
+    {
+      "name": "ADS-B Feeder Image",
+      "description": "Simple to use ADS-B Feeder Image that allows you to feed most of the public ADS-B aggregators",
+      "url": "https://adsb.im/static/images/adsb-im-raspberrypi64-pi-2-3-4-5-v2.3.2.img.xz",
+      "icon": "https://adsb.im/static/images/adsb.im.icon.png",
+      "website": "https://adsb.im/home",
+      "release_date": "2024-03-12",
+      "extract_size": 2877292544,
+      "extract_sha256": "cb136c4e802e60d70a978d450ecdea37801e09171cae2eb7c0d261b3d31b45d5",
+      "image_download_size": 581748792,
+      "image_download_sha256": "01f3a4ca2294ad304585e7d8960db510430fac1e41f86782b35c8eb12c06629b",
+      "devices": [
+        "pi4-64bit",
+        "pi3-64bit",
+        "pi5-64bit"
+      ],
+      "init_format": "systemd"
+    }
+  ]
+}
