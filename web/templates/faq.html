@@ -51,17 +51,16 @@ page_content %}
           </h5>
           <div id="collapsehalfgig" class="accordion-collapse collapse" data-bs-parent="#FAQ">
             <div class="accordion-body">
-              That's a bit painful. Yes, you can get this to work, ideally with
-              the DietPi based image - which of course makes setting up WiFi a
-              bit more challenging. Additionally, I'd suggest getting it work
-              reliably just with some (or all) of the 'semi anonymous'
-              aggregators (so the first dozen or so in the list that are all
-              served by the same container on the feeder). And only adding
-              FlightAware, FlightRadar, Radarbox, and the other aggregators
-              below them one by one once you are happy that this still isn't
-              overwhelming your little SBC. Generally SBCs with 1GB (or more) of
-              memory create better results with this setup. <br />
-              But really, the better solution here is a <a href="/stage2">two stage setup</a>.
+              That used to be a bit painful but has gotten a lot better lately. With current versions
+              of the feeder image, 512MB is no longer a huge problem. I still recommend 1GB or more,
+              but you can absolutely run a feeder with 512MB and feed several aggregators.<br/>
+              The bigger issue with both the Pi 3 and and the Pi Zero 2 is that the hardware seems to be
+              somewhat less reliable than the Pi 4 - we get more reports of random crashes or other
+              strange issues. But if this is what you have, use a current image (I no longer prefer the
+              DietPi images - the regular (Raspbian based) image works just as well) and give it a go.<br/>
+              If you plan to feed many of the account based aggregators, it might still be worth looking
+              at a <a href="/stage2">two stage setup</a> where the Raspberry Pi just drives the SDR and
+              the actuall communication with the aggregators is done from a Stage 2 system.
             </div>
           </div>
         </div>
@@ -137,11 +136,11 @@ page_content %}
                 this doesn't work, try connecting to it via our redirector
                 service at <a href="https://my.adsb.im">my.adsb.im</a>.
               </div>
-              <div>
+              <div class="mb-2">
                 If none of this solves the problem, ask on the SDR-Enthusiast
                 Discord in the
                 <tt>#adsb-dot-im</tt> channel.
-              </div class="mb-2">
+              </div>
               <div>
                 A common question in the context of Troubleshooting is "How do I log in to the feeder?".
               </div>
@@ -175,11 +174,12 @@ page_content %}
               noticeable issues with mlat when running the Feeder Image in a VM.
               This is a known issue with USB passthrough into VMs. Some hints
               from Matthias Wirt on the topic are in this
-              <a href="https://github.com/wiedehopf/adsb-wiki/wiki/mlat-in-VMs">ADS-B Wiki page</a>.
+              <a href="https://github.com/wiedehopf/adsb-wiki/wiki/mlat-in-VMs">ADS-B Wiki page</a>.<br/>
+              If you are running on ProxMox, please follow the instructions in
+              the <a href="https://github.com/dirkhh/adsb-feeder-image?tab=readme-ov-file#for-advanced-users-wanting-to-run-this-image-on-x86-under-proxmox">ProxMox section of the README</a>.
             </div>
           </div>
         </div>
-
         <div class="accordion-item">
           <h5 class="accordion-header">
             <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -191,47 +191,8 @@ page_content %}
             <div class="accordion-body">
               <div class="mb-2">
                 WiFi is fully supported on Raspberry Pi boards, some other DietPi based images like the ones for
-                OrangePi boards also work. You can set up WiFi using the <a href="/hotspot">Hotspot</a> feature,
-                or you can set things up before inserting the SD card into your board. This process is described below.
-              </div>
-              <div class="mb-2">
-                If you are using a Raspbian based feeder image (that's the images
-                named <code>adsb-im-raspberrypi64-pi-2-3-4-5-v2.1.0.img.xz</code>), you can setup your
-                WiFi credentials with the Pi Imager as described on the
-                <a href=" howto">Howto</a> page.
-              </div>
-              <div class="mb-2">
-                If you are using a DietPi based image
-                <code>adsb-im-<board>-dietpi-...</code>, things are
-                unfortunatenly a little harder. Do
-                <em>NOT</em>
-                make any configuration settings in Pi Imager and instead write
-                an unmodified image to the µSD.
-                <div class="mb-2">
-                  Next mount the SD-card on your computer and edit two files
-                  (the exact location depends on your operating system - a drive
-                  letter on Windows,
-                  <code>/Volumes/ADSB-FEEDER</code> on macOS):
-                  <ul>
-                    <li>
-                      <b>dietpi.txt</b> set
-                      <b>AUTO_SETUP_NET_WIFI_ENABLED=1</b> and
-                      <b>AUTO_SETUP_NET_WIFI_COUNTRY_CODE=</b> to your correct
-                      two letter country code (e.g. US for the USA or DE for
-                      Germany).
-                    </li>
-                    <li>
-                      <b>dietpi-wifi.txt</b> set <b>aWIFI_SSID[0]=</b> to your
-                      SSID and <b>aWIFI_KEY[0]=</b> to the WPA key of your WiFi
-                      network.
-                    </li>
-                  </ul>
-                  Make sure both files are written back to the SD card, unmount it, plug it into your board and boot
-                  your SBC.
-                  <div class="mb-2">
-                    If should now automatically connect to your network.
-                  </div>
-                </div>
+                OrangePi boards also work. We strongly recommend setting up WiFi using the <a href="/hotspot">Hotspot</a>
+                feature.
               </div>
             </div>
           </div>
