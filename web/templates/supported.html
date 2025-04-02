@@ -12,14 +12,14 @@
     <div class="row justify-content-left mt-2 mb-1">
         <div class="col-md-auto">
             <h4 class="mb-2 mt-2">Supported Hardware</h4>
-            <div class="mb-2" id="sbcs">Supported Single Board Computers (SBCs)<br />
+            <h5 class="mb-2" id="sbcs">Supported Single Board Computers (SBCs)</h5>
+            <div class="mb-2">
                 <b>Most importantly</b>: you need a decent power supply. No, not a USB charger. An actual power supply
                 designed for a single board computer. For most RPi3 class boards you can get away with a 5V/2.5A
                 powersupply. For anything more powerful I recommend a 5V/4A power supply.<br />
                 Boards that are actively tested and should work:
                 <ul>
-                    <li>Raspberry Pi 4 or Pi 5 (the Pi 5 certainly is overkill and frankly has frequently been perceived
-                        as not 100% stable for this task; a Pi&nbsp;4 with 2G RAM will do just fine)</li>
+                    <li>Raspberry Pi 4 or Pi 5 (the Pi 5 certainly is overkill; a Pi&nbsp;4 with 1G RAM will do just fine)</li>
                     <li>Orange Pi Zero3 (currently my favorite when it comes to price / performance) -- but for just a
                         little more money you can get a 1GB Pi4 which is still preferable</li>
                     <li>Raspberry Pi Zero 2 W, Pi Model 3 A+/B(+) (note that a Raspberry Pi Zero W will NOT work; also,
@@ -37,14 +37,16 @@
                 Debian or Ubuntu Linux systems. Please note that installing the adsb.im software in a VM is known to
                 cause MLAT issues when the USB SDR is passed through to the VM.
             </div>
-            <div class="mb-2" id="sdrs">Supported Software Defined Radios (SDRs)
+            <h5 class="mb-2" id="sdrs">Supported Software Defined Radios (SDRs)</h5>
+            <div class="mb-2">
                 <ul>
                     <li>Airspy Mini (expensive, but by far the best supported SDR for ADS-B/1090MHz)</li>
+                    <li>NoName Chinese 1090MHz SDR (directly from AliExpress, also comes in various  branded versions like
+                        airplanes.live, airframes.io, ADSBexchange) -- this is a fairly good RTL SDR with 1090MHz filter
+                        and a low noise amplifier - and it's in a blue metal housing which really
+                        helps with heat dissipation and longevity</li>
                     <li>Rtl-Sdr.com v3 and v4 dongle (it appears that the v3 is slightly better for ADS-B use cases)
                     </li>
-                    <li>AdsbExchange (airplanes.live, airframes.io... this comes in several branded versions) blue stick
-                        (includes 1090MHz filter and a low noise amplifier - and it's in a metal housing which really
-                        helps with heat dissipation and longevity)</li>
                     <li>FlightAware pro stick (includes 1090MHz filter and a low noise amplifier - because of the
                         plastic housing I prefer the one above)</li>
                     <li>RadarBox green stick (includes 1090MHz filter and a low noise amplifier - this appears to be
@@ -55,28 +57,31 @@
                     <li>SDRplay RSP1a and RSP1b - other models might work as well</li>
                 </ul>
             </div>
-            <div class="mb-2" id="antennas">Antennas
+            <h5 class="mb-2" id="antennas">Antennas</h5>
+            <div class="mb-2">
                 <ul>
                     <li>You'll get by far the best results with an outdoor antenna mounted as high as possible (for good
                         visibility to the horizon)</li>
                     <li><a
-                           href="https://github.com/wiedehopf/adsb-scripts/wiki/Useful-items-for-purchase#good-cheap-starting-antenna-much-better-than-the-whip-antennas">Matthias
+                           href="https://github.com/wiedehopf/adsb-wiki/wiki/adsb-receiver-shopping-list#antenna-choices">Matthias
                             Wirth's wiki</a> has a great summary of some of the antenna options</li>
                 </ul>
             </div>
-            <div class="mb-2">Filters and LNAs (low noise amplifiers)
+            <h5 class="mb-2">Filters and LNAs (low noise amplifiers)</h5>
+            <div class="mb-2">
                 <ul>
                     <li>some of the recommended SDRs above already include filter and LNA</li>
                     <li>especially when investing in the Airspy Mini and a good outdoor antenna, a filtered LNA is a
                         very useful addition. Again, great info on <a
-                           href="https://github.com/wiedehopf/adsb-scripts/wiki/Useful-items-for-purchase#filtered-low-noise-amplifiers-lnas">Matthias'
+                           href="https://github.com/wiedehopf/adsb-wiki/wiki/adsb-receiver-shopping-list#high-performance-sdr--lna-combo">Matthias'
                             wiki</a></li>
                     <li>A cavity filter is the gold standard for filtering and makes a significant difference in very
                         noisy environments. None of the integrated SDRs have a cavity filter - those things are BIG.
                     </li>
                 </ul>
             </div>
-            <div class="mb-2" id="sdcards">SD cards (well, technically µSD cards)
+            <h5 class="mb-2" id="sdcards">SD cards (well, technically µSD cards)</h5>
+            <div class="mb-2">
                 <ul>
                     <li>While the software fits on an 8GB card, it's generally better to go for a larger card as that
                         extends the useful life of the card. Flash cells have a limited amount of write cycles and a
