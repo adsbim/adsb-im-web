@@ -1,2 +1,4 @@
 *.img.xz
 web/static/stats.log
+__pycache__/
+.cache

@@ -1,0 +1,92 @@
+site_name: ADSB.im
+repo_url: https://github.com/dirkhh/adsb-feeder-image
+site_description: ADS-B Feeder Image Help Site
+docs_dir: pages
+edit_uri: https://github.com/adsbim/adsb-im-web/edit/main/pages/
+
+nav:
+  - Home: index.md
+  - About: about.md
+  - FAQ: faq.md
+  - Hardware: hardware.md
+  - Howto: howto.md
+  - Videos: https://www.youtube.com/@adsb
+  - Using: using.md
+  - Download: download.md
+  - Stage2: stage2.md
+  - Advanced: advanced.md
+  - Privacy: privacy.md
+
+theme:
+  name: material
+  logo: assets/images/adsb.im.logo.png
+  custom_dir: pages/overrides
+  favicon: assets/images/favicon.ico
+  font:
+    text: Poppins
+  palette:
+    accent: red
+    primary: white
+
+  features:
+    - content.action.edit
+    - search.suggest
+    - search.highlight
+    - navigation.top
+    - navigation.tabs
+    - content.code.copy
+    - content.code.select
+    - content.tooltips
+
+  icon:
+    repo: fontawesome/brands/github
+    annotation: material/arrow-right-circle
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: 🔗
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - abbr
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+
+extra:
+  social:
+    - icon: simple/youtube
+      link: https://www.youtube.com/@adsb
+      name: Mastodon
+    - icon: simple/zulip
+      link: https://adsblol.zulipchat.com/#narrow/stream/391168-adsb-feeder-image
+      name: Zulip
+    - icon: simple/discord
+      link: https://discord.gg/vqvJXRAkJ4
+      name: Discord
+    - icon: simple/github
+      link: https://github.com/dirkhh/adsb-feeder-image
+      name: GitHub
+    - icon: simple/kofi
+      link: https://ko-fi.com/H2H2H3JS5
+      name: Ko-fi
+
+plugins:
+  - search
+  - git-revision-date
+  - privacy
+ 
+extra_css:
+  - stylesheets/custom.css
