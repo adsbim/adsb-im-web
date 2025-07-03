@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% set active_page = "home" %}
 
-{% block title %}ADSB.im{% endblock %}
+{% block title %}{% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %}{% endblock %}
 {% block head %}
 {{ super() }}
 
@@ -38,11 +38,22 @@
             <a href="http://planespotters.net/">Planespotters.net</a>,
             <a href="https://www.airnavradar.com/">AirNav Radar</a>,
             <a href="https://www.radarvirtuel.com/">Radar Virtuel</a>, and more!
+            </p>
+        </div>
+        <div class="mt-3 col-12">
+            <p>
+                The {% if 'adsb.im' in x_forwarded_host %}ADS-B{% else %}SDR{% endif %} Feeder Image started initially as a way
+                to make it easier to set up an ADS-B feeder - but by now it has expanded to support AIS (to track ships),
+                Sonde (to track weather balloons), and ACARS/VDL2/HFDL to receive data transmitions from aircraft to ground
+                stations. Each of these areas have their own aggregators, their own communities, and their own fascinations.
+                What they have in common is that with the Feeder Image it is very easy to get setup and get started.
+            </p>
         </div>
         <div class="my-3 col-12">
-            There are several ways to use the ADS-B Feeder Image, depending on where and how you want to run things.
-            When in doubt, the SBC Image should always be your first choice. That's what gets tested the most, what
-            typically is the easiest to use and has the fewest pitfalls.
+            There are several ways to install the {% if 'adsb.im' in x_forwarded_host %}ADS-B{% else %}SDR{% endif %} Feeder Image, depending on where and how you want to run things.
+            When in doubt, an Image for your Single Board Computer (SBC) should always be your first choice. That's what gets tested the most, what
+            typically is the easiest to use and has the fewest pitfalls. Most people appear to use Raspberry Pis for this purpose; several other
+            boards are also supported.
         </div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -72,9 +83,7 @@
                            href="/supported#sdcards">SD-card</a></li>
                     <li> Boot your SBC and wait a little while (depending on the model and the specific image this
                         usually takes a few minutes, but in some cases this can take 15 to 20 minutes)</li>
-                    <li> If you have wired Ethernet, or were able to configure WiFi using your Image writing software
-                        (pretty much only available for the Raspberry Pi image that isn't DietPi based - and even there
-                        this capability is rumored to go away) simply go to <a
+                    <li> If you have wired Ethernet, or after you have configured WiFi simply go to <a
                            href="http://adsb-feeder.local">http://adsb-feeder.local</a> or (if you
                         don't have working mDNS on your home network) to <a href="http://my.adsb.im">my.adsb.im</a>
                         which should redirect you to your new ADS-B feeder.</li>

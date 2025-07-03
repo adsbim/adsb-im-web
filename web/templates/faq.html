@@ -1,5 +1,5 @@
-{% extends "base.html" %} {% set active_page = "faq" %} {% block title
-%}ADSB.im{% endblock %} {% block head %} {{ super() }} {% endblock %} {% block
+{% extends "base.html" %} {% set active_page = "faq" %} {% block title %}{% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %}{% endblock %}
+{% block head %} {{ super() }} {% endblock %} {% block
 page_content %}
 <div class="container">
   <div class="row justify-content-left mt-2 mb-2">

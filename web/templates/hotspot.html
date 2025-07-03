@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% set active_page = "hotspot" %}
 
-{% block title %}Setting up WiFi for an ADSB.im Feeder{% endblock %}
+{% block title %}Setting up WiFi for an {% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %} Feeder{% endblock %}
 {% block head %}
 {{ super() }}
 

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% set active_page = "tailscale" %}
 
-{% block title %}Setting up Tailscale for an ADSB.im Feeder{% endblock %}
+{% block title %}Setting up Tailscale for an {% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %} Feeder{% endblock %}
 {% block head %}
 {{ super() }}
 
@@ -10,7 +10,7 @@
 {% block page_content %}
 <div class="container">
   <div class="row">
-    <h3 class="mb-4">Setting up Tailscale for an ADSB.im Feeder</h3>
+    <h3 class="mb-4">Setting up Tailscale for an {% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %} Feeder</h3>
     <h4 class="mt-2">What is Tailscale?</h4>
     <div class="col-12">Tailscale is one of several "free for personal use" site-to-site networking services (also known
       as VPN, Virtual Local Network and other confusing terms). Essentially, it allows you to connect multiple computers
@@ -34,7 +34,7 @@
       "Add Device". This will allow you to set up Tailscale on the computer that you are using to connect to the
       website. I recommend NOT doing this on your phone - that is possible, but a bit... painful to manage things
       with... a Windows / Mac / Linux system is the much better choice.</div>
-    <h4 class="mt-2">How do I connect my adsb.im feeder?</h4>
+    <h4 class="mt-2">How do I connect my {% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %} feeder?</h4>
     <div class="col-12">On the feeder homepage, select "Management" und der "System" menu item. There at the bottom
       you'll find the option to add this feeder to a tailnet (the network you created in the previous step). Click on
       the "Submit" button in the Add Tailscale section. This will reload the page and (once you scroll down again)

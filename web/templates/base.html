@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% if 'adsb.im' in x_forwarded_host %}
     <meta name="description" content="ADSB Feeder Image - Airplane Tracking Made Simple">
     <meta name="author" content="Dirk Hohndel">
     <meta property="og:title" content="ADSB Feeder Image">
@@ -13,7 +14,15 @@
     <meta property="og:type" content="website">
     <meta property="og:site-name" content="ADSB Feeder Image Website">
     <meta property="og:image" content="/static/images/adsb.im.og.image.png">
-
+    {% else %}
+    <meta name="description" content="SDRE Feeder Image - SDR Based Tracking Made Simple">
+    <meta name="author" content="Dirk Hohndel">
+    <meta property="og:title" content="SDRE Feeder Image">
+    <meta property="og:description" content="SDR Enthusiasts: SDR Based Tracking Made Simple">
+    <meta property="og:type" content="website">
+    <meta property="og:site-name" content="SDRE Feeder Image Website">
+    <meta property="og:image" content="/static/images/sdre.im.og.image.png">
+    {% endif %}
     <title>{% block title %}{% endblock %}</title>
 
     <!-- Bootstrap CSS CDN -->
@@ -36,13 +45,23 @@
             <div class="container">
                 <div class="row justify-content-center mt-2 mb-5">
                     <div class="col-auto">
+                        {% if 'adsb.im' in x_forwarded_host %}
                         <img src="/static/images/adsb.im.logo.png" width="128" height="128" alt="ADSB.im logo" />
+                        {% else %}
+                        <img src="/static/images/sdre.im.logo.png" width="128" height="128" alt="SDRE.im logo" />
+                        {% endif %}
                     </div>
                     <div class="col-auto">
+                        {% if 'adsb.im' in x_forwarded_host %}
                         <h1 class="red">ADSB.im</h1>
                         <h5>Simple to use <span class="red">ADSB</span> Feeder <span class="red">Im</span>ages<br />(not
                             just) for common Single Board Computers</h5>
-                    </div>
+                        {% else %}
+                        <h1 class="blue">SDRE.im</h1>
+                        <h5>Simple to use <span class="blue">SDR</span> Feeder <span class="blue">Im</span>ages<br />(not
+                            just) for common Single Board Computers</h5>
+                        {% endif %}
+                        </div>
                 </div>
             </div>
             {% block page_content %}
