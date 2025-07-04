@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% set active_page = "using" %}
 
-{% block title %}{% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %}{% endblock %}
+{% block title %}Using the {% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %} web interface{% endblock %}
 {% block head %}
 {{ super() }}
 
@@ -9,23 +9,93 @@
 
 {% block page_content %}
 <div class="container">
-    <h3 class="mb-4">Additional Options for the ADSB Feeder</h3>
+    <h3 class="mb-4">A detailed guide to using the web interface</h3>
     <h4>Introduction</h4>
     <div class="ml-1 mb-3">
-        In general, the basic setup should be sufficient for most use cases. The bare minimum
-        of information is entered on the <em>Basic Setup</em> page, aggregators can be selected on the
-        <em>Data Sharing</em> page.
+        In general, the basic setup should make it very quick to get you started. The bare minimum
+        of information is entered on the <em>Basic Setup</em> page, by default it assumes that you want
+        to track planes via ADS-B and it auto-assigns a single SDR for that purpose, and you can select
+        aggregators on the <em>Data Sharing</em> page.
     </div>
-    <h4>System: Backup / Restore</h4>
+    <div>
+        But of course there is a lot more that you can do - and this page is going to walk you through
+        a good chunk of the options. This was written with the <tt>v3.0.0</tt> version of the Feeder Image in mind
+        which has significant changes from earlier versions (and of course a newer version may once again be
+        different).
+    </div>
+    <h4>Feeder Homepage</h4>
     <div class="ml-1 mb-3">
-        You can backup the settings as well as the history of statistics on the <em>Backup</em> page.
-        Click one of the three Backup buttons and store the zip file on your computer. You can backup just the
-        configuration, include the graphs, or include the full history of data.
-        If needed, you can later go to the <em>Restore</em> page (for example after installing a newer Feeder Image on
-        your system) and restore the data. Once you upload the zip file you will be shown all files and folders that
-        differ from the running system and can choose which ones to restore.
+        On basically every page of the interface there is a link to the Feeder Homepage in the top left
+        corner - depending on the screen size that's either just a logo or a logo with the text <em>ADS-B Feeder</em>
+        or <em>SDR Feeder</em> next to it.
     </div>
-    <h4>Maps: Options</h4>
+    <h5>Menu bar</h5>
+    <div class="ml-1 mb-3">
+        On the home page you will see one or more buttons in the top menu bar that will take you to the various
+        map interfaces for ADS-B, ACARS, AIS, and RadioSonde (but only those that you have enabled will be shown).
+        Clicking on one of these buttons will get you to a protocol specific UI that isn't part of the
+        {% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %} web interface, but instead part
+        of the user interface for the underlying tools that we use in order to handle data for the various protocols.
+    </div>
+    <div class="ml-1 mb-3">
+        On the right side of the top menu bar there are more links to UI components - either as traditional menu
+        bar or collapsed to a <em>hamburger</em> menu on small screens. The first menu item gives you access to
+        more <em>Maps</em>, again, depending on the enabled protocols. Next to that the <em>Data Sharing</em> links
+        allows you to select the aggregators that you want to send data to.
+    </div>
+    <div class="ml-1 mb-3">
+        The Setup dropdown menu lets you get back to <em>Basic Settings</em>, setup the <em>SDRs</em> that are
+        connected to your system, or enter the secondary setup screen named <em>Expert</em>.
+    </div>
+    <div class="ml-1 mb-3">
+        Finally, the last element is the <em>System</em> dropdown menu. This is where you can get to the <em>Logs</em>
+        of the various services (most users never need those, but they are critical to debug some issues users may run into),
+        the <em>Support Info</em> that you will almost certainly be asked to provide when asking for help with an issue
+        and a way to share very detailed diagnostics with the developers using the <em>Share Diagnostics</em> item.
+    </div>
+    <div>
+        The <em>Management</em> menu item opens a system management UI that will be discussed in detail below.
+        <em>Backup</em> and <em>Restore</em> links are also in this menu, as well as the <em>Stats</em> link
+        that opens a screen with system statistics (this isn't available at the very start of the setup, yet).
+    </div>
+    <h5>Main sections of the home page</h5>
+    <div class="ml-1 mb-3">
+        For an ADS-B feeder, the first section of the Feeder Homepage shows you information about the data you
+        are receiving. The current number of positions and messages per second as well as the number of planes that
+        you are tracking right now as well as the number of planes total since midnight UTC. The choice of resetting
+        the daily number based on Universal Time (UTC) and not local time is based on the common practice of most
+        aggregators to use this to calculate daily planes tracked.
+    </div>
+    <div class="ml-1 mb-3">
+        Below that you'll see a graph that shows the number of planes tracked per (UTC) day (extending up to two
+        weeks). And below that you can see the aggregators that you have enabled
+        either with the selection of default account-less aggregators as part of Basic Setup, or with more detailed
+        selections on the <em>Data Sharing</em> page as well as their current status as seen by the feeder. This data
+        can take a few minutes to update and unfortunately isn't always correct as the aggregators don't always
+        manage to provide accurate information from their backend systems. For those aggregators where it is
+        reasonably easy to do so, a link to the aggregator's status page is also shown. An explanation of the various
+        status icons is below that table.
+    </div>
+    <div class="ml-1 mb-3">
+        The {% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %} Feeder Software allows you
+        to either update to a stable or beta version with convenient buttons on the Feeder Homepage. Below those
+        buttons is a toggle to show the ChangeLog information for these new releases. You can also set up your
+        system to automatically update when new versions become available. This setting can be found under
+        System -> Management.
+    </div>
+    <div class="ml-1 mb-3">
+        For an ADS-B feeder, below the update section are links to the various map options that are offered,
+        as well as links to specific personalized URLs from the various aggregatros (if any).
+    </div>
+    <div class="ml-1 mb-3">
+        Finally, on the bottom of each page there is a footer that shows the current version you are running,
+        information about the hardware you are running it on and how you initially installed the software, plus
+        links to the <a href="https://adsblol.zulipchat.com/#narrow/stream/391168-adsb-feeder-image">Zulip</a>
+        and <a href="https://discord.gg/7buWAFA28H">Discord</a> channels where you can find people to talk to about
+        this software.
+    </div>
+    <h4>Maps</h4>
+    <h5>Maps: Options</h4>
     <div class="ml-1 mb-3">
         On the <em>Map Options</em> page you are offered a few ways to adjust what you see when showing the live map
         <ul>
@@ -40,61 +110,148 @@
                 of data, so things will reset on their own after a day.</li>
         </ul>
     </div>
+    <div class="ml-1 mb-3">
+        <tt>[to be completed]</tt>
+    </div>
     <h4>Data Sharing</h4>
     <div class="ml-1 mb-3">
-        On the <em>Data Sharing</em> page you are adjusting how your data is shared with aggregators.<br />
-        By default, <em>MLAT privacy</em> is not enabled, which allows (a rough estimate of the location of)your site to
+        On the <em>Data Sharing</em> page you are adjusting how your data is shared with aggregators. The options available
+        here depend on which protocols you have enabled.
+    </div>
+    <div class="ml-1 mb-3">
+        For ADS-B, by default, <em>MLAT privacy</em> is not enabled, which allows (a rough estimate of the location of) your site to
         be shown on typical <a href="https://mlat.adsb.lol/syncmap">MLAT coverage maps</a>. Turning this on
         informs the aggregators that you would like to opt out of having your data shown on such maps.<br />
-        The rest of this page is used to select the aggregators you want to feed. The first group are the semi-anonymous
+        The rest of this page is used to select the aggregators you want to feed. The first group are the account-less
         aggregators that don't require any authentication. Below them are the various commercial and non-commercial
         aggregators for which you need some kind of sharing key or similar. For many of them, getting those key is
         automated, others require some extra steps -- see the help texts in the UI.
     </div>
-    <h4>Setup: SDR</h4>
     <div class="ml-1 mb-3">
-        On the <em>SDR</em> setup page you are offered some additional options, some of which depend on
-        your hardware.
-        <ul>
-            <li>By default, <em>automatic gain</em> is enabled for your SDR. You most likely don't want to
-                change this if you are using an airspy SDR, but with traditional RTL SDRs this can be useful
-                if the manual auto gain process is getting stuck or is taking too long to find an acceptable
-                value</li>
-            <li>If you are using an LNA or some other device that requires power via bias-T (assuming your SDR
-                supports this setting), you can turn this on here.</li>
-            <li>If you have more than one SDR connected to your feeder SBC, there will be a selection below this
-                to assign each SDR its role. This is commonly needed when supporting both standard ADS-B at 1090MHz
-                as well as the US-only UAT at 978MHZ.</li>
-        </ul>
+        For ACARS, VDL2, and HFDL, there are only a few choices available.
+    </div>
+    <div class="ml-1 mb-3">
+        For AIS there are a larger number of both community based and commercial options available.
+    </div>
+    <div class="ml-1 mb-3">
+        For RadioSonde at this point there appears to be only one interesting aggregator
+        <a href="https://sondehub.org">SondeHub</a> which is enabled by default and not shown on this page.
+    </div>
+
+    <div class="ml-1 mb-3">
+        <tt>[to be completed]</tt>
+    </div>
+    <h4>Setup</h4>
+    <div class="ml-1 mb-3">
+        <tt>[to be completed]</tt>
+    </div>
+    <h5>SDR</h4>
+    <div class="ml-1 mb-3">
+        On the <em>SDR</em> setup page you can assign the SDRs found in your system to the enabled protocols.
+        By default only ADS-B is assumed as enabled, you can add support for additional protocols in the
+        <em>Expert</em> settings below.
+    </div>
+    <div class="ml-1 mb-3">
+        For each of the SDRs, you can click on its entry in the table and then select which protocol it is
+        used for and (depending on the type of SDR and the sepecific usage) select values for gain and
+        potentially enable biastee support. Note that generally only one SDR can be used for each protocol,
+        so assigning an SDR to a protocol that was already assigned to a different SDR will change the assignment
+        of that previous SDR to "other".
+    </div>
+    <div class="ml-1 mb-3">
+        Once all SDRs have been assigned, you <em>must</em> click on the "Apply Settings" button to actually
+        apply the changes.
     </div>
     <h4>Setup: Expert</h4>
     <div class="ml-1 mb-3">
-        On the <em>Expert</em> page you will find some more advanced settings
-        <ul>
-            <li>In some very unusual circumstances you may want to be able to add extra arguments for the
-                Ultrafeeder, e.g., if you are feeding a "standard aggregator" that accelpts beast input but
-                for whatever reason isn't supported by the web UI.</li>
-            <li>While in most circumstances you shouldn't need to to access the adsb feeder SBC
-                directly, if this is something you want to be able to do, here is where you enter the public
-                key of an ssh key-pair which will allow you to log in as root.</li>
-            <li>Conversly, if you want to slightly reduce the attack surface of your SBC (for example if it is
-                installed on someone else's premises), you can remove some obvious attack vectors that would
-                allow someone else to take over your feeder. This is not the same as truly hardening the image;
-                you should assume that someone with access to the hardware will be able to remove the µSD
-                card which will allow them to get access to the system.</li>
-            <li>There are also options that allow you to shutdown or reboot your SBC. Please note that there are several
-                scenarios where an SBC will not successfully reboot (or not turn of power on shutdown). Please
-                test this capability before relying on it.</li>
-            <li>The feeder can be set up to update its base OS, the containers that implement the feeder functionality
-                as well as the feeder application (i.e. the web UI that controls the device) automatically.</li>
-            <li>You can also trigger the feeder app updates manually from this page.</li>
-            <li>Finally, you can add your feeder system to a ZeroTier or Tailscale global area network in order to be
-                able to access it remotely. Enter the network ID here (you have to set this up at the
-                <a href="zerotier.com">ZeroTier website</a>, first), or connect to your pre-existing Tailscale network.
-            </li>
-        </ul>
-        As the title indicates, the options here are generally for people who are somewhat more familiar with the setup
-        of a feeder system, so they are not fully explained in this guide.
+        On the <em>Expert</em> page you will find some more advanced settings.
+    </div>
+    <div class="ml-1 mb-3">
+        In some very unusual circumstances you may want to be able to add extra arguments for the
+        Ultrafeeder, e.g., if you are feeding a "standard aggregator" that accelpts beast input but
+        for whatever reason isn't supported by the web UI.
+    </div>
+    <div class="ml-1 mb-3">
+        Similarly, if you want to access some features that don't have UI elements to support them,
+        sometimes you can enable them using specific environment variables -- definitely an expert
+        use case. Along the same lines you can add default arguments for the ADS-B live map.
+    </div>
+    <div class="ml-1 mb-3">
+        If you use a Raspberry Pi SBC and have connected a DHT22 temperature sensor to its GPIO pins,
+        you can enable ambient temperature reporting.
+    </div>
+    <div class="ml-1 mb-3">
+        If you want to share your ADS-B live map with others (generally only recommended if you
+        really understand the potentially unintended consequences - hence, again, an expert use
+        case), you can disable the config link on the ADS-B live map.
+    </div>
+    <div class="ml-1 mb-3">
+        You can switch the CSS Theme from the default that tries to match your current browse theme
+        to light or dark.
+    </div>
+    <div class="ml-1 mb-3">
+        For very specific situations with limited bandwidth networks, you can diable parallel
+        downloads of Docker containers.
+    </div>
+    <div class="ml-1 mb-3">
+        Finally, you can enable the various non-ADS-B protocols.
+        <tt>[to be completed]</tt>
+    </div>
+
+    <h4>System</h4>
+    <h5>Management</h5>
+    <div class="ml-1 mb-3">
+        While in most circumstances you shouldn't need to to access the adsb feeder system
+        directly, if this is something you want to be able to do, here is where you enter the public
+        key of an ssh key-pair which will allow you to log in as root or where you can set the root
+        password of the feeder system to a random value that is displayed in the web interface.
+    </div>
+    <div class="ml-1 mb-3">
+        Conversly, if you want to slightly reduce the attack surface of your system (for example if it is
+        installed on someone else's premises), you can remove some obvious attack vectors that would
+        allow someone else to take over your feeder. This is not the same as truly hardening the image;
+        you should assume that someone with access to the hardware will be able to remove the µSD
+        card which will allow them to get access to the system.
+    </div>
+    <div class="ml-1 mb-3">
+        There are also options that allow you to shutdown or reboot your SBC. Please note that there are several
+        scenarios where an SBC will not successfully reboot (or not turn of power on shutdown). Please
+        test this capability before relying on it.
+    </div>
+    <div class="ml-1 mb-3">
+        The feeder can be set up to update its base OS and / or the feeder software (i.e. the web UI that controls
+        the system) automatically. You can also trigger the OS or feeder software updates manually from this page.
+    </div>
+    <div class="ml-1 mb-3">
+        In situations where one of the underlying containers isn't restarted when needed, you can manually
+        restart or recreate either all or a subset of the running containers.
+    </div>
+    <div class="ml-1 mb-3">
+        You can add your feeder system to a ZeroTier or Tailscale global area network in order to be
+        able to access it remotely. Enter the network ID here (you have to set this up at the
+        <a href="zerotier.com">ZeroTier website</a>, first), or connect to your pre-existing Tailscale network.
+    </div>
+    <div class="ml-1 mb-3">
+        You can reconfigure the system's WiFi network if it will be moved to a new location with a different
+        SSID and password.
+    </div>
+    <div class="ml-1 mb-3">
+        While some of these options will be useful to most users, some of them are targeting users who are
+        somewhat more familiar with the setup of a Linux system. When in doubt, please ask on one of the
+        forums for guidance and help.
+    </div>
+
+    <div class="ml-1 mb-3">
+        <tt>[to be completed]</tt>
+    </div>
+    <h5>Backup / Restore</h4>
+    <div class="ml-1 mb-3">
+        You can backup the settings as well as the history of statistics on the <em>Backup</em> page.
+        Click one of the three Backup buttons and store the zip file on your computer. You can backup just the
+        configuration, include the graphs, or include the full history of data.
+        If needed, you can later go to the <em>Restore</em> page (for example after installing a newer Feeder Image on
+        your system) and restore the data. Once you upload the zip file you will be shown all files and folders that
+        differ from the running system and can choose which ones to restore.
     </div>
 </div>
 {% endblock %}
