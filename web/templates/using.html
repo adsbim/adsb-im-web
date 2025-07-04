@@ -105,18 +105,30 @@
     <h4 class="mt-3">Maps</h4>
     <h5>Maps: Options</h4>
     <div class="ml-1 mb-3">
-        On the <em>Map Options</em> page you are offered a few ways to adjust what you see when showing the live map
-        <ul>
-            <li>By default, the ADSB Feeder Image shows the best open data guess for the route information
-                of the planes shown in the tar1090 user interface. If you don't want this information, you
-                can turn it off here.</li>
-            <li>If you want the theoretical range of an ideal antenna at your location shown in the tar1090
-                user interfacem, you can use <a href="https://www.heywhatsthat.com/">HeyWhatsThat</a> to create
-                an ID that will be used to provide that visualization.</li>
-            <li>If you want to reset the actual range outline of the planes that you have received data from, there's
-                also an option to do that here. Note that the range outline by default always tracks the last 24 hours
-                of data, so things will reset on their own after a day.</li>
-        </ul>
+        On the <em>Map Options</em> page you are offered a few ways to adjust what you see when showing the
+        ADS-B live map.
+    </div>
+    <div class="ml-1 mb-3">
+        By default, the ADSB Feeder Image shows the best (open data based) guess for the route information
+        of the planes shown in the live map user interface. Currently this data is created on the ADSB.im backend
+        server by analyzing historical data from aggregators and parsing the live ACARS and VDL2 messages collected by
+        <a href="airframes.io">airframes.io</a>. If you don't want the route information shown on the live map, you
+                can turn it off here.
+    </div>
+    <div class="ml-1 mb-3">
+        Based on your location and elevation of the antenna it is possible to create a fairly accurate model for how
+        far away a good ADS-B receiver can "see" planes, depending on their altitude.
+        The <a href="https://www.heywhatsthat.com/">HeyWhatsThat</a> website allows you to create outlines for this
+        theoretical range of an ideal antenna at your location. This outline is theoretical as it doesn't include
+        real world obstructions like buildings or large trees in its calculations, but it's usually a good
+        enough approximation. If you want to create such a range outline and have it displayed on the live map,
+        go to <a href="https://www.heywhatsthat.com/">HeyWhatsThat</a>, enter your location and create an ID which
+        you can then enter here.
+    </div>
+    <div class="ml-1 mb-3">
+        The live map will also show a range outline that shows you the area around your location where you have received
+        plane data from. If you want to reset that "actual range" outline, there's an option to do that here.
+        Note that the range outline by default always tracks the last 24 hours of data, so things will reset on their own after a day.
     </div>
     <div class="ml-1 mb-3">
         <tt>[to be completed]</tt>
