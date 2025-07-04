@@ -130,9 +130,6 @@
         plane data from. If you want to reset that "actual range" outline, there's an option to do that here.
         Note that the range outline by default always tracks the last 24 hours of data, so things will reset on their own after a day.
     </div>
-    <div class="ml-1 mb-3">
-        <tt>[to be completed]</tt>
-    </div>
     <h4 class="mt-3">Data Sharing</h4>
     <div class="ml-1 mb-3">
         On the <em>Data Sharing</em> page you are adjusting how your data is shared with aggregators. The options available
@@ -163,9 +160,10 @@
     </div>
     <h4 class="mt-3">Setup</h4>
     <div class="ml-1 mb-3">
-        <tt>[to be completed]</tt>
+        The <em>Basic Setup</em> item brings you back to the initial setup - useful if you want to change the name of
+        your site or if you move the antenna and need to adjust the location.
     </div>
-    <h5>SDR</h4>
+    <h5>SDR</h5>
     <div class="ml-1 mb-3">
         On the <em>SDR</em> setup page you can assign the SDRs found in your system to the enabled protocols.
         By default only ADS-B is assumed as enabled, you can add support for additional protocols in the
@@ -182,7 +180,7 @@
         Once all SDRs have been assigned, you <em>must</em> click on the "Apply Settings" button to actually
         apply the changes.
     </div>
-    <h4>Setup: Expert</h4>
+    <h5>Setup: Expert</h5>
     <div class="ml-1 mb-3">
         On the <em>Expert</em> page you will find some more advanced settings.
     </div>
@@ -223,46 +221,46 @@
     <div class="ml-1 mb-3">
         While in most circumstances you shouldn't need to to access the adsb feeder system
         directly, if this is something you want to be able to do, here is where you enter the public
-        key of an ssh key-pair which will allow you to log in as root or where you can set the root
-        password of the feeder system to a random value that is displayed in the web interface.
+        key of an <span class="fw-semibold">ssh</span> key-pair which will allow you to log in as root or where you can set the
+        <span class="fw-semibold">root password</span> of the feeder system to a random value that is displayed in the web interface.
     </div>
     <div class="ml-1 mb-3">
         Conversly, if you want to slightly reduce the attack surface of your system (for example if it is
         installed on someone else's premises), you can remove some obvious attack vectors that would
-        allow someone else to take over your feeder. This is not the same as truly hardening the image;
+        allow someone else to take over your feeder by selecting <span class="fw-semibold">Secure Feeder System</span>.
+        This is not the same as truly hardening the image;
         you should assume that someone with access to the hardware will be able to remove the µSD
         card which will allow them to get access to the system.
     </div>
     <div class="ml-1 mb-3">
-        There are also options that allow you to shutdown or reboot your SBC. Please note that there are several
+        There are also options that allow you to <span class="fw-semibold">shutdown</span> or
+        <span class="fw-semibold">reboot</span> your system. Please note that there are several
         scenarios where an SBC will not successfully reboot (or not turn of power on shutdown). Please
         test this capability before relying on it.
     </div>
     <div class="ml-1 mb-3">
         The feeder can be set up to update its base OS and / or the feeder software (i.e. the web UI that controls
-        the system) automatically. You can also trigger the OS or feeder software updates manually from this page.
+        the system) automatically. You can also trigger the OS or feeder <span class="fw-semibold">software updates</span>
+        manually from this page.
     </div>
     <div class="ml-1 mb-3">
-        In situations where one of the underlying containers isn't restarted when needed, you can manually
-        restart or recreate either all or a subset of the running containers.
+        In situations where one of the underlying <span class="fw-semibold">containers</span> isn't restarted when needed, you can manually
+        <span class="fw-semibold">restart or recreate</span> either all or a subset of the running containers.
     </div>
     <div class="ml-1 mb-3">
-        You can add your feeder system to a ZeroTier or Tailscale global area network in order to be
+        You can add your feeder system to a <span class="fw-semibold">ZeroTier</span> or <span class="fw-semibold">Tailscale</span>
+        global area network in order to be
         able to access it remotely. Enter the network ID here (you have to set this up at the
         <a href="zerotier.com">ZeroTier website</a>, first), or connect to your pre-existing Tailscale network.
     </div>
     <div class="ml-1 mb-3">
-        You can reconfigure the system's WiFi network if it will be moved to a new location with a different
+        You can reconfigure the system's <span class="fw-semibold">WiFi</span> network if it will be moved to a new location with a different
         SSID and password.
     </div>
     <div class="ml-1 mb-3">
         While some of these options will be useful to most users, some of them are targeting users who are
         somewhat more familiar with the setup of a Linux system. When in doubt, please ask on one of the
         forums for guidance and help.
-    </div>
-
-    <div class="ml-1 mb-3">
-        <tt>[to be completed]</tt>
     </div>
     <h5>Backup / Restore</h4>
     <div class="ml-1 mb-3">
