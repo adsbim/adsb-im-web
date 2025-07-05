@@ -36,7 +36,8 @@
     <h5>Menu bar</h5>
     <div class="ml-1 mb-3">
         On the home page you will see one or more buttons in the top menu bar that will take you to the various
-        map interfaces for ADS-B, ACARS, AIS, and RadioSonde (but only those that you have enabled will be shown).
+        map interfaces for <a href="/faq#collapseADSB">ADS-B</a>, <a href="/faq#collapseACARS">ACARS</a>,
+        <a href="/faq#collapseAIS">AIS</a>, and <a href="/faq#collapseRadiosonde">Radiosonde</a> (but only those that you have enabled will be shown).
         Clicking on one of these buttons will get you to a protocol specific UI that isn't part of the
         {% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %} web interface, but instead part
         of the user interface for the underlying tools that we use in order to handle data for the various protocols.
@@ -226,20 +227,20 @@
         near Frankfurt International Airport.
     </div>
     <div class="ml-1 mb-3">
-        <span class="fw-semibold">ACARS</span> supports two different instances (with separate feed IDs) as in some geographies
+        <a href="/faq#collapseACARS">ACARS</a> supports two different instances (with separate feed IDs) as in some geographies
         (mostly the US) there are more ACARS frequencies in use than a single SDR can cover. The default frequencies for the
         two ACARS instances are designed that the first one by default covers all the common frequencies around the world, and
         the second one covers the frequencies below 130MHz that are mainly seen in the US (and even there they are not very
         common). So for most people having just one ACARS decoder is likely sufficient.
     </div>
     <div class="ml-1 mb-3">
-        <span class="fw-semibold">VDL Mode 2</span> (or VDL2) is the more modern, digital protocol for airplane messaging.
+        <a href="/faq#collapseVDL2">VDL Mode 2</a> (or VDL2) is the more modern, digital protocol for airplane messaging.
         In many areas (especially in Europe) VDL2 has surpassed analog ACARS messages in terms of message volume, but in
         other areas ACARS may still get you more messages. A single antenna with two SDRs can cover both VDL2 and ACARS.
         Once again, the default frequencies are most likely sufficient for most people.
     </div>
     <div class="ml-1 mb-3">
-        <span class="fw-semibold">HFDL</span> is operating at much lower frequencies than ACARS and VDL2 and therefore
+        <a href="/faq#collapseHFDL">HFDL</a> is operating at much lower frequencies than ACARS and VDL2 and therefore
         definitely requires its own antenna - but on the flip side you typically can receive messages from significantly
         further away as HF radio signals tend to get reflected and follow the curvature of earth to some degree.
         The Feeder Image supports two primary ways to receive HFDL messages: first with a standard SDR
@@ -261,11 +262,11 @@
         for more than half an hour.
     </div>
     <div class="ml-1 mb-3">
-        Next, you can enable <span class="fw-semibold">AIS / Shipfeeder</span> to track ships and their positions. Shipfeeder comes with
+        Next, you can enable <a href="/faq#collapseAIS">AIS / Shipfeeder</a> to track ships and their positions. Shipfeeder comes with
         its own map, but once you have it enabled there's also an option to show the ships on the ADS-B live map.
     </div>
     <div class="ml-1 mb-3">
-        Finally, you can enable <span class="fw-semibold">Radio Sonde</span>. For this protocol it is more typical to not use the
+        Finally, you can enable <a href="/faq#collapseRadiosonde">Radio Sonde</a>. For this protocol it is more typical to not use the
         nearest airport and your initials but instead your ham radio callsign as identifier (but since no ham radio certification is
         required to run this service, you can always go back to <tt>initials-airport</tt> as identifier). Enter the frequency range
         on which weather balloons broadcast their data in your local area and decide whether you want to have your data shown on
