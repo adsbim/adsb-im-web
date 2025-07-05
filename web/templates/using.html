@@ -182,40 +182,95 @@
     </div>
     <h5>Setup: Expert</h5>
     <div class="ml-1 mb-3">
-        On the <em>Expert</em> page you will find some more advanced settings.
+        On the <em>Expert</em> page you will find some more advanced settings. There are two main sections: first
+        the odd settings that will be fairly specific to certain users, and then the section that allows you to
+        enable non-ADS-B protocols. Arguably the "Expert" page is maybe not the most logical place to enable
+        these features, but for now that's where they are.
     </div>
     <div class="ml-1 mb-3">
-        In some very unusual circumstances you may want to be able to add extra arguments for the
+        In some very unusual circumstances you may want to be able to add
+        <span class="fw-semibold">additional arguments</span> for the
         Ultrafeeder, e.g., if you are feeding a "standard aggregator" that accelpts beast input but
         for whatever reason isn't supported by the web UI.
     </div>
     <div class="ml-1 mb-3">
         Similarly, if you want to access some features that don't have UI elements to support them,
-        sometimes you can enable them using specific environment variables -- definitely an expert
-        use case. Along the same lines you can add default arguments for the ADS-B live map.
+        sometimes you can enable them using specific
+        <span class="fw-semibold">environment variables</span> -- definitely an expert
+        use case. Along the same lines you can add default <span class="fw-semibold">arguments for the ADS-B live map</span>.
     </div>
     <div class="ml-1 mb-3">
-        If you use a Raspberry Pi SBC and have connected a DHT22 temperature sensor to its GPIO pins,
+        If you use a Raspberry Pi SBC and have connected a <span class="fw-semibold">DHT22 temperature sensor</span> to its GPIO pins,
         you can enable ambient temperature reporting.
     </div>
     <div class="ml-1 mb-3">
         If you want to share your ADS-B live map with others (generally only recommended if you
         really understand the potentially unintended consequences - hence, again, an expert use
-        case), you can disable the config link on the ADS-B live map.
+        case), you can <span class="fw-semibold">disable the config link on the ADS-B live map</span>.
     </div>
     <div class="ml-1 mb-3">
-        You can switch the CSS Theme from the default that tries to match your current browse theme
+        You can switch the <span class="fw-semibold">CSS Theme</span> from the default that tries to match your current browse theme
         to light or dark.
     </div>
     <div class="ml-1 mb-3">
-        For very specific situations with limited bandwidth networks, you can diable parallel
-        downloads of Docker containers.
+        For very specific situations with limited bandwidth networks, you can <span class="fw-semibold">disable parallel
+            downloads of Docker containers</span>.
     </div>
     <div class="ml-1 mb-3">
-        Finally, you can enable the various non-ADS-B protocols.
-        <tt>[to be completed]</tt>
+        Finally, as mentioned above, you can enable the various <span class="fw-semibold">non-ADS-B protocols</span>. Each of these
+        need to first be enabled clicking the corresponding "Enable" button, and then you can set the corresponding
+        <span class="fw-semibold">feed IDs</span> for each protocol -- these IDs are required as they are used to identify the
+        feed for the respective aggregators. The most common convention for these feed IDs is to use your initials (two or three
+        letters) followed by the ICAO code of the closest airport followed by the protocol you are sending (and a number to distinguish
+        multiple instances if necessary). For example <tt>AM-EDDF-VDL2</tt> for a hypothetical Andreas Müller sending VDL2 messages
+        near Frankfurt International Airport.
     </div>
-
+    <div class="ml-1 mb-3">
+        <span class="fw-semibold">ACARS</span> supports two different instances (with separate feed IDs) as in some geographies
+        (mostly the US) there are more ACARS frequencies in use than a single SDR can cover. The default frequencies for the
+        two ACARS instances are designed that the first one by default covers all the common frequencies around the world, and
+        the second one covers the frequencies below 130MHz that are mainly seen in the US (and even there they are not very
+        common). So for most people having just one ACARS decoder is likely sufficient.
+    </div>
+    <div class="ml-1 mb-3">
+        <span class="fw-semibold">VDL Mode 2</span> (or VDL2) is the more modern, digital protocol for airplane messaging.
+        In many areas (especially in Europe) VDL2 has surpassed analog ACARS messages in terms of message volume, but in
+        other areas ACARS may still get you more messages. A single antenna with two SDRs can cover both VDL2 and ACARS.
+        Once again, the default frequencies are most likely sufficient for most people.
+    </div>
+    <div class="ml-1 mb-3">
+        <span class="fw-semibold">HFDL</span> is operating at much lower frequencies than ACARS and VDL2 and therefore
+        definitely requires its own antenna - but on the flip side you typically can receive messages from significantly
+        further away as HF radio signals tend to get reflected and follow the curvature of earth to some degree.
+        The Feeder Image supports two primary ways to receive HFDL messages: first with a standard SDR
+        and a frequency scanning script that is integrated and usually does a fairly good job identifying the right frequencies to
+        listen on. So again, leaving frequencies unset is likely the best starting point. You do need to set a different sample
+        rate depending on your SDR. Typical RTLSDRs are handled automatically, for an Airspy you need to enter
+        <span class="fw-semibold">3000000</span>.
+    </div>
+    <div class="ml-1 mb-3">
+        The other option for receiving HFDL messages is to use <span class="fw-semibold">hfdlobvserver</span>, which requires
+        access to a <a href="https://www.rx-888.com/">web-888</a> SDR on your local network. This is definitely a bit of a
+        corner case, but integrating this into the image wasn't too hard and one of the maintainers of this software happens
+        to own a couple of web-888s.
+    </div>
+    <div class="ml-1 mb-3">
+        If any of the preceding ACARS / VDL2 / HFDL protocols are enabled, you can also enable <span class="fw-semibold">acars2pos</span>
+        which will show the position of some of the airplanes from which data was received on the ADS-B live map of your system. The
+        planes will not have altitude information, they will show up as white outlines, and they will remain in the last position received
+        for more than half an hour.
+    </div>
+    <div class="ml-1 mb-3">
+        Next, you can enable <span class="fw-semibold">AIS / Shipfeeder</span> to track ships and their positions. Shipfeeder comes with
+        its own map, but once you have it enabled there's also an option to show the ships on the ADS-B live map.
+    </div>
+    <div class="ml-1 mb-3">
+        Finally, you can enable <span class="fw-semibold">Radio Sonde</span>. For this protocol it is more typical to not use the
+        nearest airport and your initials but instead your ham radio callsign as identifier (but since no ham radio certification is
+        required to run this service, you can always go back to <tt>initials-airport</tt> as identifier). Enter the frequency range
+        on which weather balloons broadcast their data in your local area and decide whether you want to have your data shown on
+        the <a href="https://sondehub.org">sondehub</a> website.
+    </div>
     <h4 class="mt-3">System</h4>
     <h5>Management</h5>
     <div class="ml-1 mb-3">
