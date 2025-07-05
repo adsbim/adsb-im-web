@@ -8,16 +8,103 @@ page_content %}
       <div class="accordion" id="FAQ">
         <div class="accordion-item">
           <h5 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePrivacy"
-                    aria-expanded="false" aria-controls="collapsePrivacy">
-              What's your privacy and data policy?
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseADSB"
+                    aria-expanded="false" aria-controls="collapseSupported">
+              What is ADS-B?
             </button>
           </h5>
-          <div id="collapsePrivacy" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+          <div id="collapseADSB" class="accordion-collapse collapse" data-bs-parent="#FAQ">
             <div class="accordion-body">
-              It's simple, no data of yours is stored for more than 60 seconds.
-              The full details are of course in our
-              <a href="/privacy">Privacy Policy</a>
+              ADS-B or <a href="https://en.wikipedia.org/wiki/ADSB">Automatic Dependent Surveillance Broadcast</a>
+              is a form of electronic conspicuity in which an aircraft determines its position via satellite navigation or
+              other sensors and periodically broadcasts its position and other related data, enabling it
+              to be tracked. The information can be received with a simple SDR and antenna on the ground.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseACARS"
+                    aria-expanded="false" aria-controls="collapseSupported">
+              What is ACARS?
+            </button>
+          </h5>
+          <div id="collapseACARS" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              ACARS or <a href="https://en.wikipedia.org/wiki/ACARS">Aircraft Communications Addressing and Reporting System</a>
+              is a digital data communication system for transmission of short messages between aircraft and ground stations.
+              The information can be received with a simple SDR and antenna on the ground.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVDL2"
+                    aria-expanded="false" aria-controls="collapseSupported">
+              What is VDL2?
+            </button>
+          </h5>
+          <div id="collapseVDL2" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              VDL2 or sometimes VDLM2 stands for <a href="https://en.wikipedia.org/wiki/VHF_Data_Link">VHF Data Link</a>.
+              It is also a digital data communication system for transmission of short messages between aircraft and ground stations.
+              Since 2014 it has been mandatory for all new aircraft in Europe and is also widely used globally as more modern alternative
+              to ACARS. The information can be received with a simple SDR and antenna on the ground.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHFDL"
+                    aria-expanded="false" aria-controls="collapseSupported">
+              What is HFDL?
+            </button>
+          </h5>
+          <div id="collapseHFDL" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              HFDL or <a href="https://en.wikipedia.org/wiki/High_Frequency_Data_Link">High Frequency Data Link</a> is yet another
+              communications medium used to exchange data such as Aeronautical Operational
+              Control (AOC) messages, Controller Pilot Data Link Communications (CPDLC) messages and Automatic Dependent Surveillance
+              (ADS) messages between aircraft and corresponding ground stations. Using the unique propagation characteristics of
+              high-frequency radio waves, HFDL data can usually be received over much longer distances than ACARS or VDL2 messages.
+              Just like for those protocols, the information can be received with a simple SDR and antenna on the ground.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAIS"
+                    aria-expanded="false" aria-controls="collapseSupported">
+              What is AIS?
+            </button>
+          </h5>
+          <div id="collapseAIS" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              AIS or <a href="https://en.wikipedia.org/wiki/Automatic_Identification_System">Automatic Identification System</a>
+              is an automatic tracking system that uses transceivers on ships. It is similar to ADS-B in its nature, but the
+              technical implementation is different.
+              The information can be received with a simple SDR and antenna within a relatively shorter distance from the sender
+              (as ships by their nature tend to be closer to sea level and therefor the line of sight limitations become more relevant).
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRadiosonde"
+                    aria-expanded="false" aria-controls="collapseSupported">
+              What is Radiosonde?
+            </button>
+          </h5>
+          <div id="collapseRadiosonde" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+            <div class="accordion-body">
+              <a href="https://en.wikipedia.org/wiki/Radiosonde">Radiosonde</a> is a battery-powered telemetry instrument
+              carried into the atmosphere usually by a weather balloon that measures various
+              atmospheric parameters and transmits them by radio.
+              The information can be received with a simple SDR and antenna on the ground.
             </div>
           </div>
         </div>
@@ -304,7 +391,7 @@ page_content %}
               app to provide the web user interface. This by definition creates
               overhead. It will use more memory than an optimized minimal
               installation of the necessary software directly on the SBC OS.
-              Given that I have tried to be careful in how I set things up, the
+              Given that we have tried to be careful in how we set things up, the
               difference isn't very big, but it's there, and especially on a low
               memory device (e.g., a 512MB RPi Zero 2 W or RPi 3 A+) that difference
               can be significant. On the flip side, the moment you consider
@@ -319,13 +406,28 @@ page_content %}
               designed to be easy, to appeal to people who aren't super
               comfortable running a Linux system. Interestingly enough, quite a
               few very experienced folks still decide to use this image simply
-              because of the UI and the simplicity - but I understand if you
+              because of the UI and the simplicity - but we understand if you
               feel differently and don't need the helping hand. In summary: yes,
               there is additional overhead, but in most situations it's academic
               and doesn't really make an difference. If you have an SBC with a
               gigabyte or more, it's likely not relevant. But if you aren't a
               fan of the Linux command line, this may still be a very powerful
               option to consider.
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h5 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePrivacy"
+                      aria-expanded="false" aria-controls="collapsePrivacy">
+                What's your privacy and data policy?
+              </button>
+            </h5>
+            <div id="collapsePrivacy" class="accordion-collapse collapse" data-bs-parent="#FAQ">
+              <div class="accordion-body">
+                It's simple, no data of yours is stored for more than 60 seconds.
+                The full details are of course in our
+                <a href="/privacy">Privacy Policy</a>
+              </div>
             </div>
           </div>
         </div>
