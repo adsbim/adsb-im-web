@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% set active_page = "home" %}
+
+{% block title %}{% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %}{% endblock %}
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+  <h2>News: announcing Feeder Image {{ version }}</h2>
+    <div class="row justify-content-center mt-2 mb-1">
+      {{ html_content | safe }}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+
+{% endblock %}
