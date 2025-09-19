@@ -33,7 +33,9 @@
         crossorigin="anonymous"></script>
     <!-- Custom CSS -->
     <link href="/static/styles/style.css?h=8ed524cc" rel="stylesheet" />
-
+    {% if active_page == 'home' %}
+    <link rel="me" href="https://hachyderm.io/@dirkhh">
+    {% endif %}
     {% endblock %}
 </head>
 
