@@ -208,10 +208,17 @@
         sometimes you can enable them using specific
         <span class="fw-semibold">environment variables</span> -- definitely an expert
         use case. Along the same lines you can add default <span class="fw-semibold">arguments for the ADS-B live map</span>.
+        To learn more about the environment variables and arguments that are available, see the
+        <a href="https://github.com/sdr-enthusiasts/docker-adsb-ultrafeeder">Ultrafeeder documentation</a>. Please note that
+        it become significantly harder for the team behind the feeder image to help you if you use either of these options,
+        so by going down that path you are decidedly in <strong>expert</strong> territory and may be on your own.
     </div>
     <div class="ml-1 mb-3">
-        If you use a Raspberry Pi SBC and have connected a <span class="fw-semibold">DHT22 temperature sensor</span> to its GPIO pins,
+        Speaking of truly advanced use cases, if you use a Raspberry Pi SBC and have connected a <span class="fw-semibold">DHT22 temperature sensor</span> to its GPIO pins,
         you can enable ambient temperature reporting.
+        By default the software assumes that the DATA pin of the DHT22 is connected to GPIO 4. If you cannot use
+        that GPIO pin, you can change the PIN used by creating a file <tt>/opt/adsb/extras/adsb-temperature.default</tt>
+        with the content <tt>GPIO_PIN=22</tt> (or whatever GPIO pin you are using).
     </div>
     <div class="ml-1 mb-3">
         If you want to share your ADS-B live map with others (generally only recommended if you
