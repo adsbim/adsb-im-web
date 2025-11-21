@@ -6,7 +6,7 @@
     <h1>My Local IP</h1>
     <ul>
         {% for ip in ips %}
-            <li><a href="http://{{ ip }}/">http://{{ ip }}/</a></li>
+            <li><a href="http://{{ ip['ip'] }}/">{{ip['name']}}</a></li>
         {% endfor %}
         {% if ips == [] %}
             <li>No IPs found</li>
