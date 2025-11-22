@@ -1,15 +1,65 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>My Local IP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="ADSB Feeder Image - Local Image Forwarder">
+    <meta name="author" content="Dirk Hohndel">
+    <meta property="og:title" content="My Local ADSB Feeder Image">
+    <meta property="og:description" content="ADSB Feeder Image - Local Image Forwarder">
+    <meta property="og:type" content="website">
+    <meta property="og:site-name" content="My Local ADSB Feeder Image">
+    <meta property="og:image" content="/static/images/adsb.im.og.image.png">
+
+    <title>Links to Local Feeder Images in Your Network </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <!-- Custom CSS -->
+    <link href="/static/styles/style.css?h=8ed524cc" rel="stylesheet" />
 </head>
 <body>
-    <h1>My Local IP</h1>
-    <ul>
-        {% for ip in ips %}
-            <li><a href="http://{{ ip['ip'] }}/">{{ip['name']}}</a></li>
-        {% endfor %}
-        {% if ips == [] %}
-            <li>No IPs found</li>
-        {% endif %}
-    </ul>
+    <div class="wrapper">
+        <!-- Page Content  -->
+        <div id="content">
+            <div class="row justify-content-center mt-2 mb-5">
+                <h1 class="col-10">Links to Local Feeder Images in Your Network</h1>
+                <div class="col-8">
+
+                    <ul class="my-4">
+                        {% for ip in ips %}
+                            <li><a href="http://{{ ip['ip'] }}/">{{ip['name']}} ({{ ip['ip'] }})</a></li>
+                        {% endfor %}
+                        {% if ips == [] %}
+                            <li>No IPs found</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="col-10">
+                    <p>
+                        Why am I seeing more than one link here?
+                    </p>
+                    <p>
+                        Most users will directly be forwarded to the correct local feeder image, but in some cases we aren't
+                        able to determine the correct address. That could be because you are running multiple feeder images
+                        in your home network (cool!) or because your external IP address has recently changed, or because
+                        your ISP uses CNAT which means that multiple customers are sharing the same external IP address.
+                    </p>
+                    <p>
+                        Hopefully the hostnames (or indications of a firstboot / installation attempt) will help you identify
+                        the correct link to use.
+                    </p>
+                    <p>
+                        Don't worry, others cannot use these links to get to a system in your home network - the only place
+                        these links will work is when used from a system that is alreay on your home network.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
