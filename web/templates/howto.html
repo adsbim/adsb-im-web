@@ -12,6 +12,10 @@
     <h3 class="mb-4">A Quick Start Guide to Setting Up an ADSB Feeder</h3>
     <h4>Introduction</h4>
     <div class="ml-3 mb-3">
+        This document is pretty old at this point, but kept here for completeness. I'll try to keep it updated and relevant,
+        but please look at other resources as well...
+    </div>
+    <div class="ml-3 mb-3">
         This quick-start guide allows you to build a receiver and start seeing what aircraft fly above your
         location in no time, and at minimum expense. Each step has “minimum configuration”, and discusses
         some ideas on how to make it better at an additional cost or effort.
@@ -32,10 +36,12 @@
                 boards), some others use micro-USB (older Raspberry Pi models, Libre Computer Le Potato, etc) - either
                 way, make sure you use an actual power supply designed for at least 2.5A (or 4A for a Pi 4) and not just
                 a USB charger. Bad power is one of the main reasons for random issues with the boards.</li>
-            <li>A (good quality) µSD card of at least 8GB with 32GB or more recommended. The SBC will write to it enough that
+            <li>A (good quality) µSD card of at least 8GB with 32GB or more recommended (given pricing in January 2026, 64GB
+                appears to be about the same price and easier to get than 32GB - so that's the current recommendation).
+                The software is optimized to reduce disk writes, but over time the SBC will write to it enough that
                 a high quality card makes a difference. SanDisk Ultra or Samsung High Endurance appear to be good choices.</li>
             <li>Internet access for your SBC. WiFi is supported on most boards, including all of the Raspberry Pi family;
-                some other, cheaper SBCs need wired Ethernet.</li>
+                some other SBCs (like the Le Potato seen below) need wired Ethernet.</li>
             <li>An SDR USB stick ("dongle"). Check the list of <a href="supported">supported SDRs</a>.</li>
             <li>An antenna for the SDR dongle.</li>
         </ul>
@@ -99,8 +105,8 @@
                         In our example we will pick the one for the Libre Computing LePotato.
                     </div>
                 </div>
-                If you're using a Raspberry Pi, note that there are several images. A beginner is almost always best
-                served with the Raspbian image.
+                If you're using a Raspberry Pi, the image is available without separate download using the Raspberry
+                Pi Imager mentioned below. Just check the "other special purpose OSs" section in that app.
             </li>
             <li>
                 <div class="media mt-2">
@@ -117,7 +123,8 @@
                 image you downloaded earlier to the SD card.
                 <div class="media mt-2">
                     <ol class="media-body">
-                        <li>Click <b>Choose OS</b>, scroll to the bottom and click <b>Use custom</b>.
+                        <li>Click <b>Choose OS</b>. If using the Le Potato board (or another non-Raspberry board)
+                            scroll to the bottom and click <b>Use custom</b>.
                             Then select the <code class="gray">adsb-feeder….img.xz</code> file you downloaded in step 1
                             above.
                         </li>
@@ -131,14 +138,6 @@
                 </div>
                 <div class="media mt-2">
                     <ol start="3" class="media-body mt-1">
-                        <li>Click the <b>cogwheel icon</b> and set the following options. (<b>Don’t set the
-                                hostname</b>).
-                            Use Username “pi” for consistency and pick your own password. If needed (<b>only supported
-                                on Raspberry Pi Raspbian images</b>), enable “Configure Wireless LAN”, and preset your
-                            SSID and Wifi password.<br />
-                            The <a href="/faq#collapsewifisupport">FAQ</a> explains how to set up WiFi with DietPi based
-                            images.
-                        </li>
                         <li>Now click <b>Write</b> and read/follow the subsequent dialog. The image will be written
                             to the µSD card, and it will verify that it was written error-free.
                         </li>
@@ -146,8 +145,6 @@
                             do so.
                         </li>
                     </ol>
-                    <img class="media-object mt-1 col-4" alt="image write options"
-                         src="https://github.com/dirkhh/adsb-feeder-image/assets/237471/a9de4a42-5d7f-44d4-887e-bf187d7a9f4f">
                 </div>
             </li>
         </ol>
@@ -168,20 +165,22 @@
     </div>
     <h5>Step 3: software setup of your SBC</h5>
     <ol>
-        <li>A few minutes after initially powering up your SBC, you should be able to browse to <a
-               href="http://adsb-feeder.local">http://adsb-feeder.local</a> (from a different computer - the ADS-B
-            Feeder Image doesn't include a desktop in order to keep the image small).
+        <li>Assuming that you use a wired Ethernet connection, a few minutes after initially powering up your SBC,
+            you should be able to browse to <a href="http://adsb-feeder.local">http://adsb-feeder.local</a> (from a
+            different computer - the ADS-B Feeder Image doesn't include a desktop in order to keep the image small).
             If this doesn’t work, try the external redirector at <a href="http://my.adsb.im/">http://my.adsb.im/</a>.
             If that fails as well, you will need to determine the local IP address from your home router or whatever
             device manages your network.
         </li>
+        <li>If you are using WiFi, you'll have to go through the WiFi setup as described on the <a href="https://adsb.im/hotspot">Hotspot page</a>.</li>
         <li>Use this web-UI to configure your ADSB Feeder.</li>
         <li>Give it a name (used for MLAT graphs).</li>
         <li>Enter the physical location of the antenna (there is a link to a useful tool if you need help finding
             the correct latitude, longitude, and elevation).</li>
         <li>Enter the time zone (again, there's a button to make this straight forward).</li>
-        <li>Select the initial set of aggregators your want to send data to.</li>
+        <li>Select that you want to feed ADS-B data.</li>
         <li>Click on <b>Setup</b> - if you have a simple setup as depicted above, you should now get forwarded to
+            a page where you can decide which aggregators to feed. Once you apply those settings, you'll be forwarded to
             the main home page of your ADSB Feeder.</li>
     </ol>
     We even have a <a href="https://youtu.be/N5yHvInpDBM">short video</a> that shows the steps described above.
