@@ -1,16 +1,16 @@
 {
   "os_list": [
     {
-      "name": "ADS-B Feeder Image v3.0.6",
+      "name": "ADS-B Feeder Image v3.0.7",
       "description": "Simple to use ADS-B Feeder Image that allows you to feed most of the public ADS-B aggregators",
-      "url": "https://adsb.im/static/images/adsb-im-raspberrypi64-pi-2-3-4-5-v3.0.6.img.xz",
+      "url": "https://adsb.im/static/images/adsb-im-raspberrypi64-pi-2-3-4-5-v3.0.7.img.xz",
       "icon": "https://adsb.im/static/images/adsb.im.icon.png",
       "website": "https://adsb.im/home",
-      "release_date": "2025-10-31",
-      "extract_size": 2772434944,
-      "extract_sha256": "73882b410301b1dc6d66359e20b0ee6cffe76421e23d480d381c4bcbd0891819",
-      "image_download_size": 425706172,
-      "image_download_sha256": "c15b3c7a7b423b045be9a011264fc076bf2e6f22e903e15e84bca09089590598",
+      "release_date": "2025-12-05",
+      "extract_size": 2750415872,
+      "extract_sha256": "53b7159d425fdb74dd98d7dc36216f203766e5afb247fe62683821190aa13e97",
+      "image_download_size": 420037804,
+      "image_download_sha256": "248dcdbe4581de9632de26aef8128c6354cb131ce1c76a369d1b9868a783ed87",
       "devices": [
         "pi4-64bit",
         "pi3-64bit",
