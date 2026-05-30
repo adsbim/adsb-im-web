@@ -29,7 +29,6 @@
             <div class="row justify-content-center mt-2 mb-5">
                 <h1 class="col-10">Links to Local Feeder Images in Your Network</h1>
                 <div class="col-8">
-
                     <ul class="my-4">
                         {% for ip in ips %}
                             <li><a href="http://{{ ip['ip'] }}/">{{ip['name']}} ({{ ip['ip'] }})</a></li>
@@ -38,6 +37,15 @@
                             <li>No IPs found</li>
                         {% endif %}
                     </ul>
+                    {% if old_ips != [] %}
+                    The following IPs have been in use in the past, but either haven't been updated to v3.0.9 or
+                    newer, or have been offline for more than half a day:
+                    <ul class="my-4">
+                        {% for ip in old_ips %}
+                        <li><a href="http://{{ ip['ip'] }}/">{{ip['name']}} ({{ ip['ip'] }})</a></li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 </div>
                 <div class="col-10">
                     <p>
