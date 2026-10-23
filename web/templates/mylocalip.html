@@ -25,6 +25,14 @@
 <body>
     <div class="wrapper">
         <!-- Page Content  -->
+        {% if ips == [] and old_ips == [] %}
+        <div id="content">
+            <h1 class="mx-5 my-5">ADSB Feeder Image</h1>
+            <div class="mx-5 mt-2 mb-5">
+                We haven't seen any connections from an <a href="adsb.im">ADSB.im</a> feeder image system from your IP address recently.
+            </div>
+        </div>
+        {% else %}
         <div id="content">
             <div class="row justify-content-center mt-2 mb-5">
                 <h1 class="col-10">Links to Local Feeder Images in Your Network</h1>
@@ -68,6 +76,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
     </div>
 </body>
 </html>
