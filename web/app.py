@@ -12,7 +12,8 @@ def site_context():
     # wrong site: 'adsb.im' in undefined is false rather than an error, so each
     # page quietly falls through to the sdre.im branding
     host = request.headers.get('X-Forwarded-Host') or request.host
-    if host.split(':')[0] in ('127.0.0.1', 'localhost', '[::1]'):
+    hostname = host[:host.index(']') + 1] if host.startswith('[') else host.split(':')[0]
+    if hostname in ('127.0.0.1', 'localhost', '[::1]'):
         # nothing is proxying in front of us, so let the developer say which
         # of the two sites they are looking at
         host = os.environ.get('SITE_HOST', 'adsb.im')
