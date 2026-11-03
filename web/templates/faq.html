@@ -1,19 +1,19 @@
-{% extends "base.html" %} {% set active_page = "faq" %} {% block title %}FAQ - {% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %}{% endblock %}
+{% extends "base.html" %} {% set active_page = "faq" %} {% block title %}{% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %}{% endblock %}
 {% block head %} {{ super() }} {% endblock %} {% block
 page_content %}
 <div class="container">
   <div class="row justify-content-start mt-2 mb-2">
     <div class="container mt-3">
-      <h4 class="mb-1">FAQ</h4>
-      <h5 class="mt-4 mb-2">What you can receive</h5>
+      <h2 class="h4 mb-1">FAQ</h2>
+      <h3 class="h5 mt-4 mb-2">What you can receive</h3>
       <div class="accordion" id="FAQ-what-you-can-receive">
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingADSB">
+          <h4 class="accordion-header" id="headingADSB">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseADSB"
                     aria-expanded="false" aria-controls="collapseADSB">
               What is ADS-B?
             </button>
-          </h5>
+          </h4>
           <div id="collapseADSB" class="accordion-collapse collapse" data-bs-parent="#FAQ-what-you-can-receive" aria-labelledby="headingADSB">
             <div class="accordion-body">
               ADS-B or <a href="https://en.wikipedia.org/wiki/ADSB">Automatic Dependent Surveillance Broadcast</a>
@@ -24,12 +24,12 @@ page_content %}
           </div>
         </div>
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingACARS">
+          <h4 class="accordion-header" id="headingACARS">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseACARS"
                     aria-expanded="false" aria-controls="collapseACARS">
               What is ACARS?
             </button>
-          </h5>
+          </h4>
           <div id="collapseACARS" class="accordion-collapse collapse" data-bs-parent="#FAQ-what-you-can-receive" aria-labelledby="headingACARS">
             <div class="accordion-body">
               ACARS or <a href="https://en.wikipedia.org/wiki/ACARS">Aircraft Communications Addressing and Reporting System</a>
@@ -39,12 +39,12 @@ page_content %}
           </div>
         </div>
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingVDL2">
+          <h4 class="accordion-header" id="headingVDL2">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVDL2"
                     aria-expanded="false" aria-controls="collapseVDL2">
               What is VDL2?
             </button>
-          </h5>
+          </h4>
           <div id="collapseVDL2" class="accordion-collapse collapse" data-bs-parent="#FAQ-what-you-can-receive" aria-labelledby="headingVDL2">
             <div class="accordion-body">
               VDL2 or sometimes VDLM2 stands for <a href="https://en.wikipedia.org/wiki/VHF_Data_Link">VHF Data Link</a>.
@@ -55,12 +55,12 @@ page_content %}
           </div>
         </div>
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingHFDL">
+          <h4 class="accordion-header" id="headingHFDL">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHFDL"
                     aria-expanded="false" aria-controls="collapseHFDL">
               What is HFDL?
             </button>
-          </h5>
+          </h4>
           <div id="collapseHFDL" class="accordion-collapse collapse" data-bs-parent="#FAQ-what-you-can-receive" aria-labelledby="headingHFDL">
             <div class="accordion-body">
               HFDL or <a href="https://en.wikipedia.org/wiki/High_Frequency_Data_Link">High Frequency Data Link</a> is yet another
@@ -73,12 +73,12 @@ page_content %}
           </div>
         </div>
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingAIS">
+          <h4 class="accordion-header" id="headingAIS">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAIS"
                     aria-expanded="false" aria-controls="collapseAIS">
               What is AIS?
             </button>
-          </h5>
+          </h4>
           <div id="collapseAIS" class="accordion-collapse collapse" data-bs-parent="#FAQ-what-you-can-receive" aria-labelledby="headingAIS">
             <div class="accordion-body">
               AIS or <a href="https://en.wikipedia.org/wiki/Automatic_Identification_System">Automatic Identification System</a>
@@ -90,12 +90,12 @@ page_content %}
           </div>
         </div>
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingRadiosonde">
+          <h4 class="accordion-header" id="headingRadiosonde">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRadiosonde"
                     aria-expanded="false" aria-controls="collapseRadiosonde">
               What is Radiosonde?
             </button>
-          </h5>
+          </h4>
           <div id="collapseRadiosonde" class="accordion-collapse collapse" data-bs-parent="#FAQ-what-you-can-receive" aria-labelledby="headingRadiosonde">
             <div class="accordion-body">
               <a href="https://en.wikipedia.org/wiki/Radiosonde">Radiosonde</a> is a battery-powered telemetry instrument
@@ -106,15 +106,15 @@ page_content %}
           </div>
         </div>
       </div>
-      <h5 class="mt-4 mb-2">Hardware</h5>
+      <h3 class="h5 mt-4 mb-2">Hardware</h3>
       <div class="accordion" id="FAQ-hardware">
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingSupported">
+          <h4 class="accordion-header" id="headingSupported">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSupported"
                     aria-expanded="false" aria-controls="collapseSupported">
               What hardware is supported?
             </button>
-          </h5>
+          </h4>
           <div id="collapseSupported" class="accordion-collapse collapse" data-bs-parent="#FAQ-hardware" aria-labelledby="headingSupported">
             <div class="accordion-body">
               Many Arm based Single Board Computers (SBCs) and USB Software
@@ -127,13 +127,13 @@ page_content %}
           </div>
         </div>
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingHalfgig">
+          <h4 class="accordion-header" id="headingHalfgig">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsehalfgig"
                     aria-expanded="false" aria-controls="collapsehalfgig">
               What about boards with 512MB like the Raspberry Pi 3 Model A+ or Pi Zero 2
               W?
             </button>
-          </h5>
+          </h4>
           <div id="collapsehalfgig" class="accordion-collapse collapse" data-bs-parent="#FAQ-hardware" aria-labelledby="headingHalfgig">
             <div class="accordion-body">
               That used to be a bit painful but has gotten a lot better lately. With current versions
@@ -150,15 +150,15 @@ page_content %}
           </div>
         </div>
       </div>
-      <h5 class="mt-4 mb-2">Installing and running</h5>
+      <h3 class="h5 mt-4 mb-2">Installing and running</h3>
       <div class="accordion" id="FAQ-installing-and-running">
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingSweetspot">
+          <h4 class="accordion-header" id="headingSweetspot">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSweetspot"
                     aria-expanded="false" aria-controls="collapseSweetspot">
               How do I run this image?
             </button>
-          </h5>
+          </h4>
           <div id="collapseSweetspot" class="accordion-collapse collapse" data-bs-parent="#FAQ-installing-and-running" aria-labelledby="headingSweetspot">
             <div class="accordion-body">
               There are many ways to interpret this question. I'll assume you want to know what's a good setup to run.
@@ -184,13 +184,13 @@ page_content %}
           </div>
         </div>
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingTroubleshooting">
+          <h4 class="accordion-header" id="headingTroubleshooting">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseTroubleshooting" aria-expanded="false"
                     aria-controls="collapseTroubleshooting">
               Troubleshooting
             </button>
-          </h5>
+          </h4>
           <div id="collapseTroubleshooting" class="accordion-collapse collapse" data-bs-parent="#FAQ-installing-and-running" aria-labelledby="headingTroubleshooting">
             <div class="accordion-body">
               <div class="mb-2">
@@ -239,12 +239,12 @@ page_content %}
           </div>
         </div>
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingX86vm">
+          <h4 class="accordion-header" id="headingX86vm">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsex86vm"
                     aria-expanded="false" aria-controls="collapsex86vm">
               Running the Feeder Image in a VM
             </button>
-          </h5>
+          </h4>
           <div id="collapsex86vm" class="accordion-collapse collapse" data-bs-parent="#FAQ-installing-and-running" aria-labelledby="headingX86vm">
             <div class="accordion-body">
               We provide an OVA for each release, also simply a compressed
@@ -266,12 +266,12 @@ page_content %}
           </div>
         </div>
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingWifisupport">
+          <h4 class="accordion-header" id="headingWifisupport">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapsewifisupport" aria-expanded="false" aria-controls="collapsewifisupport">
               WiFi Support
             </button>
-          </h5>
+          </h4>
           <div id="collapsewifisupport" class="accordion-collapse collapse" data-bs-parent="#FAQ-installing-and-running" aria-labelledby="headingWifisupport">
             <div class="accordion-body">
               <div class="mb-2">
@@ -283,12 +283,12 @@ page_content %}
           </div>
         </div>
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingMigrate">
+          <h4 class="accordion-header" id="headingMigrate">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#migrate"
                     aria-expanded="false" aria-controls="migrate">
               How can I migrate to adsb.im from a different setup?
             </button>
-          </h5>
+          </h4>
           <div id="migrate" class="accordion-collapse collapse" data-bs-parent="#FAQ-installing-and-running" aria-labelledby="headingMigrate">
             <div class="accordion-body">
               You can transfer the Sharing/API/Feeder Key/ID to ADSB.im during the setup. Just note them down prior to
@@ -317,15 +317,15 @@ page_content %}
           </div>
         </div>
       </div>
-      <h5 class="mt-4 mb-2">Networking and remote access</h5>
+      <h3 class="h5 mt-4 mb-2">Networking and remote access</h3>
       <div class="accordion" id="FAQ-networking-and-remote-access">
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingSecurity">
+          <h4 class="accordion-header" id="headingSecurity">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesecurity"
                     aria-expanded="false" aria-controls="collapsesecurity">
               Can I run the ADS-B Feeder and expose it directly to the internet?
             </button>
-          </h5>
+          </h4>
           <div id="collapsesecurity" class="accordion-collapse collapse" data-bs-parent="#FAQ-networking-and-remote-access" aria-labelledby="headingSecurity">
             <div class="accordion-body">
               The ADS-B Feeder is designed to be run in a local network, behind
@@ -338,12 +338,12 @@ page_content %}
           </div>
         </div>
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingLocalPermissions">
+          <h4 class="accordion-header" id="headingLocalPermissions">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapselocalpermissions"
                     aria-expanded="false" aria-controls="collapselocalpermissions">
               Why is my browser asking me for extra permissions?
             </button>
-          </h5>
+          </h4>
           <div id="collapselocalpermissions" class="accordion-collapse collapse" data-bs-parent="#FAQ-networking-and-remote-access" aria-labelledby="headingLocalPermissions">
             <div class="accordion-body">
               Some modern browsers have started to require special permission to access "nearby devices" - and without that permission you cannot access the web interface of your feeder on the local network. That's not an issue with the feeder software but a "feature" that allegedly improves "security". Long story short, if you use one of those browsers, you cannot access or manage your adsb.im feeder unless you provide that permission.
@@ -351,12 +351,12 @@ page_content %}
           </div>
         </div>
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingZerotier">
+          <h4 class="accordion-header" id="headingZerotier">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsezerotier"
                     aria-expanded="false" aria-controls="collapsezerotier">
               How to set up Zerotier?
             </button>
-          </h5>
+          </h4>
           <div id="collapsezerotier" class="accordion-collapse collapse" data-bs-parent="#FAQ-networking-and-remote-access" aria-labelledby="headingZerotier">
             <div class="accordion-body">
               <div class="mb-2">
@@ -388,16 +388,16 @@ page_content %}
           </div>
         </div>
       </div>
-      <h5 class="mt-4 mb-2">About the project</h5>
+      <h3 class="h5 mt-4 mb-2">About the project</h3>
       <div class="accordion" id="FAQ-about-the-project">
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingRawiron">
+          <h4 class="accordion-header" id="headingRawiron">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapserawiron"
                     aria-expanded="false" aria-controls="collapserawiron">
               How does this compare to running the ADS-B feeder scripts from an
               aggregator directly on my system?
             </button>
-          </h5>
+          </h4>
           <div id="collapserawiron" class="accordion-collapse collapse" data-bs-parent="#FAQ-about-the-project" aria-labelledby="headingRawiron">
             <div class="accordion-body">
               This is actually a surprisingly complex question. The ADS-B Feeder
@@ -432,12 +432,12 @@ page_content %}
           </div>
         </div>
         <div class="accordion-item">
-          <h5 class="accordion-header" id="headingPrivacy">
+          <h4 class="accordion-header" id="headingPrivacy">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePrivacy"
                     aria-expanded="false" aria-controls="collapsePrivacy">
               What's your privacy and data policy?
             </button>
-          </h5>
+          </h4>
           <div id="collapsePrivacy" class="accordion-collapse collapse" data-bs-parent="#FAQ-about-the-project" aria-labelledby="headingPrivacy">
             <div class="accordion-body">
               It's simple, no data of yours is stored for more than 60 seconds.
