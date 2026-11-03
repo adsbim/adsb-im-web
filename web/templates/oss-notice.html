@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% set active_page = "oss-notice" %}
 
-{% block title %}{% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %}{% endblock %}
+{% block title %}Open Source Notice - {% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %}{% endblock %}
 {% block head %}
 {{ super() }}
 

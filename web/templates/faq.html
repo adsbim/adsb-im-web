@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% set active_page = "faq" %} {% block title %}{% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %}{% endblock %}
+{% extends "base.html" %} {% set active_page = "faq" %} {% block title %}FAQ - {% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %}{% endblock %}
 {% block head %} {{ super() }} {% endblock %} {% block
 page_content %}
 <div class="container">

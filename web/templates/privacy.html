@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% set active_page = "privacy" %}
 
-{% block title %}{% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %}{% endblock %}
+{% block title %}Privacy - {% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %}{% endblock %}
 {% block head %}
 {{ super() }}
 
