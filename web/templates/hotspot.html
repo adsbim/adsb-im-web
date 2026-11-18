@@ -11,7 +11,7 @@
 <div class="container container-prose">
   <div class="row">
     <h2 class="h3 mb-4">Setting up WiFi for an ADSB.im Feeder</h2>
-    <h3 class="h4 mt-2">Configuring the image prior to install</h3>
+    <h3 class="h4 mt-2" id="configuring-the-image-prior-to-install">Configuring the image prior to install</h3>
     <div class="col-12">As discussed elsewhere on this site, you can set up WiFi on for most ADSB.im
       Feeder Images. At this point, the Armbian based images do not have WiFi support, the Raspbian based images
       can be configured when writing them to SD card with the Pi Imager (a feature that is rumored to go away for custom
@@ -21,7 +21,7 @@
     <div class="col-12">This setup does NOT work for the ISO installer of DietPi based x86-64 images (as the ISO
       prevents editing the two files). And in general, this is a setup that makes it harder to send out working systems
       and accomodate users who are uncomfortable editing files / writing their own SD cards.</div>
-    <h3 class="h4 mt-2">Using Hotspot-Mode to configure WiFi</h3>
+    <h3 class="h4 mt-2" id="using-hotspot-mode-to-configure-wifi">Using Hotspot-Mode to configure WiFi</h3>
     <div class="col-12">Starting in v2.1 of the ADSB.im Feeder Image, for any Raspbian or DietPi based image, if after
       boot the system detects no working network (for example because no Ethernet cable is connected and WiFi isn't
       configured), the system will switch to hotspot mode. This will allow you to connect to the ADSB.im Feeder and

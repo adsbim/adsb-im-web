@@ -10,7 +10,16 @@
 {% block page_content %}
 <div class="container container-prose">
   <h2 class="h3 mb-4">Two Stage Setup</h2>
-  <h3 class="h5 mt-3">Introduction</h3>
+  <nav aria-label="Sections of this page">
+      <ul class="list-inline mb-0">
+          <li class="list-inline-item"><a href="#introduction">Introduction</a></li>
+          <li class="list-inline-item"><a href="#defining-some-terms-used">Defining some terms used</a></li>
+          <li class="list-inline-item"><a href="#creating-a-stage-2-instance">Creating a Stage 2 Instance</a></li>
+          <li class="list-inline-item"><a href="#micro-feeder-considerations">Micro Feeder considerations</a></li>
+          <li class="list-inline-item"><a href="#ongoing-use">Ongoing Use</a></li>
+      </ul>
+  </nav>
+  <h3 class="h5 mt-3" id="introduction">Introduction</h3>
   <div class="mb-3">
     In many (most?) instances, a simple integrated feeder is a very good solution for tracking the planes around your
     home (or wherever you have installed your feeder). There are a few situations, however, where some people prefer a
@@ -40,7 +49,7 @@
     <figcaption class="figure-caption">Typical Stage 2 Setup</figcaption>
   </figure>
 
-  <h3 class="h5">Defining some terms used</h3>
+  <h3 class="h5" id="defining-some-terms-used">Defining some terms used</h3>
   <div class="mb-3">
     Since it can be rather confusing to talk about scenarios like this, here are some terms that are used in the rest of
     this document (and in the UI):
@@ -75,7 +84,7 @@
       </dd>
     </dl>
   </div>
-  <h3 class="h5 mt-3">Creating a Stage 2 Instance</h3>
+  <h3 class="h5 mt-3" id="creating-a-stage-2-instance">Creating a Stage 2 Instance</h3>
   <div class="mb-3">
     The recommended approach would be to create a new adsb.im Feeder Image installation from scratch; converting an
     existing feeder image could cause unintended effects and is mostly untested. Most of the testing is done running a
@@ -149,13 +158,13 @@
     to the Basic Setup page for each of them and convert it to a Micro Feeder at the bottom of that page. Click Submit
     and you should be done.</div>
 
-  <h3 class="h5 mt-3">Micro Feeder considerations</h3>
+  <h3 class="h5 mt-3" id="micro-feeder-considerations">Micro Feeder considerations</h3>
   <div>In most cases, you'll have your first Micro Feeder on your local network, but of course it's reasonable to expect
     that all additional ones will be somewhere else. The easiest way to deal with this tends to be to simply set up one
     of the free VPN services. The adsb.im Feeder Image supports two of them out of the box. Tailscale (which seems to be
     better for latency in my experience) and Zerotier (which may be marginally easier to set up initially). I'll link to
     more in depth documentation for that later.</div>
-  <h3 class="h5 mt-3">Ongoing Use</h3>
+  <h3 class="h5 mt-3" id="ongoing-use">Ongoing Use</h3>
   <div class="mb-3">
     Once things are set up, you usually don't need to go back to the Micro Feeder address - except for occasional system
     updates (assuming you didn't automate that already). Maps, statistics, aggregator status, etc., are all accessible

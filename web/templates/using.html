@@ -10,7 +10,17 @@
 {% block page_content %}
 <div class="container container-prose">
     <h2 class="h3 mb-4">A detailed guide to using the web interface</h2>
-    <h3 class="h4">Introduction</h3>
+    <nav aria-label="Sections of this page">
+        <ul class="list-inline mb-0">
+            <li class="list-inline-item"><a href="#introduction">Introduction</a></li>
+            <li class="list-inline-item"><a href="#feeder-homepage">Feeder Homepage</a></li>
+            <li class="list-inline-item"><a href="#maps">Maps</a></li>
+            <li class="list-inline-item"><a href="#data-sharing">Data Sharing</a></li>
+            <li class="list-inline-item"><a href="#setup">Setup</a></li>
+            <li class="list-inline-item"><a href="#system">System</a></li>
+        </ul>
+    </nav>
+    <h3 class="h4" id="introduction">Introduction</h3>
     <div class="ms-1 mb-3">
         In general, the basic setup should make it very quick to get you started. The bare minimum
         of information is entered on the <em>Basic Setup</em> page, by default it assumes that you want
@@ -23,7 +33,7 @@
         which has significant changes from earlier versions (and of course a newer version may once again be
         different).
     </div>
-    <h3 class="h4 mt-3">Feeder Homepage</h3>
+    <h3 class="h4 mt-3" id="feeder-homepage">Feeder Homepage</h3>
     <div class="ms-1 mb-3">
         On basically every page of the interface there is a link to the Feeder Homepage in the top left
         corner - depending on the screen size that's either just a logo or a logo with the text <em>ADS-B Feeder</em>
@@ -105,7 +115,7 @@
         and <a href="https://discord.gg/HjaEg53VvN">Discord</a> channels where you can find people to talk to about
         this software.
     </div>
-    <h3 class="h4 mt-3">Maps</h3>
+    <h3 class="h4 mt-3" id="maps">Maps</h3>
     <h4 class="h5">Maps: Options</h4>
     <div class="ms-1 mb-3">
         On the <em>Map Options</em> page you are offered a few ways to adjust what you see when showing the
@@ -138,7 +148,7 @@
         plane data from. If you want to reset that "actual range" outline, there's an option to do that here.
         Note that the range outline by default always tracks the last 24 hours of data, so things will reset on their own after a day.
     </div>
-    <h3 class="h4 mt-3">Data Sharing</h3>
+    <h3 class="h4 mt-3" id="data-sharing">Data Sharing</h3>
     <div class="ms-1 mb-3">
         On the <em>Data Sharing</em> page you are adjusting how your data is shared with aggregators. The options available
         here depend on which protocols you have enabled.
@@ -166,7 +176,7 @@
     <div class="ms-1 mb-3">
         <tt>[to be completed]</tt>
     </div>
-    <h3 class="h4 mt-3">Setup</h3>
+    <h3 class="h4 mt-3" id="setup">Setup</h3>
     <div class="ms-1 mb-3">
         The <em>Basic Setup</em> item brings you back to the initial setup - useful if you want to change the name of
         your site or if you move the antenna and need to adjust the location.
@@ -288,7 +298,7 @@
         on which weather balloons broadcast their data in your local area and decide whether you want to have your data shown on
         the <a href="https://sondehub.org">sondehub</a> website.
     </div>
-    <h3 class="h4 mt-3">System</h3>
+    <h3 class="h4 mt-3" id="system">System</h3>
     <h4 class="h5">Management</h4>
     <div class="ms-1 mb-3">
         While in most circumstances you shouldn't need to to access the adsb feeder system

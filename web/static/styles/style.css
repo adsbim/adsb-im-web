@@ -90,3 +90,65 @@ div {
 .container-sm.container-prose {
     max-width: 1100px;
 }
+
+/* the index costs a phone too much: in portrait it wraps to two rows and holds
+   70px of a screen that has none to spare, and in landscape it fits on one row
+   but the viewport is so short that the one row is a worse deal still. both
+   cases are excluded by asking for width and height together - a phone fails
+   the width test upright and the height test on its side. */
+.container-prose nav[aria-label="Sections of this page"] {
+    display: none;
+}
+
+@media (min-width: 576px) and (min-height: 600px) {
+    /* the index is the only way into a section of a page several screens tall,
+       so it stays in view rather than scrolling away with the headline */
+    .container-prose nav[aria-label="Sections of this page"] {
+        display: block;
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        background: #FFF;
+        padding: .45rem 0;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #e9e9ee;
+    }
+
+    .container-prose nav[aria-label="Sections of this page"] ul {
+        text-align: center;
+    }
+
+    .container-prose nav[aria-label="Sections of this page"] .list-inline-item {
+        margin-right: 1rem;
+    }
+
+    /* the trailing margin would sit inside the centred row and push it off
+       centre by half of itself */
+    .container-prose nav[aria-label="Sections of this page"] .list-inline-item:last-child {
+        margin-right: 0;
+    }
+}
+
+/* the index needs 232px to the left of the column, which a 1100px column only
+   leaves from 1564px up. below that the pinned bar above is what is used. */
+@media (min-width: 1600px) {
+    .container-prose nav[aria-label="Sections of this page"] {
+        top: 1.5rem;
+        float: left;
+        width: 200px;
+        margin-left: -232px;
+        margin-bottom: 0;
+        padding: 0;
+        background: none;
+        border-bottom: 0;
+    }
+    .container-prose nav[aria-label="Sections of this page"] ul {
+        text-align: left;
+    }
+
+    .container-prose nav[aria-label="Sections of this page"] .list-inline-item {
+        display: block;
+        margin-right: 0;
+        margin-bottom: .4rem;
+    }
+}
