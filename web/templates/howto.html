@@ -11,21 +11,21 @@
 <div class="container">
     <h3 class="mb-4">A Quick Start Guide to Setting Up an ADSB Feeder</h3>
     <h4>Introduction</h4>
-    <div class="ml-3 mb-3">
+    <div class="ms-3 mb-3">
         This document is pretty old at this point, but kept here for completeness. I'll try to keep it updated and relevant,
         but please look at other resources as well...
     </div>
-    <div class="ml-3 mb-3">
+    <div class="ms-3 mb-3">
         This quick-start guide allows you to build a receiver and start seeing what aircraft fly above your
         location in no time, and at minimum expense. Each step has “minimum configuration”, and discusses
         some ideas on how to make it better at an additional cost or effort.
     </div>
-    <div class="ml-3 mb-3">
+    <div class="ms-3 mb-3">
         There are a number of videos on our the <a href="https://youtube.com/@adsb">adsb.im YouTube channel</a> that
         should also help you get started.
     </div>
     <h4>Hardware</h4>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         For a minimal configuration you need:
         <ul>
             <li>A small single board computer (“SBC”): see the list of <a href="supported">currently supported
@@ -59,12 +59,12 @@
             <li>Antenna: <a href="https://www.aliexpress.us/item/3256801237629737.html">Chinese basic 1090 MHz antenna</a> (~$6 if shipping with the SDR)</li>
             <li>SD card: <a href="https://amzn.to/4hERFwH">SanDisk Ultra 16 GB</a> (~$10 plus Amazon shipping)</li>
         </ul>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         You also should have access to a computer (Windows, Mac, Linux) and an µSD card writer. This will be
         used for the initial setup; once everything is running, you can access the flight map from your phone
         or pretty much any other device.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         If you want to upgrade your hardware parts to something better, then consider this:
         <ul>
             <li>A better/faster SBC. This will help with faster processing and it will enable running more
@@ -79,8 +79,8 @@
                 so be prepared for that extra wait time.</li>
         </ul>
     </div>
-    <div class="row ml-1 mb-3">
-        <img class="col-4" alt="minimal hardware setup" src="/static/images/minimalHW.png">
+    <div class="row ms-1 mb-3">
+        <img class="col-4 img-fluid align-self-start" alt="minimal hardware setup" src="/static/images/minimalHW.png">
         <div class="col-8">
             For the rest of this guide we'll show an example based on a fairly cheap and basic setup using
             <ul>
@@ -95,7 +95,7 @@
 
     <h4>Setup</h4>
     <h5>Step 1: Download and write the ADSB Feeder Image to the SD card</h5>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         The following steps are all performed using your PC or Mac machine. The images will show how that looks
         on a Mac; it’s very similar in Windows:
         <ol>
@@ -160,7 +160,7 @@
             <li>Wait a few minutes for the SBC to complete it’s initial boot cycle. The larger your µSD, the longer
                 that initial boot cycle will take. Please be patient.</li>
         </ol>
-        <img class="media-object" alt="SD card inserted with the label facing down"
+        <img class="media-object img-fluid" alt="SD card inserted with the label facing down"
              src="https://github.com/dirkhh/adsb-feeder-image/assets/237471/b274b5a0-fcc6-49d8-ac92-ee89dbd331ea">
     </div>
     <h5>Step 3: software setup of your SBC</h5>

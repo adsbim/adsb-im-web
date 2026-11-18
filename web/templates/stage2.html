@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% set active_page = "howto" %}
+{% set active_page = "stage2" %}
 
 {% block title %}{% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %}{% endblock %}
 {% block head %}
@@ -35,7 +35,7 @@
     please don't do this. The adsb.im feeder image is intentionally not offering any options to do this.
   </div>
   <figure class="figure center">
-    <img src="/static/images/stage2-architecture.png" class="figure-img img-fluid rounded  shadow-3 mb-3"
+    <img src="/static/images/stage2-architecture.png" class="figure-img img-fluid rounded  shadow mb-3"
          max-width="600" width="50%" alt="Typical Stage 2 setup" />
     <figcaption class="figure-caption">Typical Stage 2 Setup</figcaption>
   </figure>
@@ -91,7 +91,7 @@
       </li>
       <li>Select "Stage 2" at the bottom of the Setup page and click on Submit.</li>
       <figure class="figure">
-        <img src="/static/images/stage2-step1.png" class="figure-img img-fluid rounded border shadow-3 mb-3"
+        <img src="/static/images/stage2-step1.png" class="figure-img img-fluid rounded border shadow mb-3"
              alt="Initial Stage 2 setup" />
         <figcaption class="figure-caption">Initial Stage 2 setup</figcaption>
       </figure>
@@ -101,7 +101,7 @@
         click on "Check Micro Feeder". Yes, you are pointing this at an <em>Integrated Feeder</em> right now -- we'll
         convert that system to a <em>Micro Feeder</em> later.</li>
       <figure class="figure">
-        <img src="/static/images/stage2-step2.png" class="figure-img img-fluid rounded border shadow-3 mb-3"
+        <img src="/static/images/stage2-step2.png" class="figure-img img-fluid rounded border shadow mb-3"
              alt="Pick a Micro Feeder to connect to" />
         <figcaption class="figure-caption">Pick a Micro Feeder to connect to</figcaption>
       </figure>
@@ -119,7 +119,7 @@
         </ul>
       </li>
       <figure class="figure">
-        <img src="/static/images/stage2-step3.png" class="figure-img img-fluid rounded border shadow-3 mb-3"
+        <img src="/static/images/stage2-step3.png" class="figure-img img-fluid rounded border shadow mb-3"
              alt="Import Micro Feeder settings" />
         <figcaption class="figure-caption">Add the selected feeder</figcaption>
       </figure>
@@ -128,7 +128,7 @@
       <li>Once you have all Micro Feeders added (you can of course come back here at any time later to make changes),
         pick the settings for the semi-anonymous aggregators that you prefer and click on "I'm Done Here".</li>
       <figure class="figure">
-        <img src="/static/images/stage2-step4.png" class="figure-img img-fluid rounded border shadow-3 mb-3"
+        <img src="/static/images/stage2-step4.png" class="figure-img img-fluid rounded border shadow mb-3"
              alt="Complete Stage 2 setup" />
         <figcaption class="figure-caption">Complete Stage 2 setup</figcaption>
       </figure>
@@ -162,7 +162,7 @@
     from the Stage 2 Instance web interface.
   </div>
   <figure class="figure">
-    <img src="/static/images/stage2-running.png" class="figure-img img-fluid rounded border shadow-3 mb-3"
+    <img src="/static/images/stage2-running.png" class="figure-img img-fluid rounded border shadow mb-3"
          alt="Running Stage 2 Instance" />
     <figcaption class="figure-caption">Running Stage 2 Instance</figcaption>
   </figure>

@@ -11,7 +11,7 @@
 <div class="container">
     <h3 class="mb-4">A detailed guide to using the web interface</h3>
     <h4>Introduction</h4>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         In general, the basic setup should make it very quick to get you started. The bare minimum
         of information is entered on the <em>Basic Setup</em> page, by default it assumes that you want
         to track planes via ADS-B and it auto-assigns a single SDR for that purpose, and you can select
@@ -24,17 +24,17 @@
         different).
     </div>
     <h4 class="mt-3">Feeder Homepage</h4>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         On basically every page of the interface there is a link to the Feeder Homepage in the top left
         corner - depending on the screen size that's either just a logo or a logo with the text <em>ADS-B Feeder</em>
         or <em>SDR Feeder</em> next to it.
     </div>
-    <figure class="ml-1 mb-3">
-        <img src="/static/images/wide-and-narrow-3.0-homepage.png" class="figure-img img-fluid rounded border shadow-3 mb-3"
+    <figure class="ms-1 mb-3">
+        <img src="/static/images/wide-and-narrow-3.0-homepage.png" class="figure-img img-fluid rounded border shadow mb-3"
              alt="Feeder Homepage" />
     </figure>
     <h5>Menu bar</h5>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         On the home page you will see one or more buttons in the top menu bar that will take you to the various
         map interfaces for <a href="/faq#collapseADSB">ADS-B</a>, <a href="/faq#collapseACARS">ACARS</a>,
         <a href="/faq#collapseAIS">AIS</a>, and <a href="/faq#collapseRadiosonde">Radiosonde</a> (but only those that you have enabled will be shown).
@@ -42,32 +42,32 @@
         {% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %} web interface, but instead part
         of the user interface for the underlying tools that we use in order to handle data for the various protocols.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         <tt>[to be completed] -- add links to walk through of tar1090, acarshub, ais-catcher, and radiosonde auto rx</tt>
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         On the right side of the top menu bar there are more links to UI components - either as traditional menu
         bar or collapsed to a <em>hamburger</em> menu on small screens. The first menu item gives you access to
         more <em>Maps</em>, again, depending on the enabled protocols. Next to that the <em>Data Sharing</em> links
         allows you to select the aggregators that you want to send data to.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         The Setup dropdown menu lets you get back to <em>Basic Settings</em>, setup the <em>SDRs</em> that are
         connected to your system, or enter the secondary setup screen named <em>Expert</em>.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         Finally, the last element is the <em>System</em> dropdown menu. This is where you can get to the <em>Logs</em>
         of the various services (most users never need those, but they are critical to debug some issues users may run into),
         the <em>Support Info</em> that you will almost certainly be asked to provide when asking for help with an issue
         and a way to share very detailed diagnostics with the developers using the <em>Share Diagnostics</em> item.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         The <em>Management</em> menu item opens a system management UI that will be discussed in detail below.
         <em>Backup</em> and <em>Restore</em> links are also in this menu, as well as the <em>Stats</em> link
         that opens a screen with system statistics (this isn't available at the very start of the setup, yet).
     </div>
     <h5>Main sections of the home page</h5>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         <img class="float-end border border-2 rounded m-2 d-none d-sm-block" src="/static/images/message-data.png" style="width: 400px;">
         <img class="border border-2 rounded m-0 w-100 d-sm-none" src="/static/images/message-data.png">
         For an ADS-B feeder, the first section of the Feeder Homepage shows you information about the data you
@@ -76,7 +76,7 @@
         the daily number based on Universal Time (UTC) and not local time is based on the common practice of most
         aggregators to use this to calculate daily planes tracked.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         Below that you'll see a graph that shows the number of planes tracked per (UTC) day (extending up to two
         weeks). And below that you can see the aggregators that you have enabled
         either with the selection of default account-less aggregators as part of Basic Setup, or with more detailed
@@ -86,18 +86,18 @@
         reasonably easy to do so, a link to the aggregator's status page is also shown. An explanation of the various
         status icons is below that table.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         The {% if 'adsb.im' in x_forwarded_host %}ADSB.im{% else %}SDRE.im{% endif %} Feeder Software allows you
         to either update to a stable or beta version with convenient buttons on the Feeder Homepage. Below those
         buttons is a toggle to show the ChangeLog information for these new releases. You can also set up your
         system to automatically update when new versions become available. This setting can be found under
         System -> Management.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         For an ADS-B feeder, below the update section are links to the various map options that are offered,
         as well as links to specific personalized URLs from the various aggregatros (if any).
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         Finally, on the bottom of each page there is a footer that shows the current version you are running,
         information about the hardware you are running it on and how you initially installed the software, plus
         links to this documentation, the <a href="https://youtube.com/@adsb">ADSB.im YouTube channel</a>, as well
@@ -107,21 +107,21 @@
     </div>
     <h4 class="mt-3">Maps</h4>
     <h5>Maps: Options</h5>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         On the <em>Map Options</em> page you are offered a few ways to adjust what you see when showing the
         ADS-B live map.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         <img class="float-end border border-2 rounded m-2 d-none d-sm-block" src="/static/images/map-route-heywhatsthat.png" style="width: 500px;">
         <img class="border border-2 rounded m-0 w-100 d-sm-none" src="/static/images/map-route-heywhatsthat.png">
         By default, the ADSB Feeder Image shows the best (open data based) guess for the route information
         of the planes shown in the live map user interface as highlighted here on the right side of the
         screenshot. Currently this data is created on the ADSB.im backend
         server by analyzing historical data from aggregators and parsing the live ACARS and VDL2 messages collected by
-        <a href="airframes.io">airframes.io</a>. If you don't want the route information shown on the live map, you
+        <a href="https://airframes.io">airframes.io</a>. If you don't want the route information shown on the live map, you
                 can turn it off here.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         Based on your location and elevation of the antenna it is possible to create a fairly accurate model for how
         far away a good ADS-B receiver can "see" planes, depending on their altitude.
         The <a href="https://www.heywhatsthat.com/">HeyWhatsThat</a> website allows you to create outlines for this
@@ -133,17 +133,17 @@
         go to <a href="https://www.heywhatsthat.com/">HeyWhatsThat</a>, enter your location and create an ID which
         you can then enter here.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         The live map will also show a (darker green, slightly thicker) range outline that shows you the area around your location where you have received
         plane data from. If you want to reset that "actual range" outline, there's an option to do that here.
         Note that the range outline by default always tracks the last 24 hours of data, so things will reset on their own after a day.
     </div>
     <h4 class="mt-3">Data Sharing</h4>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         On the <em>Data Sharing</em> page you are adjusting how your data is shared with aggregators. The options available
         here depend on which protocols you have enabled.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         For ADS-B, by default, <em>MLAT privacy</em> is not enabled, which allows (a rough estimate of the location of) your site to
         be shown on typical <a href="https://mlat.adsb.lol/syncmap">MLAT coverage maps</a>. Turning this on
         informs the aggregators that you would like to opt out of having your data shown on such maps.<br />
@@ -152,58 +152,58 @@
         aggregators for which you need some kind of sharing key or similar. For many of them, getting those key is
         automated, others require some extra steps -- see the help texts in the UI.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         For ACARS, VDL2, and HFDL, there are only a few choices available.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         For AIS there are a larger number of both community based and commercial options available.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         For RadioSonde at this point there appears to be only one interesting aggregator
         <a href="https://sondehub.org">SondeHub</a> which is enabled by default and not shown on this page.
     </div>
 
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         <tt>[to be completed]</tt>
     </div>
     <h4 class="mt-3">Setup</h4>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         The <em>Basic Setup</em> item brings you back to the initial setup - useful if you want to change the name of
         your site or if you move the antenna and need to adjust the location.
     </div>
     <h5>SDR</h5>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         <img class="float-end border border-2 rounded m-2 d-none d-sm-block" src="/static/images/sdr-config.png" style="width: 400px;">
         <img class="border border-2 rounded m-0 w-100 d-sm-none" src="/static/images/sdr-config.png">
         On the <em>SDR</em> setup page you can assign the SDRs found in your system to the enabled protocols.
         By default only ADS-B is assumed as enabled, you can add support for additional protocols in the
         <em>Expert</em> settings below.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         For each of the SDRs, you can click on its entry in the table and then select which protocol it is
         used for and (depending on the type of SDR and the sepecific usage) select values for gain and
         potentially enable biastee support. Note that generally only one SDR can be used for each protocol,
         so assigning an SDR to a protocol that was already assigned to a different SDR will change the assignment
         of that previous SDR to "other".
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         Once all SDRs have been assigned, you <em>must</em> click on the "Apply Settings" button to actually
         apply the changes.
     </div>
     <h5>Setup: Expert</h5>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         On the <em>Expert</em> page you will find some more advanced settings. There are two main sections: first
         the odd settings that will be fairly specific to certain users, and then the section that allows you to
         enable non-ADS-B protocols. Arguably the "Expert" page is maybe not the most logical place to enable
         these features, but for now that's where they are.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         In some very unusual circumstances you may want to be able to add
         <span class="fw-semibold">additional arguments</span> for the
         Ultrafeeder, e.g., if you are feeding a "standard aggregator" that accelpts beast input but
         for whatever reason isn't supported by the web UI.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         Similarly, if you want to access some features that don't have UI elements to support them,
         sometimes you can enable them using specific
         <span class="fw-semibold">environment variables</span> -- definitely an expert
@@ -213,27 +213,27 @@
         it become significantly harder for the team behind the feeder image to help you if you use either of these options,
         so by going down that path you are decidedly in <strong>expert</strong> territory and may be on your own.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         Speaking of truly advanced use cases, if you use a Raspberry Pi SBC and have connected a <span class="fw-semibold">DHT22 temperature sensor</span> to its GPIO pins,
         you can enable ambient temperature reporting.
         By default the software assumes that the DATA pin of the DHT22 is connected to GPIO 4. If you cannot use
         that GPIO pin, you can change the PIN used by creating a file <tt>/opt/adsb/extras/adsb-temperature.default</tt>
         with the content <tt>GPIO_PIN=22</tt> (or whatever GPIO pin you are using).
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         If you want to share your ADS-B live map with others (generally only recommended if you
         really understand the potentially unintended consequences - hence, again, an expert use
         case), you can <span class="fw-semibold">disable the config link on the ADS-B live map</span>.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         You can switch the <span class="fw-semibold">CSS Theme</span> from the default that tries to match your current browse theme
         to light or dark.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         For very specific situations with limited bandwidth networks, you can <span class="fw-semibold">disable parallel
             downloads of Docker containers</span>.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         Finally, as mentioned above, you can enable the various <span class="fw-semibold">non-ADS-B protocols</span>. Each of these
         need to first be enabled clicking the corresponding "Enable" button, and then you can set the corresponding
         <span class="fw-semibold">feed IDs</span> for each protocol -- these IDs are required as they are used to identify the
@@ -242,20 +242,20 @@
         multiple instances if necessary). For example <tt>AM-EDDF-VDL2</tt> for a hypothetical Andreas Müller sending VDL2 messages
         near Frankfurt International Airport.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         <a href="/faq#collapseACARS">ACARS</a> supports two different instances (with separate feed IDs) as in some geographies
         (mostly the US) there are more ACARS frequencies in use than a single SDR can cover. The default frequencies for the
         two ACARS instances are designed that the first one by default covers all the common frequencies around the world, and
         the second one covers the frequencies below 130MHz that are mainly seen in the US (and even there they are not very
         common). So for most people having just one ACARS decoder is likely sufficient.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         <a href="/faq#collapseVDL2">VDL Mode 2</a> (or VDL2) is the more modern, digital protocol for airplane messaging.
         In many areas (especially in Europe) VDL2 has surpassed analog ACARS messages in terms of message volume, but in
         other areas ACARS may still get you more messages. A single antenna with two SDRs can cover both VDL2 and ACARS.
         Once again, the default frequencies are most likely sufficient for most people.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         <a href="/faq#collapseHFDL">HFDL</a> is operating at much lower frequencies than ACARS and VDL2 and therefore
         definitely requires its own antenna - but on the flip side you typically can receive messages from significantly
         further away as HF radio signals tend to get reflected and follow the curvature of earth to some degree.
@@ -265,23 +265,23 @@
         rate depending on your SDR. Typical RTLSDRs are handled automatically, for an Airspy you need to enter
         <span class="fw-semibold">3000000</span>.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         The other option for receiving HFDL messages is to use <span class="fw-semibold">hfdlobvserver</span>, which requires
         access to a <a href="https://www.rx-888.com/">web-888</a> SDR on your local network. This is definitely a bit of a
         corner case, but integrating this into the image wasn't too hard and one of the maintainers of this software happens
         to own a couple of web-888s.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         If any of the preceding ACARS / VDL2 / HFDL protocols are enabled, you can also enable <span class="fw-semibold">acars2pos</span>
         which will show the position of some of the airplanes from which data was received on the ADS-B live map of your system. The
         planes will not have altitude information, they will show up as white outlines, and they will remain in the last position received
         for more than half an hour.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         Next, you can enable <a href="/faq#collapseAIS">AIS / Shipfeeder</a> to track ships and their positions. Shipfeeder comes with
         its own map, but once you have it enabled there's also an option to show the ships on the ADS-B live map.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         Finally, you can enable <a href="/faq#collapseRadiosonde">Radio Sonde</a>. For this protocol it is more typical to not use the
         nearest airport and your initials but instead your ham radio callsign as identifier (but since no ham radio certification is
         required to run this service, you can always go back to <tt>initials-airport</tt> as identifier). Enter the frequency range
@@ -290,13 +290,13 @@
     </div>
     <h4 class="mt-3">System</h4>
     <h5>Management</h5>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         While in most circumstances you shouldn't need to to access the adsb feeder system
         directly, if this is something you want to be able to do, here is where you enter the public
         key of an <span class="fw-semibold">ssh</span> key-pair which will allow you to log in as root or where you can set the
         <span class="fw-semibold">root password</span> of the feeder system to a random value that is displayed in the web interface.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         Conversly, if you want to slightly reduce the attack surface of your system (for example if it is
         installed on someone else's premises), you can remove some obvious attack vectors that would
         allow someone else to take over your feeder by selecting <span class="fw-semibold">Secure Feeder System</span>.
@@ -304,38 +304,38 @@
         you should assume that someone with access to the hardware will be able to remove the µSD
         card which will allow them to get access to the system.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         There are also options that allow you to <span class="fw-semibold">shutdown</span> or
         <span class="fw-semibold">reboot</span> your system. Please note that there are several
         scenarios where an SBC will not successfully reboot (or not turn of power on shutdown). Please
         test this capability before relying on it.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         The feeder can be set up to update its base OS and / or the feeder software (i.e. the web UI that controls
         the system) automatically. You can also trigger the OS or feeder <span class="fw-semibold">software updates</span>
         manually from this page.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         In situations where one of the underlying <span class="fw-semibold">containers</span> isn't restarted when needed, you can manually
         <span class="fw-semibold">restart or recreate</span> either all or a subset of the running containers.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         You can add your feeder system to a <span class="fw-semibold">ZeroTier</span> or <span class="fw-semibold">Tailscale</span>
         global area network in order to be
         able to access it remotely. Enter the network ID here (you have to set this up at the
-        <a href="zerotier.com">ZeroTier website</a>, first), or connect to your pre-existing Tailscale network.
+        <a href="https://zerotier.com">ZeroTier website</a>, first), or connect to your pre-existing Tailscale network.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         You can reconfigure the system's <span class="fw-semibold">WiFi</span> network if it will be moved to a new location with a different
         SSID and password.
     </div>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         While some of these options will be useful to most users, some of them are targeting users who are
         somewhat more familiar with the setup of a Linux system. When in doubt, please ask on one of the
         forums for guidance and help.
     </div>
     <h5>Backup / Restore</h5>
-    <div class="ml-1 mb-3">
+    <div class="ms-1 mb-3">
         You can backup the settings as well as the history of statistics on the <em>Backup</em> page.
         Click one of the three Backup buttons and store the zip file on your computer. You can backup just the
         configuration, include the graphs, or include the full history of data.
