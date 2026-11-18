@@ -339,6 +339,19 @@ page_content %}
         </div>
         <div class="accordion-item">
           <h5 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapselocalpermissions"
+                    aria-expanded="false" aria-controls="collapselocalpermissions">
+              Why is my browser asking me for extra permissions?
+            </button>
+          </h5>
+          <div id="collapselocalpermissions" class="accordion-collapse collapse" data-bs-parent="#FAQ-networking-and-remote-access">
+            <div class="accordion-body">
+              Some modern browsers have started to require special permission to access "nearby devices" - and without that permission you cannot access the web interface of your feeder on the local network. That's not an issue with the feeder software but a "feature" that allegedly improves "security". Long story short, if you use one of those browsers, you cannot access or manage your adsb.im feeder unless you provide that permission.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h5 class="accordion-header">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsezerotier"
                     aria-expanded="false" aria-controls="collapsezerotier">
               How to set up Zerotier?
