@@ -45,6 +45,12 @@ body {
     color: #222;
 }
 
+/* the chip keeps the logos (light-gray artwork on a transparent background)
+   legible once the page itself goes dark */
+.logo-chip {
+    display: inline-block;
+}
+
 .center {
     text-align: center;
 }
@@ -150,5 +156,56 @@ div {
         display: block;
         margin-right: 0;
         margin-bottom: .4rem;
+    }
+}
+
+/* placed last so it wins the cascade over the light-mode rules above, which
+   share the same specificity */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #1a1a1a;
+        color: #ddd;
+    }
+
+    .gray,
+    div {
+        color: #ddd;
+    }
+
+    .navbar {
+        background: #1a1a1a;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    .navbar .nav-link {
+        color: #bbb;
+    }
+
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+        color: #fff;
+    }
+
+    .navbar-toggler {
+        color: #ddd;
+        border-color: #555;
+    }
+
+    .container-prose nav[aria-label="Sections of this page"] {
+        background: #1a1a1a;
+        border-bottom: 1px solid #333;
+    }
+
+    .logo-chip {
+        background: #FFF;
+        border-radius: 12px;
+        padding: 6px;
+    }
+
+    /* same idea as .logo-chip: the stage2 diagram is black line art on a
+       transparent background, so it needs a light backdrop to stay visible */
+    .diagram-chip {
+        background: #FFF;
+        padding: 12px;
     }
 }

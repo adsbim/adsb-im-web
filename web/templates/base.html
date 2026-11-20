@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="auto">
 
 <head>
     {% block head %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="color-scheme" content="light dark">
+    <script>
+        /* resolves data-bs-theme="auto" to "light"/"dark" so Bootstrap's own
+           dark-theme components (e.g. the FAQ accordion) match the OS, since
+           Bootstrap's CSS only keys off an explicit light/dark value */
+        (function () {
+            var mq = window.matchMedia('(prefers-color-scheme: dark)');
+            var apply = function () {
+                document.documentElement.setAttribute('data-bs-theme', mq.matches ? 'dark' : 'light');
+            };
+            apply();
+            mq.addEventListener('change', apply);
+        })();
+    </script>
     {% if 'adsb.im' in x_forwarded_host %}
     <meta name="description" content="ADSB Feeder Image - Airplane Tracking Made Simple">
     <meta name="author" content="Dirk Hohndel">
@@ -32,7 +46,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <!-- Custom CSS -->
-    <link href="/static/styles/style.css?h=860b3dc2" rel="stylesheet" />
+    <link href="/static/styles/style.css?h=8802b02f" rel="stylesheet" />
     {% if active_page == 'home' %}
     <link rel="me" href="https://hachyderm.io/@dirkhh">
     {% endif %}
@@ -48,9 +62,9 @@
                 <div class="row justify-content-center mt-2 mb-5">
                     <div class="col-auto">
                         {% if 'adsb.im' in x_forwarded_host %}
-                        <img src="/static/images/adsb.im.logo.png" width="128" height="128" alt="ADSB.im logo" />
+                        <span class="logo-chip"><img src="/static/images/adsb.im.logo.png" width="128" height="128" alt="ADSB.im logo" /></span>
                         {% else %}
-                        <img src="/static/images/sdre.im.logo.png" width="128" height="128" alt="SDRE.im logo" />
+                        <span class="logo-chip"><img src="/static/images/sdre.im.logo.png" width="128" height="128" alt="SDRE.im logo" /></span>
                         {% endif %}
                     </div>
                     <div class="col-auto">
